@@ -1,16 +1,47 @@
 ---
-
+import ThreeScene from "../components/ThreeScene.astro";
+import Layout from "../components/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Demo">
+  <header
+    class="absolute top-5 left-0 w-full p-4 bg-opacity-50 bg-[#1a0b4e] z-20"
+  >
+    <nav
+      class="container mx-auto flex justify-between items-center bg-[#4F4B93] p-4 rounded-full"
+    >
+      <div class="font-bold text-2xl">Crafter Station</div>
+      <ul class="flex gap-12">
+        <li>
+          <a href="#" class="cursor-pointer hover:text-[#FFDF6B]">Home</a>
+        </li>
+        <li><a href="#" class="hover:text-[#FFDF6B]">¿Quiénes somos?</a></li>
+        <li><a href="#" class="hover:text-[#FFDF6B]">Proyectos</a></li>
+        <li><a href="#" class="hover:text-[#FFDF6B]">Blog</a></li>
+        <li><a href="#" class="hover:text-[#FFDF6B]">Contacto</a></li>
+      </ul>
+      <button
+        class="bg-[#C1DD34] text-[#1A0B4E] font-semibold py-3 px-6 rounded-full"
+        >Tengo una idea</button
+      >
+    </nav>
+  </header>
+  <main class="size-full relative">
+    <ThreeScene />
+    <section
+      class="absolute top-0 bottom-0 left-0 size-full flex flex-col justify-center items-center text-white gap-6"
+    >
+      <h1 class="text-6xl font-bold text-center text-[#FFDF6B]">
+        Laboratorio del futuro
+      </h1>
+      <p class="text-xl text-center max-w-prose">
+        {"<"} Clickea con nuestra comunidad y desbloquea un mundo de posibilidades
+        digitales {"/>"}
+      </p>
+      <button
+        class="bg-[#FFDF6B] text-[#1A0B4E] font-semibold text-md px-6 py-3 rounded-full mt-4"
+        >Mira nuestro portafolio</button
+      >
+    </section>
+  </main>
+</Layout>
