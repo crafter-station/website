@@ -15,9 +15,19 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="font-mono h-screen bg-[#1A0B4E] text-white overflow-hidden">
+  <body class="font-space h-screen bg-grape text-bone">
     <slot />
   </body>
 </html>
+
+<style is:global>
+  @font-face {
+    font-family: "NT Brick Sans";
+    src: url("/fonts/NTBRickSans.ttf") format("ttf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
 
 <script src="../scripts/entry.ts"></script>

@@ -1,17 +1,20 @@
 ---
-import ThreeScene from "../components/ThreeScene.astro";
+// import ThreeScene from "../components/ThreeScene.astro";
 import Layout from "../components/Layout.astro";
 import Header from "../components/Header.astro";
+import TeamSection from "../components/TeamSection.astro";
+import WhatWeDeSection from "../components/WhatWeDeSection.astro";
+import BestProjectsSection from "../components/BestProjectsSection.astro";
 ---
 
 <Layout title="Demo">
   <Header />
   <main class="size-full relative">
-    <ThreeScene />
+    <!-- <ThreeScene /> -->
     <section
-      class="absolute top-0 bottom-0 left-0 size-full flex flex-col justify-center items-center text-white gap-6"
+      class="size-full flex flex-col justify-center items-center text-bone gap-6"
     >
-      <h1 class="text-6xl font-bold text-center text-[#FFDF6B]">
+      <h1 class="font-brick text-6xl font-bold text-center text-pineapple">
         Laboratorio del futuro
       </h1>
       <p class="text-xl text-center max-w-prose">
@@ -19,9 +22,12 @@ import Header from "../components/Header.astro";
         digitales {"/>"}
       </p>
       <button
-        class="bg-[#FFDF6B] text-[#1A0B4E] font-semibold text-md px-6 py-3 rounded-full mt-4"
+        class="bg-[#FFDF6B] text-grape font-semibold text-md px-6 py-3 rounded-full mt-4"
         >Mira nuestro portafolio</button
       >
     </section>
+    <TeamSection />
+    <WhatWeDeSection />
+    <BestProjectsSection />
   </main>
 </Layout>

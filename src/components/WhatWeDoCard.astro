@@ -1,0 +1,39 @@
+---
+const { title, subtitle, description, buttonText, imageSrc } = Astro.props;
+---
+
+<div
+  class="bg-bone text-night rounded-lg overflow-hidden border-2 border-night"
+>
+  <div class="flex flex-col items-center p-5">
+    {
+      !imageSrc && (
+        <div class="bg-night text-sky p-4 mb-4 rounded">
+          <p class="text-center text-xl font-bold">&lt; {title} &gt;</p>
+        </div>
+      )
+    }
+    {
+      imageSrc && (
+        <img
+          src={imageSrc}
+          alt={title}
+          class="w-full aspect-[2.4] object-cover mb-4 rounded"
+        />
+      )
+    }
+    <div class="flex gap-4 justify-center">
+      <span> &lt; </span>
+      <h3 class={`text-xl font-bold mb-6`}>
+        {subtitle}
+      </h3>
+      <span> &gt; </span>
+    </div>
+    <p class="text-lg leading-7 text-center mb-4 px-16">{description}</p>
+    <button
+      class="bg-[#C1DD34] my-6 text-night font-semibold py-3 px-14 rounded-full"
+    >
+      {buttonText}
+    </button>
+  </div>
+</div>

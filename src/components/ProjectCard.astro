@@ -1,0 +1,53 @@
+---
+interface Props {
+  title: string;
+  color: string;
+  tags: string[];
+  description: string;
+  imageSrc: string;
+}
+
+const { title, color, tags, description, imageSrc } = Astro.props;
+---
+
+<div class={`rounded-lg overflow-hidden ${color}`}>
+  <div class="p-6">
+    <h3 class="text-3xl font-bold mb-4 text-night">{title}</h3>
+    <div class="flex gap-2 mb-4">
+      {
+        tags.map((tag: string) => (
+          <span class="bg-night text-bone px-3 py-1 rounded-full text-sm">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+    <img
+      src={imageSrc}
+      alt={title}
+      class="w-full aspect-video object-cover mb-4 rounded"
+    />
+    <p class="text-night mb-6">{description}</p>
+    <button class="bg-[#5D00FF] text-bone font-semibold py-3 px-6 rounded-full">
+      Ver una demo
+    </button>
+  </div>
+  <div class="bg-night text-bone p-4">
+    <div class="flex justify-between items-center">
+      <div>
+        <p class="text-5xl font-bold">234</p>
+        <p class="text-sm">usuarios al mes</p>
+        <p class="text-xs">Data extraida a Marzo 2024</p>
+      </div>
+      <div class="flex flex-col items-end">
+        <div class="flex">
+          {[...Array(5)].map(() => <span class="text-pineapple">★</span>)}
+        </div>
+        <a href="#" class="text-sm underline flex items-center gap-1">
+          Ir a github
+          <span class="text-xl">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

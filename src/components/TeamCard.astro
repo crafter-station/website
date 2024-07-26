@@ -1,0 +1,29 @@
+---
+const { title, color } = Astro.props;
+---
+
+<div class="relative">
+  <!-- Background cards for 3D effect -->
+  <div
+    class="absolute inset-0 bg-bone rounded-lg transform -translate-x-2 -translate-y-2"
+  >
+  </div>
+  <div
+    class="absolute inset-0 bg-bone rounded-lg transform -translate-x-1 -translate-y-1"
+  >
+  </div>
+
+  <!-- Main card -->
+  <div class="relative bg-night py-9 px-12 rounded-lg border border-bone">
+    <div class="flex gap-4 justify-center">
+      <span> &lt; </span>
+      <h3 class={`text-xl font-bold mb-6 ${color}`}>
+        {title}
+      </h3>
+      <span> &gt; </span>
+    </div>
+    <p class="text-sm leading-7 text-center text-bone">
+      <slot />
+    </p>
+  </div>
+</div>

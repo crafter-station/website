@@ -1,0 +1,40 @@
+---
+import TeamCard from "./TeamCard.astro";
+import TeamMember from "./TeamMember.astro";
+---
+
+<section class="size-full bg-night text-bone py-16">
+  <div class="container mx-auto px-4 grid gap-14">
+    <h2 class="text-[2rem] font-bold text-center font-brick">
+      SOMOS UN EQUIPO
+    </h2>
+    <p class="text-center leading-10 max-w-3xl mx-auto">
+      Crafter Station es un laboratorio que ayuda a despegar ideas y proyectos
+      tecnológicos desde la inclusión digital.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <TeamCard title="Comunidad" color="text-strawberry">
+        Buscamos construir una comunidad que comparta ideas y conocimientos y se
+        encuentran en constante aprendizaje
+      </TeamCard>
+      <TeamCard title="Innovación" color="text-sky">
+        Nuestra estrategia se basa en dominar y experimentar con nuevas
+        tecnologías, enfocándonos en la inclusión y el progreso digital.
+      </TeamCard>
+      <TeamCard title="Adaptabilidad" color="text-strawberry">
+        Somos flexibles y receptivos a las necesidades cambiantes de la
+        comunidad e industria, y a las nuevas herramientas que surgen.
+      </TeamCard>
+    </div>
+
+    <h3 class="text-[2rem] font-bold text-center font-brick">Nuestro equipo</h3>
+    <div class="flex flex-wrap justify-center gap-4">
+      <TeamMember name="Railly Hugo" />
+      <TeamMember name="Shiara Arauzo" />
+      <TeamMember name="Anthony Cueva" />
+      <TeamMember name="Liz Riveros" />
+      <TeamMember name="Edward Ramos" />
+    </div>
+  </div>
+</section>

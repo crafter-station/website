@@ -1,0 +1,28 @@
+---
+// components/WhatWeDoSection.astro
+import WhatWeDoCard from "./WhatWeDoCard.astro";
+---
+
+<section class="size-full bg-sky py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-[2rem] font-bold text-center font-brick text-night mb-12">
+      ¿Qué hacemos?
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <WhatWeDoCard
+        title="Code"
+        subtitle="Desarrollo digital"
+        description="Creamos herramientas tecnológicas y transformamos tus ideas en realidad. ¡Transforma tu negocio y proyectos con nosotros!"
+        buttonText="Enviar un mensaje"
+        imageSrc="/favicon.svg"
+      />
+      <WhatWeDoCard
+        title="Talleres devs"
+        subtitle="Talleres devs"
+        description="Brindamos talleres de programación a las escuelas. Nuestra idea es poder promover la programación a los niños de diferentes edades."
+        buttonText="¡Apunto a mi colegio!"
+        imageSrc="/favicon.svg"
+      />
+    </div>
+  </div>
+</section>
