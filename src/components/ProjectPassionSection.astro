@@ -1,0 +1,53 @@
+---
+
+---
+
+<section class="bg-night text-bone py-8 sm:py-16 relative">
+  <div
+    class="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-8"
+  >
+    <div class="w-full sm:max-w-2xl">
+      <h2
+        class="text-3xl sm:text-[4rem] leading-tight sm:leading-[6rem] font-bold mb-4 sm:mb-8 font-brick"
+      >
+        Le ponemos nuestro <span class="text-strawberry">♡</span> a cada proyecto
+      </h2>
+      <p class="text-base sm:text-lg leading-7 mb-6 sm:mb-8">
+        Amamos lo que hacemos y queremos que eso se vea reflejado en cada
+        proyecto que entregamos. Estamos dedicados a entregar contenido de valor
+        a nuestro trabajo.
+      </p>
+      <button
+        class="bg-pineapple text-night font-semibold py-2 sm:py-3 px-8 sm:px-14 rounded-full text-sm sm:text-lg"
+      >
+        Conoce más
+      </button>
+    </div>
+    <div class="w-full sm:w-auto flex justify-center">
+      <img
+        src="/alien-robot.svg"
+        alt="Friendly robot"
+        class="w-48 sm:w-[17rem] h-auto"
+      />
+    </div>
+  </div>
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="w-full h-full flex items-center justify-center">
+      {
+        Array(20)
+          .fill(0)
+          .map((_, i) => (
+            <div
+              class="absolute rounded-full bg-bone opacity-20"
+              style={`
+            width: ${Math.random() * 4 + 2}px;
+            height: ${Math.random() * 4 + 2}px;
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+          `}
+            />
+          ))
+      }
+    </div>
+  </div>
+</section>

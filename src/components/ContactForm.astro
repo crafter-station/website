@@ -1,0 +1,136 @@
+---
+
+---
+
+<section class="bg-night py-8 sm:py-16">
+  <div class="container mx-auto px-4">
+    <h2
+      class="text-3xl sm:text-4xl font-bold text-center font-brick text-bone mb-8 sm:mb-12"
+    >
+      Creemos la siguiente tecnología juntos
+    </h2>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-8">
+      <div class="w-full sm:w-1/2">
+        <form id="contact-form" class="flex flex-col gap-4">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Nombre"
+              class="w-full p-2 rounded-md bg-white text-night disabled:bg-gray-200 disabled:text-gray-500"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Correo electrónico"
+              class="w-full p-2 rounded-md bg-white text-night disabled:bg-gray-200 disabled:text-gray-500"
+              required
+            />
+          </div>
+          <textarea
+            name="message"
+            placeholder="¿Cómo podemos ayudarte?"
+            rows="4"
+            class="w-full p-2 rounded-md bg-white text-night disabled:bg-gray-200 disabled:text-gray-500"
+            required></textarea>
+          <button
+            type="submit"
+            class="bg-strawberry text-night font-semibold py-2 sm:py-3 px-8 sm:px-14 rounded-full w-full sm:w-max text-sm sm:text-base relative disabled:bg-gray-400 disabled:text-gray-700 transition-colors duration-300"
+          >
+            <span class="submit-text">Enviar mensaje</span>
+            <span class="loading-spinner hidden">
+              <svg
+                class="animate-spin h-5 w-5 text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            </span>
+          </button>
+        </form>
+        <p id="form-message" class="mt-4 text-center text-bone hidden"></p>
+      </div>
+      <div class="w-full sm:w-1/2 flex gap-4 justify-center sm:justify-end">
+        <img src="/computer.svg" alt="Laptop icon" class="w-24 sm:w-[9rem]" />
+        <img src="/ufo.svg" alt="UFO icon" class="w-48 sm:w-72" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const formMessage = document.getElementById(
+    "form-message"
+  ) as HTMLParagraphElement;
+  const submitButton = form.querySelector(
+    'button[type="submit"]'
+  ) as HTMLButtonElement;
+  const submitText = submitButton.querySelector(
+    ".submit-text"
+  ) as HTMLSpanElement;
+  const loadingSpinner = submitButton.querySelector(
+    ".loading-spinner"
+  ) as HTMLSpanElement;
+
+  const setFormState = (isLoading: boolean) => {
+    const formElements = form.elements;
+    for (let i = 0; i < formElements.length; i++) {
+      (formElements[i] as HTMLInputElement).disabled = isLoading;
+    }
+    submitButton.disabled = isLoading;
+    submitText.classList.toggle("hidden", isLoading);
+    loadingSpinner.classList.toggle("hidden", !isLoading);
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const formJson = Object.fromEntries(formData.entries());
+
+    try {
+      setFormState(true);
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formJson),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Success:", data);
+
+      formMessage.textContent = "Mensaje enviado con éxito!";
+      formMessage.classList.remove("hidden", "text-red-500");
+      formMessage.classList.add("text-green-500");
+      form.reset();
+    } catch (error) {
+      console.error("Error:", error);
+      formMessage.textContent = "Error al enviar el mensaje";
+      formMessage.classList.remove("hidden", "text-green-500");
+      formMessage.classList.add("text-red-500");
+    } finally {
+      setFormState(false);
+      formMessage.classList.remove("hidden");
+    }
+  });
+</script>

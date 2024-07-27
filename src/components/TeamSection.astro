@@ -3,12 +3,12 @@ import TeamCard from "./TeamCard.astro";
 import TeamMember from "./TeamMember.astro";
 ---
 
-<section class="size-full bg-night text-bone py-16">
+<section class="min-h-screen bg-night text-bone py-16">
   <div class="container mx-auto px-4 grid gap-14">
     <h2 class="text-[2rem] font-bold text-center font-brick">
       SOMOS UN EQUIPO
     </h2>
-    <p class="text-center leading-10 max-w-3xl mx-auto">
+    <p class="text-center text-base sm:text-lg leading-10 max-w-3xl mx-auto">
       Crafter Station es un laboratorio que ayuda a despegar ideas y proyectos
       tecnológicos desde la inclusión digital.
     </p>
@@ -30,11 +30,26 @@ import TeamMember from "./TeamMember.astro";
 
     <h3 class="text-[2rem] font-bold text-center font-brick">Nuestro equipo</h3>
     <div class="flex flex-wrap justify-center gap-4">
-      <TeamMember name="Railly Hugo" />
-      <TeamMember name="Shiara Arauzo" />
-      <TeamMember name="Anthony Cueva" />
-      <TeamMember name="Liz Riveros" />
-      <TeamMember name="Edward Ramos" />
+      <TeamMember
+        name="Railly Hugo"
+        linkedinUrl="https://www.linkedin.com/in/railly-hugo"
+      />
+      <TeamMember
+        name="Shiara Arauzo"
+        linkedinUrl="https://www.linkedin.com/in/shiara-arauzo"
+      />
+      <TeamMember
+        name="Anthony Cueva"
+        linkedinUrl="https://www.linkedin.com/in/cuevaio"
+      />
+      <TeamMember
+        name="Liz Riveros"
+        linkedinUrl="https://www.linkedin.com/in/lizethriveros"
+      />
+      <TeamMember
+        name="Edward Ramos"
+        linkedinUrl="https://www.linkedin.com/in/edwardramosvillarreal"
+      />
     </div>
   </div>
 </section>

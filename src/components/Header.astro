@@ -2,23 +2,53 @@
 
 ---
 
-<header class="absolute top-5 left-0 w-full p-4 bg-opacity-50 bg-grape z-20">
+<header class="absolute top-0 left-0 w-full p-4 bg-opacity-50 bg-grape z-20">
   <nav
     class="container mx-auto flex justify-between items-center bg-[#4F4B93] p-4 rounded-full"
   >
-    <div class="font-bold text-2xl">Crafter Station</div>
-    <ul class="flex gap-12">
-      <li>
-        <a href="#" class="cursor-pointer hover:text-[#FFDF6B]">Home</a>
-      </li>
-      <li><a href="#" class="hover:text-[#FFDF6B]">¿Quiénes somos?</a></li>
-      <li><a href="#" class="hover:text-[#FFDF6B]">Proyectos</a></li>
-      <li><a href="#" class="hover:text-[#FFDF6B]">Blog</a></li>
-      <li><a href="#" class="hover:text-[#FFDF6B]">Contacto</a></li>
+    <div class="font-bold text-xl sm:text-2xl">Crafter Station</div>
+    <div class="sm:hidden">
+      <button id="menu-toggle" class="text-bone">☰</button>
+    </div>
+    <ul class="hidden sm:flex gap-6 lg:gap-12">
+      <li><a href="#" class="cursor-pointer hover:text-pineapple">Home</a></li>
+      <li><a href="#" class="hover:text-pineapple">¿Quiénes somos?</a></li>
+      <li><a href="#" class="hover:text-pineapple">Proyectos</a></li>
+      <li><a href="#" class="hover:text-pineapple">Blog</a></li>
+      <li><a href="#" class="hover:text-pineapple">Contacto</a></li>
     </ul>
     <button
-      class="bg-[#C1DD34] text-[#1A0B4E] font-semibold py-3 px-6 rounded-full"
-      >Tengo una idea</button
+      class="hidden sm:block bg-[#C1DD34] text-night font-semibold py-2 px-4 sm:py-3 sm:px-6 rounded-full text-sm sm:text-base"
     >
+      Tengo una idea
+    </button>
   </nav>
+  <div
+    id="mobile-menu"
+    class="hidden sm:hidden bg-[#4F4B93] mt-2 p-4 rounded-lg"
+  >
+    <ul class="flex flex-col gap-4">
+      <li><a href="#" class="block hover:text-pineapple">Home</a></li>
+      <li>
+        <a href="#" class="block hover:text-pineapple">¿Quiénes somos?</a>
+      </li>
+      <li><a href="#" class="block hover:text-pineapple">Proyectos</a></li>
+      <li><a href="#" class="block hover:text-pineapple">Blog</a></li>
+      <li><a href="#" class="block hover:text-pineapple">Contacto</a></li>
+    </ul>
+    <button
+      class="w-full bg-[#C1DD34] text-night font-semibold py-2 px-4 rounded-full mt-4"
+    >
+      Tengo una idea
+    </button>
+  </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuToggle?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+  });
+</script>

@@ -1,14 +1,15 @@
 ---
-// components/WhatWeDoSection.astro
 import WhatWeDoCard from "./WhatWeDoCard.astro";
 ---
 
-<section class="size-full bg-sky py-16">
+<section class="min-h-screen bg-sky py-8 sm:py-16">
   <div class="container mx-auto px-4">
-    <h2 class="text-[2rem] font-bold text-center font-brick text-night mb-12">
+    <h2
+      class="text-2xl sm:text-[2rem] font-bold text-center font-brick text-night mb-8 sm:mb-12"
+    >
       ¿Qué hacemos?
     </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
       <WhatWeDoCard
         title="Code"
         subtitle="Desarrollo digital"

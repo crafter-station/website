@@ -1,0 +1,172 @@
+---
+interface Testimonial {
+  text: string;
+  author: string;
+  position: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    text: "El proyecto que desarrollaron fue muy bueno. Estuvo muy organizado y me brindaron soporte a todo. El equipo está muy agradecido.",
+    author: "Brady Ramos",
+    position: "Gerente de Assessor",
+  },
+  {
+    text: "Excelente trabajo en el desarrollo de nuestra plataforma. La atención al detalle y la comunicación constante hicieron que el proceso fuera muy fluido.",
+    author: "Laura Martínez",
+    position: "CEO de TechInnovate",
+  },
+  {
+    text: "Su enfoque creativo y soluciones innovadoras superaron nuestras expectativas. Definitivamente los recomendaremos para futuros proyectos.",
+    author: "Carlos Rodríguez",
+    position: "Director de Proyectos en DigiSolutions",
+  },
+  {
+    text: "La calidad del trabajo y la puntualidad en la entrega fueron impresionantes. Un equipo verdaderamente profesional y dedicado.",
+    author: "Ana Gómez",
+    position: "Fundadora de StartUp Hub",
+  },
+  {
+    text: "Su experiencia en desarrollo web y móvil fue evidente en cada etapa del proyecto. Estamos muy satisfechos con el resultado final.",
+    author: "Miguel Sánchez",
+    position: "CTO de AppMasters",
+  },
+  {
+    text: "La innovación y creatividad del equipo superaron todas nuestras expectativas. Un trabajo excepcional.",
+    author: "Elena Torres",
+    position: "Directora de Marketing en InnoTech",
+  },
+];
+
+const loopedTestimonials = [...testimonials, testimonials[0], testimonials[1]];
+
+const testimonialChunks = loopedTestimonials.reduce(
+  (resultArray, item, index) => {
+    const chunkIndex = Math.floor(index / 3);
+    if (!resultArray[chunkIndex]) {
+      resultArray[chunkIndex] = [];
+    }
+    resultArray[chunkIndex].push(item);
+    return resultArray;
+  },
+  [] as Testimonial[][]
+);
+---
+
+<section class="bg-wine py-8 sm:py-16">
+  <div class="container mx-auto px-4">
+    <h2
+      class="text-3xl sm:text-4xl font-bold text-center font-brick text-pineapple mb-8 sm:mb-12"
+    >
+      ¿Qué dicen de nosotros?
+    </h2>
+    <div class="relative">
+      <div class="overflow-x-hidden p-2">
+        <div
+          class="flex transition-transform duration-500 ease-in-out"
+          id="testimonial-slider"
+        >
+          {
+            testimonialChunks.map((chunk, chunkIndex) => (
+              <div class="w-full flex-shrink-0 px-4 flex flex-col sm:flex-row gap-8 sm:gap-16">
+                {chunk.map((testimonial, index) => (
+                  <div class="w-full sm:w-1/3 flex flex-col">
+                    <div class="relative mb-4 flex-grow">
+                      <div class="absolute inset-0 bg-bone rounded-lg transform -translate-x-2 -translate-y-2" />
+                      <div class="absolute inset-0 bg-bone rounded-lg transform -translate-x-1 -translate-y-1" />
+                      <div class="relative bg-wine border-2 border-bone rounded-lg px-4 sm:px-6 py-4 text-center h-full flex items-center">
+                        <p class="text-bone text-sm sm:text-base">
+                          &quot;{testimonial.text}&quot;
+                        </p>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <p class="text-pineapple font-semibold">
+                        {testimonial.author}
+                      </p>
+                      <p class="text-bone text-sm">{testimonial.position}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="flex justify-center mt-8 sm:mt-14">
+        {
+          Array.from({ length: testimonialChunks.length }).map((_, index) => (
+            <button
+              class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-bone mx-1 focus:outline-none"
+              data-index={index}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script
+  define:vars={{
+    totalTestimonials: testimonials.length,
+    totalChunks: testimonialChunks.length,
+  }}
+>
+  const slider = document.getElementById("testimonial-slider");
+  const buttons = document.querySelectorAll("[data-index]");
+  let currentIndex = 0;
+  let autoSlideInterval;
+  let resetTimeout;
+
+  function showTestimonials(index, smooth = true) {
+    currentIndex = index;
+    if (slider) {
+      if (!smooth) {
+        slider.style.transition = "none";
+      }
+      slider.style.transform = `translateX(-${index * 100}%)`;
+      if (!smooth) {
+        slider.offsetHeight;
+        slider.style.transition = "";
+      }
+    }
+    buttons.forEach((button, i) => {
+      button.classList.toggle("bg-pineapple", i === index % totalTestimonials);
+      button.classList.toggle("bg-bone", i !== index % totalTestimonials);
+    });
+  }
+
+  function nextTestimonials() {
+    currentIndex++;
+    if (currentIndex >= totalChunks) {
+      showTestimonials(currentIndex);
+      clearTimeout(resetTimeout);
+      resetTimeout = setTimeout(() => {
+        currentIndex = 0;
+        showTestimonials(currentIndex, false);
+      }, 500);
+    } else {
+      showTestimonials(currentIndex);
+    }
+  }
+
+  function startAutoSlide() {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(nextTestimonials, 5000);
+  }
+
+  function handleButtonClick(index) {
+    clearTimeout(resetTimeout);
+    clearInterval(autoSlideInterval);
+    showTestimonials(index);
+    startAutoSlide();
+  }
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => handleButtonClick(index));
+  });
+
+  showTestimonials(0);
+  startAutoSlide();
+</script>

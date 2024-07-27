@@ -1,7 +1,19 @@
 ---
-const { name } = Astro.props;
+interface Props {
+  name: string;
+  linkedinUrl: string;
+}
+
+const { name, linkedinUrl } = Astro.props;
 ---
 
-<div class="bg-night text-bone border border-bone px-5 py-4 rounded-full">
-  <p class="text-sm">Ln/ {name}</p>
-</div>
+<a
+  href={linkedinUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="bg-night text-bone border border-bone px-5 py-4 rounded-full hover:bg-bone hover:text-night transition-colors duration-300"
+>
+  <p class="text-sm flex items-center">
+    Ln/ {name}
+  </p>
+</a>
