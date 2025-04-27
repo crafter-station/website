@@ -1,5 +1,6 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
+import Header from "@/components/header.astro";
 const { content } = Astro.props;
 ---
 
@@ -10,7 +11,41 @@ const { content } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{content.title}</title>
 	</head>
-	<body>
-		<slot />
+	<body class="selection:bg-primary/20">
+		<main
+			class="mx-auto max-w-screen-sm overflow-x-hidden px-6 py-8 md:py-16 md:overflow-x-visible"
+		>
+			<div class="container items-center space-y-10 md:space-y-12">
+				<Header />
+				<slot />
+			</div>
+		</main>
 	</body>
 </html>
+
+<script is:inline>
+	const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+	const getThemePreference = () => {
+		if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+			return localStorage.getItem("theme");
+		}
+		return darkModeMediaQuery.matches ? "dark" : "light";
+	};
+
+	const setTheme = (theme) => {
+		document.documentElement.classList.toggle("dark", theme === "dark");
+		if (typeof localStorage !== "undefined") {
+			localStorage.setItem("theme", theme);
+		}
+	};
+
+	// Set theme on load
+	setTheme(getThemePreference());
+
+	// Listen for system theme changes
+	darkModeMediaQuery.addListener((e) => {
+		const theme = e.matches ? "dark" : "light";
+		setTheme(theme);
+	});
+</script>

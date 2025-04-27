@@ -1,0 +1,126 @@
+---
+interface Project {
+  name: string;
+  description: string;
+  status: "In Progress" | "Active" | "Coming Soon";
+  href: string;
+  target: "_blank" | "_self";
+}
+
+const projects: Project[] = [
+  {
+    name: "text0",
+    description: "Absurdly smart (and personal) autocomplete",
+    status: "Active",
+    href: "https://text0.dev",
+    target: "_blank",
+  },
+  {
+    name: "tinte",
+    description: "Theme generator (VSCode, shadcn/ui)",
+    status: "Active",
+    href: "https://tinte.dev",
+    target: "_blank",
+  },
+  {
+    name: "crafter-ui",
+    description: "shadcn/ui registry",
+    status: "Coming Soon",
+    href: "https://crafter-ui.vercel.app",
+    target: "_blank",
+  },
+];
+---
+
+<div class="text-sm !mb-4">
+  <div
+    class="flex bg-primary/10 flex-col gap-2 p-3 sm:p-4 my-4 sm:my-6 rounded-md border border-border/50"
+  >
+    <div class="text-sm text-foreground">🏆 Highlight</div>
+    <p class="text-sm text-foreground/80 leading-relaxed">
+      We proudly won the <a
+        href="https://next-hackathon-2025.vercel.app/"
+        class="underline font-semibold hover:text-foreground/90"
+        >Next.js Global Hackathon 2025</a
+      > with <a
+        href="https://text0.dev"
+        class="underline font-semibold hover:text-foreground/90">text0</a
+      > — an absurdly smart and personal autocomplete.
+    </p>
+  </div>
+  <div
+    class="flex items-start sm:items-center justify-between px-1 py-3 border-border/75 border-b gap-2 sm:gap-0"
+  >
+    <a href="/projects">
+      <div
+        class="flex flex-row items-center gap-2 text-foreground/80 font-medium"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-folder-dot-icon lucide-folder-dot"
+        >
+          <path
+            d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"
+          ></path>
+          <circle cx="12" cy="13" r="1"></circle>
+        </svg>
+        <div>
+          <h2 class="capitalize text-foreground/80 font-normal">Projects</h2>
+        </div>
+      </div>
+    </a>
+
+    <a
+      class="flex text-muted-foreground hover:text-foreground/80 flex-row items-center gap-2 hover:underline font-medium"
+      href="https://github.com/crafter-station"
+      target="_blank"
+    >
+      <span>Explore All Repos</span>
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 15 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-3.5 h-3.5"
+      >
+        <path
+          d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          clip-rule="evenodd"></path>
+      </svg>
+    </a>
+  </div>
+
+  <div class="flex flex-col mt-3 gap-1">
+    {
+      projects.map((project) => (
+        <a
+          class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 px-2 py-3 rounded-md hover:bg-muted dark:hover:bg-neutral-800/60 transition-colors font-light"
+          href={project.href}
+          target={project.target}
+        >
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2">
+            <span class="text-sm font-medium text-foreground whitespace-normal sm:whitespace-nowrap">
+              {project.name}
+            </span>
+            <span class="text-sm text-neutral-500 dark:text-neutral-400 whitespace-normal sm:whitespace-nowrap">
+              {project.description}
+            </span>
+          </div>
+          <div class="hidden sm:block flex-grow border-t border-border/50" />
+          <span class="text-xs text-muted-foreground">{project.status}</span>
+        </a>
+      ))
+    }
+  </div>
+</div>

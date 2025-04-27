@@ -1,0 +1,156 @@
+<div dir="ltr" data-orientation="horizontal">
+  <div
+    role="tablist"
+    aria-orientation="horizontal"
+    class="inline-flex items-center justify-center bg-muted text-muted-foreground rounded-md p-[1px] h-fit dark:bg-neutral-900"
+    tabindex="0"
+    data-orientation="horizontal"
+  >
+    <button
+      type="button"
+      role="tab"
+      aria-selected="true"
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm p-2"
+      data-state="inactive"
+      data-theme="system"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-laptop-minimal-icon lucide-laptop-minimal"
+        ><rect width="18" height="12" x="3" y="4" rx="2" ry="2"></rect><line
+          x1="2"
+          x2="22"
+          y1="20"
+          y2="20"></line></svg
+      >
+      <span class="sr-only">System</span>
+    </button>
+    <button
+      type="button"
+      role="tab"
+      aria-selected="false"
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm p-2"
+      data-state="inactive"
+      data-theme="light"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-sun-icon lucide-sun"
+        ><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path
+          d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path
+          d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path
+          d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path
+          d="m19.07 4.93-1.41 1.41"></path></svg
+      >
+      <span class="sr-only">Light</span>
+    </button>
+    <button
+      type="button"
+      role="tab"
+      aria-selected="false"
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm p-2"
+      data-state="inactive"
+      data-theme="dark"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-moon-star-icon lucide-moon-star"
+        ><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9"></path><path d="M20 3v4"
+        ></path><path d="M22 5h-4"></path></svg
+      >
+      <span class="sr-only">Dark</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  // Get all theme toggle buttons
+  const themeButtons = document.querySelectorAll("[data-theme]");
+
+  // Function to get current theme
+  function getTheme() {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  // Function to set theme
+  function setTheme(theme: string) {
+    const isDark =
+      theme === "dark" ||
+      (theme === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("theme", theme);
+    }
+
+    // Update button states
+    themeButtons.forEach((button) => {
+      const buttonTheme = button.getAttribute("data-theme");
+      button.setAttribute(
+        "data-state",
+        buttonTheme === theme ? "active" : "inactive",
+      );
+      button.setAttribute(
+        "aria-selected",
+        buttonTheme === theme ? "true" : "false",
+      );
+    });
+  }
+
+  // Initialize theme
+  const currentTheme = getTheme();
+  if (currentTheme) {
+    setTheme(currentTheme);
+  }
+
+  // Add click handlers to buttons
+  themeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const theme = button.getAttribute("data-theme");
+      if (theme) {
+        setTheme(theme);
+      }
+    });
+  });
+
+  // Listen for system theme changes
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => {
+      const currentTheme = getTheme();
+      if (currentTheme === "system") {
+        setTheme("system");
+      }
+    });
+</script>

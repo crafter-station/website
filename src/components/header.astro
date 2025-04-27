@@ -1,0 +1,72 @@
+---
+import CrafterIcon from "@/icons/crafter.svg";
+import GithubIcon from "@/icons/github.svg";
+import LinkedinIcon from "@/icons/linkedin.svg";
+import XIcon from "@/icons/x.svg";
+---
+
+<header class="z-50 w-full flex flex-row items-center justify-between">
+  <div class="flex flex-row items-center justify-between w-full">
+    <!-- Avatar and Info -->
+    <div class="flex flex-row items-start gap-4">
+      <div class="p-2 border border-border rounded-md">
+        <CrafterIcon class="size-6" />
+      </div>
+
+      <div class="flex flex-col">
+        <h1 class="font-light text-small transition-element">
+          <span class="inline-block" style="transition-delay: 275ms;"
+            >Crafter Station</span
+          >
+        </h1>
+        <span
+          class="prose prose-neutral ml-0.5 dark:prose-invert text-[10px] text-muted-foreground"
+          >Sky is the limit</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side actions -->
+  <div class="flex flex-row">
+    <a
+      href="https://x.com/raillyhugo"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9"
+    >
+      <XIcon class="size-3.5" />
+    </a>
+    <a
+      href="https://github.com/crafter-station"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9 mr-1"
+    >
+      <GithubIcon class="size-3.5" />
+    </a>
+
+    <a
+      href="https://linkedin.com/company/crafter-station"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 w-9"
+    >
+      <LinkedinIcon class="size-3.5" />
+    </a>
+  </div>
+</header>
+
+<script>
+  // Toggle mobile menu
+  const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener("click", () => {
+      const isHidden = mobileMenu.hidden;
+      mobileMenu.hidden = !isHidden;
+      menuButton.setAttribute("aria-expanded", (!isHidden).toString());
+    });
+  }
+</script>
