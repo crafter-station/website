@@ -11,29 +11,55 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 <BaseLayout title="Blog" description="Latest blog posts">
   <main class="mx-auto max-w-3xl px-4 py-12">
-    <h1 class="mb-8 text-4xl font-bold">Blog</h1>
+    <div class="flex items-center gap-2 text-foreground/80 font-medium mb-8">
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-5 h-5"
+        >
+          <path
+            d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"
+          ></path>
+        </svg>
+        <h1 class="text-2xl font-medium">Blog</h1>
+      </div>
+    </div>
+
     <section>
-      <ul class="space-y-8">
+      <div class="flex flex-col gap-1">
         {
           posts.map((post) => (
-            <li>
-              <a
-                href={`/blog/${post.id}/`}
-                class="group flex flex-col gap-2 border-t border-border/50 py-4 transition-all hover:text-accent"
-              >
-                <div class="flex items-center gap-4">
-                  <h2 class="text-xl font-semibold">{post.data.title}</h2>
-                  <div class="h-px flex-1 bg-border/50" />
-                  <FormattedDate date={post.data.pubDate} />
-                </div>
-                <p class="line-clamp-2 text-sm text-foreground/60">
+            <a
+              href={`/blog/${post.id}/`}
+              class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-2 py-3 rounded-md hover:bg-muted dark:hover:bg-neutral-800/60 transition-colors"
+            >
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+                <span class="text-sm font-medium text-foreground line-clamp-1">
+                  {post.data.title}
+                </span>
+                <span class="hidden sm:block text-neutral-500 dark:text-neutral-400">
+                  ·
+                </span>
+                <span class="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 line-clamp-2 sm:line-clamp-1">
                   {post.data.description}
-                </p>
-              </a>
-            </li>
+                </span>
+              </div>
+              <div class="hidden sm:block flex-grow border-t border-border/50" />
+              <div class="flex items-center gap-1 text-xs sm:text-sm text-neutral-500 dark:text-neutral-400">
+                <FormattedDate date={post.data.pubDate} />
+              </div>
+            </a>
           ))
         }
-      </ul>
+      </div>
     </section>
   </main>
 </BaseLayout>
