@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+const posts = await getCollection("blog");
+console.log(posts);
+
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Blog" description="Latest blog posts">
+  <main class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="mb-8 text-4xl font-bold">Blog</h1>
+    <section>
+      <ul class="space-y-8">
+        {
+          posts.map((post) => (
+            <li>
+              <a
+                href={`/blog/${post.id}/`}
+                class="group flex flex-col gap-2 border-t border-border/50 py-4 transition-all hover:text-accent"
+              >
+                <div class="flex items-center gap-4">
+                  <h2 class="text-xl font-semibold">{post.data.title}</h2>
+                  <div class="h-px flex-1 bg-border/50" />
+                  <FormattedDate date={post.data.pubDate} />
+                </div>
+                <p class="line-clamp-2 text-sm text-foreground/60">
+                  {post.data.description}
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</BaseLayout>
