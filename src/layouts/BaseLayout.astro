@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer.astro";
 import "../styles/global.css";
 import Header from "@/components/header.astro";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
 	title: string;
@@ -30,6 +31,7 @@ const { title, description } = Astro.props;
 				<Footer />
 			</div>
 		</main>
+		<Analytics />
 	</body>
 </html>
 
@@ -58,9 +60,4 @@ const { title, description } = Astro.props;
 		const theme = e.matches ? "dark" : "light";
 		setTheme(theme);
 	});
-</script>
-
-<script is:inline>
-	import { inject } from "@vercel/analytics";
-	inject();
 </script>
