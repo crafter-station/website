@@ -4,139 +4,221 @@ description: "A behind-the-scenes look"
 pubDate: "2025-04-28"
 tags: ["hackathon", "development", "vercel", "AI", "writing"]
 ---
+import { TweetCard } from "@/components/TweetCard";
 
-**Setting the Stage:**
+# Cómo construimos text0 en 10 días
 
-10 days.
+> "Construimos el 80% de text0 en 4 días"
 
-Global stage.
+---
 
-Biggest players in the game.
+### Todo partió con una incomodidad
 
-No second chances.
+Era domingo por la mañana. Anthony y yo llevábamos una semana iterando ideas para la hackathon global de Vercel. En el radar estaba **Gradual**, nuestra plataforma de aprendizaje, con spaced repetition y memoria contextual. Pero algo no nos cerraba.
 
-We knew what it meant:
+Gradual es una herramienta poderosa. Pero es una que brilla a largo plazo. Y sabíamos que en una hackathon no tienes ese lujo. Tienes segundos. Segundos para capturar la atención de un jurado, de un usuario, de una primera impresión. Así que tocaba hacer algo con _shock value_. Con impacto inmediato.
 
-**Ship something absurdly good or get lost in the noise.**
+Fue entonces que recordamos este tweet:
 
-## Day 1: The Spark
+<TweetCard id="1903528336241861113" />
 
-We sat down and asked:
+Ese fue el disparador. La frase "**Absurdly smart autocomplete**" nos quedó zumbando en la cabeza. Y el resto fue caer por la madriguera.
 
-*"What's something that feels broken today?"*
+---
 
-Answer: writing assistants.
+### La fricción que nadie te cuenta
 
-- Too slow.
-- Too dumb.
-- Too generic.
+Como devs, estamos acostumbrados a vivir en mil contextos. Copias algo de Slack, lo pegas en Notion, lo discutes en X, lo reescribes en VSCode. Y ese ir y venir te cansa más de lo que crees.
 
-Idea hit fast:
+Yo fui usuario de GitHub Copilot desde 2021, desde la beta. Pero sentía que faltaba algo. No quería que me vomiten respuestas. Quería una herramienta que *pensara conmigo*. Que me ayudara a escribir, no a reemplazarme.
 
-**What if autocomplete actually understood you?**
+La idea era clara: un copiloto, pero para texto. Y no un chatbot. Algo integrado, discreto, veloz. Que entienda el contexto, las referencias, los nombres, los memes, los documentos abiertos. Y te sople justo lo que necesitas. Sin pedir permiso.
 
-Not generic AI gibberish.
+---
 
-*You*. Your voice. Your flow.
+### Una idea empieza a tomar forma
 
-## Day 2: First Blood
+No hubo wireframes en Figma. Hubo código directo.
 
-Prototyped immediately.
+El primer "how it started" lo publicó Anthony en [este post de LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7316937079731466240/). Fue ahí donde por primera vez dijimos en público:
 
-- Tiptap + React = fast editable surface.
-- Hardcoded fake suggestions.
-- Forget infrastructure. Focus on *feeling*.
+> _"I'm building the cursor for writing. An autocompletion system with your information. Papers, news, blogs... your text editor will have this context and suggest absurdly smart autocomplete."_  
+>  
+> — Anthony Cueva
 
-## Day 3–4: Skeleton Crew
+![Captura del video demo inicial de Anthony](https://yourimagehere.com/anthony-demo.png)
 
-Started wiring the real brain:
+Ahí ya se intuía lo que queríamos construir. Nada de promesas vacías, ni humo.  
+Era una demo funcional, en caliente, con IA rellenando texto en base a contexto real. Documentos recientes, estilo, intención.
 
-- OpenAI API, fine-tuned for *whispered* completions.
-- Latency budget: **< 50ms** target. No compromise.
-- Custom hooks for ghost suggestions.
+En ese momento supimos: esto no era una idea más. Esto **merecía nacer bien**.
 
-Text0 was ugly.
 
-But it *felt* alive.
+---
 
-And that was enough.
+### Prototipar sin frenos
 
-## Day 5–6: We Hit Walls
+Abrimos Figma. Tiramos líneas. Sketches del onboarding, documentos recientes, el input principal.
 
-Problem:
+Yo ya podía visualizarlo: minimal, rápido, sin loading screens. Que abra y escribas. Sin login. Sin onboarding forzado. Todo con microinteracciones. Inspiración de Cursor.sh y Superhuman, pero con nuestro toque.
 
-LLMs are slow if you send them the whole damn essay.
+![Diseño UI inicial](https://yourimagehere.com/ui-mockup.png)
 
-Solution:
+Anthony, mientras tanto, ya probaba latencias de modelos, hacía pruebas de generación, afinaba prompts.
 
-- Smart windowing: send only *local context*.
-- Prediction cache: pre-load probable next words.
+Cuatro días después: **primer MVP funcional.**
 
-## Day 7: Shaping the UX
+---
 
-No bloat.
+### La regla de oro: todo lo que no asombra, se corta
 
-No toolbars.
+Nos hicimos una promesa:  
+Todo lo que no genere un "wow" en menos de 5 segundos, se va.
 
-Just you, the words, and a whisper of what *could* come next.
+**Incluimos:**
+- Un tour onboarding visual estilo Notion, pero agresivo
+- Crear documento, activar memoria
+- Selección de texto con quick actions: mejorar, formalizar, escuchar, etc.
 
-Dark theme only.
+**Cortamos:**
+- Sonidos tipo Tryklack (por lag, overhead)
+- Integraciones con Gmail/Slack (por permisos y complejidad)
 
-Auto-adapting suggestion tones.
+Había que dejar el ego de lado y enfocarse en lo esencial. **Nada de reinventar la rueda. Solo construir lo que nadie más se atrevía.**
 
-Mouse? Optional.
+---
 
-Keyboard? King.
+### Nuestro stack de guerra
 
-## Day 8: Infra Panic
+- `Next.js` para la velocidad y despliegue con Vercel
+- `Tailwind + shadcn/ui` para diseño limpio y componentes rápidos
+- `Vercel AI SDK + GPT-4o-mini` como core del autocomplete
+- `ElevenLabs` (raw API) para leer texto en voz alta
+- `Trigger.dev` para document streaming en vivo
 
-- Vercel edge functions to the rescue.
-- Optimized token usage to stay *fast and cheap*.
+Claude Sonnet 3.5 fue nuestra navaja suiza. Le pasábamos capturas, prompts largos y le decíamos:  
+> "Eres un senior engineer de Vercel. Hazlo limpio. Sin errores. Sin dudas."
 
-If the first keystroke lagged, we considered it a bug.
+El resultado: código que no solo compilaba, sino que respetaba nuestro estilo visual.
 
-Period.
+---
 
-## Day 9: Polish and Fear
+### Dinámica de equipo: sin egos, con visión
 
-- Landing page: built overnight.
-- Demo: no fancy edits. Raw recording. One take.
-- Presentation: tell a *story*, not just show a *tool*.
+Yo lideraba la parte visual y de UX. Diseñaba, maquetaba, codificaba.
 
-At this point?
+Anthony afinaba los prompts, optimizaba performance, elegía modelos, manejaba LLMs como quien toca un piano.
 
-We knew it wasn't just a hack.
+Nos turnábamos para testear, reescribir, recortar. Cero fricción. Solo flow.
 
-**It was a product.**
+![Hackathon late night](https://yourimagehere.com/hackathon-night.png)
 
-## Day 10: Launch Day
+---
 
-Deployed.
+### El tour component que salvó el día
 
-Slept 2 hours.
+No estaba planeado. Pero algo no nos dejaba dormir.
 
-Woke up to:
+¿Cómo le haces entender a alguien que tu app tiene *memoria, acciones, edición, voz*, y todo eso sin explicarle nada?
 
-> "You're finalists."
-> 
-> "You won."
+Creamos un tour visual. Cuando abrías text0, lo primero que veías eran hints, sugerencias, tips ocultos. Al crear un documento, aparecía otro. Te mostraba que si seleccionabas texto, podías hacer magia.
 
-## How We Won
+Y esa decisión, tomada 6 horas antes del deadline, fue la que Lee Robinson destacó en vivo.
 
-- **Speed:** Judges *felt* it. Zero latency.
-- **Focus:** Solved a real pain. No feature bloat.
-- **Polish:** It *looked* inevitable, even if it barely survived behind the scenes.
+![Tour demo](https://yourimagehere.com/tour-demo.png)
 
-## Final Thought
+---
 
-We didn't just build an app.
+### Un bug a las 3AM
 
-We built a weapon for writers.
+Trigger.dev no sincronizaba bien algunos cambios en vivo. Y eso rompía el flujo.
 
-And we did it **under fire.**
+Sin tiempo para debug profundo, buscamos código antiguo de otro proyecto, lo adaptamos, lo inyectamos. **Funcionó. No perfecto. Pero suficiente.**
 
-> You're not typing anymore.
-> 
-> You're thinking faster than ever.
-> 
-> That's Text0. 
+Y seguimos adelante.
+
+---
+
+### ¿Y funcionó?
+
+- Más de 2,100 usuarios en la primera semana  
+- Cero marketing. Todo orgánico  
+- 10,000 visitas únicas  
+- Usuarios desde Japón, Alemania, Brasil, USA  
+- 280+ estrellas en GitHub en menos de una semana
+
+text0 **vivió por mérito propio**. La comunidad lo abrazó. Y eso fue todo.
+
+---
+
+### Lo que viene
+
+text0 no murió en la hackathon.
+
+Queremos integrarlo dentro de Gradual como feature de escritura avanzada:
+
+- Editor markdown con memoria contextual
+- Citas automáticas tipo "Turnitin invertido"
+- Autocomplete inteligente de notas y resúmenes
+- Vista canvas para organizar ideas, con AI como copiloto
+
+Queremos que escribir vuelva a sentirse como **pensar sin interrupciones**.
+
+---
+
+### Sobre el logo
+
+Usé GPT-4o-mini para diseñarlo:
+
+> "Una tecla negra 3D con 't0' blanco, estilo v0, con luz suave y vista en perspectiva"
+
+Transformé el PNG a SVG, lo pulí en Figma, y lo incrusté en la UI.  
+Simple. Atemporal. Sin íconos vacíos.
+
+![Logo final](https://yourimagehere.com/text0-logo.png)
+
+---
+
+### Noches sin dormir, pero sin burnout
+
+Dos madrugadas seguidas. Café. Pan con pollo. Código.  
+Todo en mi depa. Y no nos quemamos. Solo entramos en flow.
+
+Por eso volveríamos a hacerlo mañana mismo.
+
+---
+
+## ¿Cómo supimos que valía la pena?
+
+No fue el premio. Ni el stream de Lee.  
+Fue ver gente que nunca nos conoció, usar la app. Explorarla. Compartirla.
+
+Sin que les dijéramos nada.
+
+Eso —esa validación silenciosa— fue nuestro verdadero premio.
+
+---
+
+## Créditos
+
+**text0 fue creado por:**
+
+- **Railly Hugo** – Design Engineer / Frontend / Ideación UX  
+- **Anthony Cueva** – Prompt Engineer / Infraestructura / AI  
+- **Ignacio Rueda** – Backend / Trigger.dev / Testing final  
+- **Shiara Arauzo** – UX feedback loop / Testeo interno  
+- **Liz Riveros** – QA / Validación funcional / Demo review  
+
+---
+
+## Comunidad y menciones
+
+📣 [Post oficial de Vercel anunciando ganadores](https://www.linkedin.com/posts/vercel_hackathon-text0-global-activity-7184735573543028737-iT4L)  
+📝 [Reflexión de Tomás Calle sobre nuestra historia](https://www.linkedin.com/posts/tomas-calle_ai-text0-hackathon-activity-7184806011317704705-GNmn)
+
+---
+
+— Railly Hugo & Anthony Cueva  
+🧠 [Repo](https://github.com/raillydev/text0)  | ✍️ [App](https://text0.dev)  | 🧵 [Twitter](https://x.com/raillyhugo)
+
+> Built in 10 days. Powered by a decade of taste.
