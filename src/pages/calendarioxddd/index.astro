@@ -13,9 +13,15 @@ const redirectUrl = "https://calendar.app.google/NPhBkJV1xxhwjVNH9";
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Book a Meeting - Crafter Station" />
-        <meta property="og:description" content="Schedule a meeting or consultation with Crafter Station team." />
-        <meta property="og:image" content="/meet-og-image.png" />
-        
+        <meta
+            property="og:description"
+            content="Schedule a meeting with Crafter Station team."
+        />
+        <meta
+            property="og:image"
+            content="https://www.crafter-station.com/meet-og-image.png"
+        />
+
         <!-- Redirect -->
         <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
     </head>
@@ -24,6 +30,10 @@ const redirectUrl = "https://calendar.app.google/NPhBkJV1xxhwjVNH9";
     >
         <p>Redirecting to Google Calendar...</p>
         <p>Please wait while you are being redirected.</p>
-        <p>If you are not redirected automatically, <a href={redirectUrl}>click here</a>.</p>
+        <p>
+            If you are not redirected automatically, <a href={redirectUrl}
+                >click here</a
+            >.
+        </p>
     </div>
 </BaseLayout>
