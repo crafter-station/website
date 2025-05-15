@@ -10,6 +10,10 @@ const redirectUrl = "https://calendar.app.google/NPhBkJV1xxhwjVNH9";
     description="Schedule a meeting or consultation with Crafter Station team."
 >
     <head>
+        <!-- Primary Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Book a Meeting - Crafter Station" />
@@ -18,13 +22,24 @@ const redirectUrl = "https://calendar.app.google/NPhBkJV1xxhwjVNH9";
             content="Schedule a meeting with Crafter Station team."
         />
         <meta property="og:url" content="https://www.crafter-station.com/calendarxdxd/" />
+        <meta property="og:site_name" content="Crafter Station" />
+        
+        <!-- Image with multiple size variants -->
         <meta
             property="og:image"
             content="https://www.crafter-station.com/meet-og-image.png"
         />
+        <meta property="og:image:secure_url" content="https://www.crafter-station.com/meet-og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:alt" content="Book a meeting with Crafter Station" />
+        
+        <!-- Alternate smaller image for WhatsApp -->
+        <meta property="og:image" content="https://www.crafter-station.com/meet-og-image-small.png" />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="315" />
+        <meta property="og:image:type" content="image/png" />
         
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />
@@ -37,9 +52,12 @@ const redirectUrl = "https://calendar.app.google/NPhBkJV1xxhwjVNH9";
         <meta property="linkedin:description" content="Schedule a meeting with Crafter Station team." />
         <meta property="linkedin:image" content="https://www.crafter-station.com/meet-og-image.png" />
 
-        <!-- WhatsApp specific -->
-        <meta property="og:site_name" content="Crafter Station" />
-        <link rel="image_src" href="https://www.crafter-station.com/meet-og-image.png" />
+        <!-- WhatsApp specific - Important -->
+        <link rel="image_src" href="https://www.crafter-station.com/meet-og-image-small.png" />
+        
+        <!-- Additional Meta -->
+        <meta name="theme-color" content="#ffffff">
+        <meta name="msapplication-TileImage" content="https://www.crafter-station.com/meet-og-image.png" />
 
         <!-- Redirect -->
         <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
