@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Redirect to Google Calendar
+const redirectUrl = "https://calendar.app.google/NPhBkJV1xxhwjVNH9";
+---
+
+<BaseLayout
+    title="Book a Meeting - Crafter Station"
+    description="Schedule a meeting or consultation with Crafter Station team."
+>
+    <head>
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Book a Meeting - Crafter Station" />
+        <meta property="og:description" content="Schedule a meeting or consultation with Crafter Station team." />
+        <meta property="og:image" content="/meet-og-image.png" />
+        
+        <!-- Redirect -->
+        <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
+    </head>
+    <div
+        class="prose dark:prose-invert max-w-none w-full text-sm text-foreground/80 font-normal text-pretty leading-loose mx-1 mb-4"
+    >
+        <p>Redirecting to Google Calendar...</p>
+        <p>Please wait while you are being redirected.</p>
+        <p>If you are not redirected automatically, <a href={redirectUrl}>click here</a>.</p>
+    </div>
+</BaseLayout>
