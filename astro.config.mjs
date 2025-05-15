@@ -9,8 +9,5 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss(), react()]
 	},
-	integrations: [react(), mdx()],
-	redirects: {
-		"/xdxd": "https://calendar.app.google/XDgXFRszy3gqRtDh8"
-	}
+	integrations: [react(), mdx()]
 });
