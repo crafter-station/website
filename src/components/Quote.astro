@@ -1,0 +1,60 @@
+---
+export interface Props {
+  author: string;
+  source?: string;
+  href?: string;
+  target?: "_blank" | "_self";
+  class?: string;
+  content?: string;
+}
+
+const {
+  author,
+  source,
+  href,
+  target = "_blank",
+  class: className,
+  content,
+} = Astro.props;
+
+const WrapperTag = href ? "a" : "div";
+---
+
+<WrapperTag
+  href={href}
+  target={href ? target : undefined}
+  class={`relative my-16 block no-underline ${className || ""}`}
+>
+  <span
+    class="relative block font-serif text-[20px] leading-[1.4] md:text-[26px] [&>p]:inline [&>p]:font-serif [&>p]:font-medium [&>p]:leading-[inherit]"
+  >
+    <span
+      class="absolute left-[-12px] top-[-2px]"
+      style="font-family: Georgia; opacity: 0.7; font-size: 1.2em;">"</span
+    >
+    <span class="opacity-[0.85] font-medium">
+      {content}
+    </span>
+    <span
+      class="absolute translate-x-1"
+      style="font-family: Georgia; opacity: 0.7; font-size: 1.2em;">"</span
+    >
+  </span>
+
+  <div class="mt-6 flex justify-end">
+    <div class="text-right">
+      <span
+        class="text-[12px] font-normal leading-none no-underline opacity-70 tracking-wide"
+      >
+        — {author}
+        {
+          source && (
+            <span class="mt-0.5 block text-muted-foreground/60 text-[11px] font-light">
+              {source}
+            </span>
+          )
+        }
+      </span>
+    </div>
+  </div>
+</WrapperTag>
