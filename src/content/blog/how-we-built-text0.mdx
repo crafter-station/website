@@ -5,10 +5,14 @@ pubDate: "2025-04-28"
 tags: ["hackathon", "development", "vercel", "AI", "writing"]
 ---
 import { TweetCard } from "@/components/TweetCard";
+import Callout from "@/components/Callout.astro";
+import Quote from "@/components/Quote.astro";
 
-# Cómo construimos text0 en 10 días
+<Callout type="warning" title="Nota">
+Este artículo está aún en proceso de escritura y revisión. Algunas secciones pueden estar incompletas o sujetas a cambios.
+</Callout>
 
-> "Construimos el 80% de text0 en 4 días"
+<Quote author="Railly Hugo & Anthony Cueva" content="Construimos el 80% de text0 en 4 días" />
 
 ---
 
@@ -42,9 +46,12 @@ No hubo wireframes en Figma. Hubo código directo.
 
 El primer "how it started" lo publicó Anthony en [este post de LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7316937079731466240/). Fue ahí donde por primera vez dijimos en público:
 
-> _"I'm building the cursor for writing. An autocompletion system with your information. Papers, news, blogs... your text editor will have this context and suggest absurdly smart autocomplete."_  
->  
-> — Anthony Cueva
+<Quote 
+  author="Anthony Cueva" 
+  source="LinkedIn Post"
+  href="https://www.linkedin.com/feed/update/urn:li:activity:7316937079731466240/"
+  content="I'm building the cursor for writing. An autocompletion system with your information. Papers, news, blogs... your text editor will have this context and suggest absurdly smart autocomplete."
+/>
 
 ![Captura del video demo inicial de Anthony](https://yourimagehere.com/anthony-demo.png)
 
@@ -221,4 +228,6 @@ Eso —esa validación silenciosa— fue nuestro verdadero premio.
 — Railly Hugo & Anthony Cueva  
 🧠 [Repo](https://github.com/raillydev/text0)  | ✍️ [App](https://text0.dev)  | 🧵 [Twitter](https://x.com/raillyhugo)
 
-> Built in 10 days. Powered by a decade of taste.
+<Quote author="Crafter Station">
+Built in 10 days. Powered by a decade of taste.
+</Quote>
