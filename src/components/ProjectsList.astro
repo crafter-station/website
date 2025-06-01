@@ -1,4 +1,6 @@
 ---
+import { DISCORD_INVITATION_PERMALINK } from "../lib/constants/discord";
+
 interface Project {
   name: string;
   description: string;
@@ -59,7 +61,7 @@ const projects: Project[] = [
           build.
         </p>
         <a
-          href="https://discord.gg/W5sRKxqxH8"
+          href={DISCORD_INVITATION_PERMALINK}
           target="_blank"
           rel="noopener noreferrer"
           class="group relative inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-b from-white/10 to-transparent text-[15px] font-medium text-white/95 rounded-xl transition-all duration-300 hover:shadow-[0_0_2rem_0_rgba(88,101,242,0.3)] hover:scale-[1.02] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#5865F2]/50 focus:ring-offset-2 focus:ring-offset-black"
