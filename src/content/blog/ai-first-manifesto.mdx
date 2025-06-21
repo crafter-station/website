@@ -1,0 +1,50 @@
+---
+title: "AI-First Manifesto"
+description: "The new baseline for engineering at Crafter Station."
+pubDate: "2025-06-21"
+tags: ["AI", "automation", "LLM", "engineering"]
+---
+
+Just flow...Automations all the way around. Have we been able to automate as much as we can?
+
+At Crafter Station, we've been using several AI Tools, we can say we are an AI-First Open Source Organization in Peru. I'm not aware of any other org that has proclaimed themselves as such, but the point is, that we shouldn't stop there.
+
+We have the moral responsibility of use AI as a first-citizen.
+Sooner than later, we all developers will start merging the line between creativity, coding, and problem solving. And when time arises, we need to be prepared.
+
+That's why I'm writing this. It's an attempt to warn myself, that I should be doing more than just vibecoding. I should be building the foundations of the next big shift.
+
+## Documentation is as crucial as coding
+
+In LLMs era, documentation is a non-negotiable. For instance, have you ever been locked in one-single LLM chat session, then you realize it's losing context. Well, in that precise moment, it's too late, your history, logic, details have been poured.
+Chat sessions can be summarized? Of course, but you'll lose important nuances that you don't realize it's so relevant for LLMs to accomplish theirs tasks.
+My take? Let LLMs write their own change-log. After each iteration they must be asking themselves: What just changed?
+Think of it as a post-thinking process, a retrospective.
+
+## Intention matters
+
+Rules should speak by ourselves. Rules are more than just "You must do this, this is my file structure,[...]".
+Rules as must bound the space where the LLM can operate.
+Rules must express the current state of the project. No evergreen rules can we ever written. Codebases are, in our era, highly-changing, and we have the obligation to update rules as much as we can.
+Rules is a vague term, what's a rule? where to place it?. I'll put it in concrete words, Rules must be the `llms.txt` of our codebases. I propose `LLMS.md`, a file that states:
+
+1. **File Structure**: A tree structure + short and precise description of what each file does.
+2. **Business Relevance**: Why this directory matters, what's the high level purpose of it, or this fits on our whole codebase.
+3. **Change-Log**: How this directory have changed over time. What LLMs were asked to do, and how they do it, and why they implemented that way.
+
+LLMs similarly to humans, have a cognitive capacity. We name it "context". We should free up their work memory, by "pre-computing" the relevant context they will need over the chat session. We must avoid codebase exploration on every new thread, so LLMs can focus on things that really matters since the zero-shot.
+
+**UI Development as a commodity**
+UI landscape is bloated by shadcn/ui. Yeah I got shadcn/ui is an idea / a way of thinking, not a component library. Still, it's based on [Radix UI](https://www.radix-ui.com/), which indeed is a component library.
+
+For prototyping is the way to go, for going long-term, we must curate our own css vars, which is a crucial step, if we want to build rich experiences.
+
+Having said this, UI is a commodity right now, we can feed LLMs with screenshots, HTML + Tailwind Classes from a tech company. And most likely LLMs will get it right and output a decent first version of it. You still have to tweak it, but hey, it's a great starting point.
+
+So how we make LLMs to output world-class level UIs, with a single prompt?
+
+1. **TASTE**: You have to [develop taste](https://emilkowal.ski/ui/developing-taste)
+2. **CLEAR UX**: You have to envision the UX, and express it clearly in words. If not sure, let LLM brainstorm the UX.
+3. **GOOD EXAMPLES**: You have to provide screenshots / code samples of your UI/UX references, that you feel it fits well.
+4. **LIB DOCS**: If some lib is involved, provide the exact content you, as human, would have needed to perform the task precisely.
+5. **SCHEMA**: If any, provide the schema you want to map into UI. If you can add clear annotations on what each key represents, or which value are the most important, add it.
