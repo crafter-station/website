@@ -1,7 +1,144 @@
+---
+import { DISCORD_INVITATION_PERMALINK } from "../lib/constants/discord";
+---
+
 <div
-  class="prose dark:prose-invert max-w-none w-full text-sm text-foreground/80 font-normal text-pretty leading-loose mx-1 mb-4"
+    class="max-w-none w-full text-sm text-foreground/80 font-normal text-pretty leading-loose mx-1 mb-4"
 >
-  <p>
-    Crafter Station is a team of engineers, designers, and builders crafting thoughtful, practical tools for developers. Rooted in Peru, our vision extends far beyond borders. We focus on open-source, modern web technologies, and developer experience, working quietly but deliberately to make everyday workflows better, simpler, and more powerful.
-  </p>
+    <p class="mb-4">
+        Crafter Station is a team of engineers, designers, and builders crafting
+        thoughtful, practical tools for developers. Rooted in Peru, our vision
+        extends far beyond borders. We focus on open-source, modern web
+        technologies, and developer experience, working quietly but deliberately
+        to make everyday workflows better, simpler, and more powerful.
+    </p>
+    <div class="bg-muted rounded-2xl border border-border/50 backdrop-blur-sm">
+        <div
+            class="px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+            <div class="flex flex-col sm:flex-row items-center gap-3 text-sm">
+                <div class="inline-flex items-center gap-2">
+                    <span class="text-foreground/60">🏆</span>
+                    <a
+                        href="https://next-hackathon-2025.vercel.app/"
+                        class="font-medium hover:underline transition-colors"
+                        target="_blank">Next.js Hackathon</a
+                    >
+                    <span class="text-foreground/60">·</span>
+                    Overall Winners
+                    <span class="text-foreground/60">·</span>
+                    <a
+                        href="https://text0.dev"
+                        class="font-medium hover:underline transition-colors"
+                        target="_blank">text0</a
+                    >
+                </div>
+            </div>
+            <a
+                href={DISCORD_INVITATION_PERMALINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white/95 rounded-lg transition-all hover:scale-[1.02] hover:shadow-[0_0_1.5rem_0_rgba(88,101,242,0.4)]"
+                style="background-color: #5865F2;"
+            >
+                <svg
+                    class="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.118.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"
+                    ></path>
+                </svg>
+                <span>Join Discord</span>
+            </a>
+        </div>
+    </div>
+
+    <div
+        class="bg-muted rounded-2xl border border-border/50 backdrop-blur-sm mt-4"
+    >
+        <div class="px-6 py-5 flex flex-col items-center text-center gap-3">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-full max-w-xs h-auto"
+                viewBox="0 0 1140 118"
+                fill="none"
+            >
+                <path
+                    d="M98.1504 13.81L137.08 117.44H119.17L110.29 93.16H51.0704L41.4504 117.44H23.6904L64.5404 13.81H81.4204L55.9604 78.95H105.41L81.4204 13.81H98.1504Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M276.24 13.81V117.44H259.81V72.88H189.64V117.44H173.21V13.81H189.64V57.48H259.81V13.81H276.24Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M357.21 13.81L396.14 117.44H378.23L369.35 93.16H310.14L300.52 117.44H282.76L323.62 13.81H340.5L315.04 78.95H364.49L340.51 13.81H357.24H357.21Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M444.26 117.44C435.87 117.44 428.37 116.28 421.76 113.96C415.15 111.64 409.55 108.26 404.96 103.82C400.37 99.38 396.87 93.95 394.45 87.54C392.03 81.12 390.82 73.87 390.82 65.78C390.82 57.69 392.1 50.43 394.67 44.02C397.24 37.6 400.89 32.15 405.63 27.66C410.37 23.17 416.07 19.74 422.73 17.37C429.39 15 436.87 13.82 445.16 13.82C451.38 13.82 457.42 14.49 463.29 15.82C469.16 17.15 474.47 19.3 479.2 22.26C483.94 25.22 487.91 29.05 491.12 33.73C494.33 38.42 496.38 44.07 497.26 50.68H480.53C479.84 47.52 478.46 44.64 476.39 42.02C474.32 39.41 471.73 37.16 468.62 35.28C465.51 33.41 461.91 31.95 457.81 30.91C453.71 29.87 449.35 29.36 444.71 29.36C438.1 29.36 432.45 30.32 427.76 32.25C423.07 34.17 419.22 36.79 416.21 40.1C413.2 43.41 411 47.26 409.62 51.65C408.24 56.04 407.55 60.71 407.55 65.64C407.55 70.57 408.22 75.24 409.55 79.63C410.88 84.02 413 87.87 415.92 91.18C418.83 94.49 422.66 97.1 427.39 99.03C432.12 100.96 437.9 101.92 444.71 101.92C448.66 101.92 452.58 101.5 456.48 100.66C460.38 99.82 463.98 98.54 467.29 96.81C470.6 95.08 473.46 92.86 475.88 90.15C478.3 87.44 479.95 84.15 480.84 80.31H497.42C496.33 86.92 494.14 92.57 490.83 97.26C487.52 101.95 483.45 105.8 478.62 108.81C473.78 111.82 468.41 114.02 462.48 115.4C456.56 116.78 450.49 117.47 444.27 117.47L444.26 117.44Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M527.45 70.51V117.44H511.02V13.81H527.45V69.03"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M684.52 13.81L723.45 117.44H705.54L696.66 93.16H637.45L627.83 117.44H610.07L650.93 13.81H667.81L642.35 78.95H691.8L667.82 13.81H684.55H684.52Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M803.25 13.81V29.21H762.98V117.44H746.55V29.21H706.28V13.81H803.24H803.25Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M913.68 13.81V117.44H897.25V72.88H827.08V117.44H810.65V13.81H827.08V57.48H897.25V13.81H913.68Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M1032.26 65.63C1032.26 82.51 1027.47 95.36 1017.9 104.19C1008.33 113.02 994.56 117.44 976.6 117.44C958.64 117.44 944.65 113.02 935.22 104.19C925.79 95.36 921.08 82.5 921.08 65.63C921.08 48.76 925.91 35.65 935.59 26.92C945.26 18.19 958.98 13.82 976.74 13.82C994.5 13.82 1008.2 18.09 1017.82 26.63C1027.44 35.17 1032.25 48.17 1032.25 65.64L1032.26 65.63ZM1015.53 65.33C1015.53 53.88 1012.27 45.03 1005.76 38.76C999.25 32.49 989.62 29.36 976.89 29.36C964.16 29.36 954.34 32.52 947.73 38.83C941.12 45.15 937.81 54.08 937.81 65.62C937.81 77.16 941.14 86.47 947.8 92.64C954.46 98.81 964.16 101.89 976.89 101.89C989.62 101.89 999.86 98.63 1006.13 92.12C1012.4 85.61 1015.53 76.68 1015.53 65.33Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M1039.66 117.44V13.81H1055.94V117.44H1039.66ZM1139.44 13.81V117.44H1106.28L1055.95 13.81H1072.53L1123.16 117.44V13.81H1139.44Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path
+                    d="M527.45 69.03L580.75 13.81H603.25L558.39 59.7L603.55 117.44H583.41L546.55 70.51H527.45"
+                    fill="#B91F2E"></path>
+                <path
+                    d="M16.43 26.28H0V117.44H16.43V26.28Z"
+                    fill="currentColor"
+                    class="text-foreground"></path>
+                <path d="M34.2095 0H17.7695V16.34H34.2095V0Z" fill="#B91F2E"
+                ></path>
+            </svg>
+            <p class="text-sm text-foreground/70 max-w-md">
+                Join Peru's most important AI event. <br /> 24 hours of innovation
+                and technology in Lima.
+            </p>
+            <a
+                href="https://peru-es-ia.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white/95 rounded-lg transition-all hover:scale-[1.02] hover:shadow-[0_0_1.5rem_0_rgba(220,38,38,0.4)]"
+                style="background-color: #dc2626;"
+            >
+                <span>Join Now</span>
+                <svg
+                    class="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M8 2h2v4h4V2h2v4h2v3h2v2h-2v2h4v2h-4v2h2v2h-2v3H6v-3H4v-2h2v-2H2v-2h4v-2H4V9h2V6h2V2Zm8 6H8v3h8V8Zm-5 5H8v7h3v-7Zm2 7h3v-7h-3v7ZM4 9H2V7h2v2Zm0 10v2H2v-2h2Zm16 0h2v2h-2v-2Zm0-10V7h2v2h-2Z"
+                    ></path>
+                </svg>
+            </a>
+        </div>
+    </div>
 </div>

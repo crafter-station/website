@@ -1,0 +1,222 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+interface Talent {
+  id: string;
+  name: string;
+  role: string;
+  achievement: string;
+  photoUrl?: string;
+  linkedin?: string;
+  portfolio?: string;
+  location: string;
+  interview: {
+    date: string;
+    videoUrl?: string;
+    highlights: string[];
+    fullTranscript: string;
+  };
+}
+
+export function getStaticPaths() {
+  const talents: Talent[] = [
+    {
+      id: "computational-artist",
+      name: "Alex Rivera",
+      role: "Computational Artist",
+      achievement:
+        "Creating immersive digital experiences that blend art and technology.",
+      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
+      linkedin: "https://linkedin.com",
+      portfolio: "https://example.com",
+      location: "Lima, Peru",
+      interview: {
+        date: "March 15, 2024",
+        highlights: [
+          "Started coding at 14, discovered generative art at university",
+          "Work featured at SIGGRAPH and Ars Electronica",
+          "Building tools to make computational art more accessible",
+          "Mentoring emerging artists in Latin America",
+        ],
+        fullTranscript: `In this conversation, Alex shares their journey from traditional art to computational design, discussing how technology opened new creative possibilities. They talk about the challenges of bridging art and engineering communities, and their vision for democratizing access to creative coding tools.
+
+Alex emphasizes the importance of community in their work, describing how collaboration with other artists and engineers has shaped their practice. They also discuss current projects involving interactive installations and real-time generative systems, and their commitment to teaching and mentoring the next generation of computational artists in Peru.
+
+"Technology should enhance creativity, not replace it. The most interesting work happens when artists understand their tools deeply and can bend them to their creative vision."`,
+      },
+    },
+    {
+      id: "fintech-founder",
+      name: "María Torres",
+      role: "Fintech Founder & Engineer",
+      achievement: "Helping 20K+ Peruvians improve their personal finances.",
+      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
+      linkedin: "https://linkedin.com",
+      portfolio: "https://example.com",
+      location: "Lima, Peru",
+      interview: {
+        date: "March 20, 2024",
+        highlights: [
+          "Background in statistics and financial engineering",
+          "Built platform from scratch with focus on user education",
+          "Scaled to 20K+ users through community-driven growth",
+          "Advocating for financial literacy in underserved communities",
+        ],
+        fullTranscript: `María discusses her journey from working in traditional finance to founding her own fintech platform. She explains how witnessing the lack of accessible financial tools for everyday Peruvians inspired her to build a solution that combines education with practical financial management.
+
+Throughout the conversation, María shares insights on building trust with users, the technical challenges of creating a secure financial platform, and the importance of regulatory compliance in fintech. She also talks about her vision for expanding financial inclusion across Latin America.
+
+"Financial empowerment is about more than just tools—it's about education, trust, and creating systems that truly serve people's needs."`,
+      },
+    },
+    {
+      id: "ai-researcher",
+      name: "Carlos Mendoza",
+      role: "AI Researcher",
+      achievement:
+        "Published research on ML applications in healthcare and accessibility.",
+      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
+      linkedin: "https://linkedin.com",
+      location: "Lima, Peru",
+      interview: {
+        date: "March 25, 2024",
+        highlights: [
+          "PhD in Machine Learning from leading research institution",
+          "Multiple publications on healthcare AI applications",
+          "Leading projects on AI accessibility for underserved communities",
+          "Collaborating with hospitals to deploy ML diagnostic tools",
+        ],
+        fullTranscript: `Carlos shares his research journey and passion for using AI to solve real healthcare challenges in resource-constrained settings. He discusses the ethical considerations of deploying ML models in healthcare and the importance of building systems that work for everyone, not just privileged populations.
+
+The conversation explores current projects involving diagnostic assistance tools, the challenges of working with limited medical data in developing regions, and innovative approaches to model training and validation. Carlos also discusses his work mentoring students and building AI research capacity in Peru.
+
+"The most impactful AI research addresses real problems for real people. We need to build systems that are not just technically impressive, but genuinely useful and accessible."`,
+      },
+    },
+  ];
+
+  return talents.map((talent) => ({
+    params: { id: talent.id },
+    props: { talent },
+  }));
+}
+
+const { talent } = Astro.props;
+---
+
+<BaseLayout
+  title={`${talent.name} | Crafter Station`}
+  description={talent.achievement}
+>
+  <div class="max-w-3xl">
+    <a
+      href="/talents"
+      class="inline-flex items-center gap-1.5 text-[13px] text-foreground/40 hover:text-foreground/60 transition-colors mb-12"
+    >
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 15 15"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M6.85355 3.14645C7.04882 3.34171 7.04882 3.65829 6.85355 3.85355L3.70711 7H12.5C12.7761 7 13 7.22386 13 7.5C13 7.77614 12.7761 8 12.5 8H3.70711L6.85355 11.1464C7.04882 11.3417 7.04882 11.6583 6.85355 11.8536C6.65829 12.0488 6.34171 12.0488 6.14645 11.8536L2.14645 7.85355C1.95118 7.65829 1.95118 7.34171 2.14645 7.14645L6.14645 3.14645C6.34171 2.95118 6.65829 2.95118 6.85355 3.14645Z"
+          fill="currentColor"
+          fill-rule="evenodd"
+          clip-rule="evenodd"></path>
+      </svg>
+      Back
+    </a>
+
+    <div class="flex items-start gap-4 mb-8">
+      <div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-muted/50">
+        <img
+          src={talent.photoUrl}
+          alt={talent.name}
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="flex-1 pt-1">
+        <h1 class="text-[32px] font-medium text-foreground mb-1 tracking-tight">
+          {talent.name}
+        </h1>
+        <p class="text-[15px] text-foreground/50 mb-2">{talent.role}</p>
+        <div class="flex items-center gap-3 text-[13px] text-foreground/40">
+          <span>{talent.location}</span>
+          {
+            talent.linkedin && (
+              <>
+                <span>·</span>
+                <a
+                  href={talent.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-foreground/60 transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </>
+            )
+          }
+          {
+            talent.portfolio && (
+              <>
+                <span>·</span>
+                <a
+                  href={talent.portfolio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-foreground/60 transition-colors"
+                >
+                  Portfolio
+                </a>
+              </>
+            )
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-12">
+      <div>
+        <p class="text-[15px] text-foreground/60 leading-relaxed">
+          {talent.achievement}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-[15px] font-medium text-foreground mb-4">Highlights</h2>
+        <div class="space-y-2">
+          {
+            talent.interview.highlights.map((highlight) => (
+              <div class="flex items-start gap-2">
+                <span class="text-foreground/30 mt-1.5">·</span>
+                <span class="text-[15px] text-foreground/60 leading-relaxed flex-1">
+                  {highlight}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-[15px] font-medium text-foreground mb-4">Interview</h2>
+        <div class="space-y-4 text-[15px] text-foreground/60 leading-relaxed">
+          {
+            talent.interview.fullTranscript.split("\n\n").map((paragraph) => (
+              <p>{paragraph}</p>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-border/20">
+        <p class="text-[13px] text-foreground/40">
+          Interviewed on {talent.interview.date}
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
