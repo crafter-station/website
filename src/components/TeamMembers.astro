@@ -4,213 +4,196 @@ import GithubIcon from "@/icons/github.svg";
 import XIcon from "@/icons/x.svg";
 
 interface TeamMember {
-  name: string;
-  position: string;
-  photoUrl: string;
-  github?: string;
-  linkedin?: string;
-  x?: string;
-  website?: string;
+    name: string;
+    position: string;
+    photoUrl: string;
+    github?: string;
+    linkedin?: string;
+    x?: string;
+    website?: string;
 }
 
 const teamMembers: TeamMember[] = [
-  {
-    name: "Railly Hugo",
-    position: "Founder & Design Engineer",
-    photoUrl: "/team/railly.webp",
-    github: "https://github.com/Railly",
-    linkedin: "https://linkedin.com/in/railly-hugo",
-    x: "https://x.com/raillyhugo",
-    website: "https://railly.dev",
-  },
-  {
-    name: "Anthony Cueva",
-    position: "Founder & AI Engineer",
-    photoUrl: "/team/cueva.webp",
-    github: "https://github.com/cuevaio",
-    linkedin: "https://linkedin.com/in/cuevaio",
-    x: "https://x.com/cuevaio",
-    website: "https://cueva.io",
-  },
-  {
-    name: "Shiara Arauzo",
-    position: "Product Designer",
-    photoUrl: "/team/shiara.webp",
-    github: "https://github.com/shiara0312",
-    linkedin: "https://www.linkedin.com/in/shiara-arauzo/",
-  },
-  {
-    name: "Liz Riveros",
-    position: "Project Manager",
-    photoUrl: "/team/liz.webp",
-    linkedin: "https://www.linkedin.com/in/lizethriveros/",
-  },
-  {
-    name: "Edward Ramos",
-    position: "Frontend Dev",
-    photoUrl: "/team/edward.webp",
-    github: "https://github.com/EdwardR0507",
-    linkedin: "https://www.linkedin.com/in/edwardramosvillarreal/",
-  },
-  {
-    name: "Carlos Tarmeño",
-    position: "Frontend Dev",
-    photoUrl: "/team/tarmeno.webp",
-    github: "https://github.com/carlosdtn",
-    linkedin: "https://www.linkedin.com/in/carlos-tarmeno/",
-    website: "https://www.carlostarmeno.com/",
-  },
-  {
-    name: "Ignacio Rueda",
-    position: "Backend Dev",
-    photoUrl: "/team/ignacio.webp",
-    github: "https://github.com/Jibaru",
-    linkedin: "https://www.linkedin.com/in/ignacior97/",
-  },
+    {
+        name: "Railly Hugo",
+        position: "Design Engineer",
+        photoUrl: "/team/railly.webp",
+        github: "https://github.com/Railly",
+        linkedin: "https://linkedin.com/in/railly-hugo",
+        x: "https://x.com/raillyhugo",
+        website: "https://railly.dev",
+    },
+    {
+        name: "Anthony Cueva",
+        position: "Product Engineer",
+        photoUrl: "/team/cueva.webp",
+        github: "https://github.com/cuevaio",
+        linkedin: "https://linkedin.com/in/cuevaio",
+        x: "https://x.com/cuevaio",
+        website: "https://www.cueva.io",
+    },
+    {
+        name: "Cristian Correa",
+        position: "Data & Software Engineer",
+        photoUrl: "/team/cris.webp",
+        github: "https://github.com/camilocbarrera",
+        linkedin: "https://www.linkedin.com/in/cristiancamilocorrea/",
+        x: "https://x.com/camilocbarrera",
+        website: "https://cristiancorrea.xyz/",
+    },
+    {
+        name: "Shiara Arauzo",
+        position: "Product Designer",
+        photoUrl: "/team/shiara.webp",
+        github: "https://github.com/shiara0312",
+        linkedin: "https://www.linkedin.com/in/shiara-arauzo/",
+        website: "https://shiara.dev/",
+    },
+    {
+        name: "Ignacio Rueda",
+        position: "Backend Dev",
+        photoUrl: "/team/ignacio.webp",
+        github: "https://github.com/Jibaru",
+        linkedin: "https://www.linkedin.com/in/ignacior97/",
+    },
+    {
+        name: "Carlos Tarmeño",
+        position: "Frontend Dev",
+        photoUrl: "/team/tarmeno.webp",
+        github: "https://github.com/carlosdtn",
+        linkedin: "https://www.linkedin.com/in/carlos-tarmeno/",
+        website: "https://www.carlostarmeno.com/",
+    },
+    {
+        name: "Edward Ramos",
+        position: "Frontend Dev",
+        photoUrl: "/team/edward.webp",
+        github: "https://github.com/EdwardR0507",
+        linkedin: "https://www.linkedin.com/in/edwardramosvillarreal/",
+    },
+    {
+        name: "Liz Riveros",
+        position: "Project Manager",
+        photoUrl: "/team/liz.webp",
+        linkedin: "https://www.linkedin.com/in/lizethriveros/",
+    },
 ];
 ---
 
 <div class="mt-4 sm:mt-6">
-  <div
-    class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2 text-foreground/80 font-medium px-1 py-2 sm:py-3 border-border/75 border-b mb-4 sm:mb-6"
-  >
-    <div class="flex items-center gap-1.5 sm:gap-2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="sm:w-4 sm:h-4"
-      >
-        <path
-          d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
-        ></path>
-        <path d="M12 22V2"></path>
-      </svg>
-      <h2
-        class="capitalize text-sm sm:text-base text-foreground/80 font-normal whitespace-nowrap"
-      >
-        Team
-      </h2>
-    </div>
-  </div>
-  <div
-    class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
-  >
-    {
-      teamMembers.map((member) => (
-        <div class="group relative">
-          <div class="aspect-square overflow-hidden rounded-lg sm:rounded-xl">
-            <img
-              src={member.photoUrl}
-              alt={member.name}
-              class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.08]"
-              loading="lazy"
-            />
-          </div>
-          <div class="mt-2 sm:mt-4">
-            <h3 class="font-medium text-xs sm:text-sm text-foreground/90">
-              {member.name}
-            </h3>
-            <p class="text-[11px] sm:text-[12px] text-foreground/60">
-              {member.position}
-            </p>
-            <div class="mt-1.5 sm:mt-2 flex">
-              {member.github && (
-                <a
-                  href={member.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex text-muted-foreground items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-6 w-6 sm:h-7 sm:w-7"
-                >
-                  <GithubIcon class="size-3.5 sm:size-4" />
-                  <span class="sr-only">GitHub</span>
-                </a>
-              )}
-              {member.linkedin && (
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex text-muted-foreground items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-6 w-6 sm:h-7 sm:w-7"
-                >
-                  <LinkedinIcon class="size-3 sm:size-3.5" />
-                  <span class="sr-only">LinkedIn</span>
-                </a>
-              )}
-              {member.x && (
-                <a
-                  href={member.x}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex text-muted-foreground items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-6 w-6 sm:h-7 sm:w-7"
-                >
-                  <XIcon class="size-3 sm:size-3.5" />
-                  <span class="sr-only">X</span>
-                </a>
-              )}
-              {member.website && (
-                <a
-                  href={member.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex text-muted-foreground items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-6 w-6 sm:h-7 sm:w-7"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-globe-icon lucide-globe"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                    <path d="M2 12h20" />
-                  </svg>
-                  <span class="sr-only">Website</span>
-                </a>
-              )}
-            </div>
-          </div>
+    <div
+        class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2 text-foreground/80 font-medium px-1 py-2 sm:py-3 border-border/75 border-b mb-4 sm:mb-6"
+    >
+        <div class="flex items-center gap-1.5 sm:gap-2">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="sm:w-4 sm:h-4"
+            >
+                <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                ></path>
+                <path d="M12 22V2"></path>
+            </svg>
+            <h2
+                class="capitalize text-sm sm:text-base text-foreground/80 font-normal whitespace-nowrap"
+            >
+                Team
+            </h2>
         </div>
-      ))
-    }
-    <div class="group relative cursor-pointer">
-      <div
-        class="aspect-square rounded-lg sm:rounded-xl border-2 border-dashed border-foreground/20 flex items-center justify-center bg-neutral-50 dark:bg-neutral-900/50 transition-colors hover:border-foreground/40"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="text-foreground/40 sm:w-8 sm:h-8"
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M12 8v8"></path>
-          <path d="M8 12h8"></path>
-        </svg>
-      </div>
-      <div class="mt-2 sm:mt-4 text-center">
-        <h3 class="font-light text-xs sm:text-sm text-foreground/60">
-          You could be next.
-        </h3>
-      </div>
     </div>
-  </div>
+    <div
+        class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
+    >
+        {
+            teamMembers.map((member) => (
+                <div class="group relative">
+                    <div class="aspect-square overflow-hidden rounded-lg sm:rounded-xl">
+                        <img
+                            src={member.photoUrl}
+                            alt={member.name}
+                            class="h-full w-full object-cover transition duration-300 group-hover:scale-[1.08]"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="mt-2 sm:mt-4">
+                        <h3 class="font-medium text-xs sm:text-sm text-foreground/90">
+                            {member.name}
+                        </h3>
+                        <p class="text-[11px] sm:text-[12px] text-foreground/60">
+                            {member.position}
+                        </p>
+                        <div class="mt-1.5 sm:mt-2 flex">
+                            {member.github && (
+                                <a
+                                    href={member.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex text-muted-foreground items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-6 w-6 sm:h-7 sm:w-7"
+                                >
+                                    <GithubIcon class="size-3.5 sm:size-4" />
+                                    <span class="sr-only">GitHub</span>
+                                </a>
+                            )}
+                            {member.linkedin && (
+                                <a
+                                    href={member.linkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex text-muted-foreground items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-6 w-6 sm:h-7 sm:w-7"
+                                >
+                                    <LinkedinIcon class="size-3 sm:size-3.5" />
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                            )}
+                            {member.x && (
+                                <a
+                                    href={member.x}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex text-muted-foreground items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-6 w-6 sm:h-7 sm:w-7"
+                                >
+                                    <XIcon class="size-3 sm:size-3.5" />
+                                    <span class="sr-only">X</span>
+                                </a>
+                            )}
+                            {member.website && (
+                                <a
+                                    href={member.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="inline-flex text-muted-foreground items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-6 w-6 sm:h-7 sm:w-7"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="lucide lucide-globe-icon lucide-globe"
+                                    >
+                                        <circle cx="12" cy="12" r="10" />
+                                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                                        <path d="M2 12h20" />
+                                    </svg>
+                                    <span class="sr-only">Website</span>
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
 </div>
