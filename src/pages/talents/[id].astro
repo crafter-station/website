@@ -20,42 +20,18 @@ interface Talent {
 
 export function getStaticPaths() {
   const talents: Talent[] = [
-    {
-      id: "computational-artist",
-      name: "Alex Rivera",
-      role: "Computational Artist",
-      achievement:
-        "Creating immersive digital experiences that blend art and technology.",
-      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
-      linkedin: "https://linkedin.com",
-      portfolio: "https://example.com",
-      location: "Lima, Peru",
-      interview: {
-        date: "March 15, 2024",
-        highlights: [
-          "Started coding at 14, discovered generative art at university",
-          "Work featured at SIGGRAPH and Ars Electronica",
-          "Building tools to make computational art more accessible",
-          "Mentoring emerging artists in Latin America",
-        ],
-        fullTranscript: `In this conversation, Alex shares their journey from traditional art to computational design, discussing how technology opened new creative possibilities. They talk about the challenges of bridging art and engineering communities, and their vision for democratizing access to creative coding tools.
-
-Alex emphasizes the importance of community in their work, describing how collaboration with other artists and engineers has shaped their practice. They also discuss current projects involving interactive installations and real-time generative systems, and their commitment to teaching and mentoring the next generation of computational artists in Peru.
-
-"Technology should enhance creativity, not replace it. The most interesting work happens when artists understand their tools deeply and can bend them to their creative vision."`,
-      },
-    },
+    
     {
       id: "fintech-founder",
-      name: "María Torres",
-      role: "Fintech Founder & Engineer",
+      name: "Marcelo Arias",
+      role: "Founder of Animo & Generative Manim",
       achievement: "Helping 20K+ Peruvians improve their personal finances.",
       photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
       linkedin: "https://linkedin.com",
       portfolio: "https://example.com",
       location: "Lima, Peru",
       interview: {
-        date: "March 20, 2024",
+        date: "Oct 26, 2025",
         highlights: [
           "Background in statistics and financial engineering",
           "Built platform from scratch with focus on user education",
@@ -71,8 +47,8 @@ Throughout the conversation, María shares insights on building trust with users
     },
     {
       id: "ai-researcher",
-      name: "Carlos Mendoza",
-      role: "AI Researcher",
+      name: "Bregy Malpartida",
+      role: "Computational Artist",
       achievement:
         "Published research on ML applications in healthcare and accessibility.",
       photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
