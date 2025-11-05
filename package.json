@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/markdown-component": "^1.0.5",
     "@astrojs/mdx": "^4.2.5",
     "@astrojs/react": "^4.2.5",
     "@radix-ui/react-dropdown-menu": "^2.1.12",
