@@ -9,9 +9,11 @@ interface Talent {
   photoUrl?: string;
   linkedin?: string;
   portfolio?: string;
+  github?:string;
   location: string;
   interview: {
     date: string;
+    title: string;
     videoUrl?: string;
     highlights: string[];
     fullTranscript: string;
@@ -46,29 +48,42 @@ Throughout the conversation, María shares insights on building trust with users
       },
     },
     {
-      id: "ai-researcher",
-      name: "Bregy Malpartida",
-      role: "Computational Artist",
-      achievement:
-        "Published research on ML applications in healthcare and accessibility.",
-      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos",
-      linkedin: "https://linkedin.com",
-      location: "Lima, Peru",
-      interview: {
-        date: "March 25, 2024",
-        highlights: [
-          "PhD in Machine Learning from leading research institution",
-          "Multiple publications on healthcare AI applications",
-          "Leading projects on AI accessibility for underserved communities",
-          "Collaborating with hospitals to deploy ML diagnostic tools",
-        ],
-        fullTranscript: `Carlos shares his research journey and passion for using AI to solve real healthcare challenges in resource-constrained settings. He discusses the ethical considerations of deploying ML models in healthcare and the importance of building systems that work for everyone, not just privileged populations.
+  id: "ai-researcher",
+  name: "Bregy Malpartida",
+  role: "Computational Artist",
+  achievement:
+    "AI researcher, inventor, and artist who dives into how computation becomes art and emergence becomes intelligence.",
+  photoUrl: "/talent-interview/breggy-malpartida.jpg",
+  linkedin: "https://www.linkedin.com/in/bregy/",
+  github: "https://github.com/bregydoc",
+  portfolio: "https://instagram.com/pinsky_three",
+  location: "Lima, Peru",
+  interview: {
+    date: "Oct 25, 2025",
+    highlights: [
+      "Self-taught developer and artist exploring where code meets creativity",
+      "Founder of Minski, a tech collective built on open-source values",
+      "Creator of generative and mathematical art, exhibited at MALI Museum",
+      "Sees programming as a way to express life, emotion, and human curiosity through machines"
+    ],
+    fullTranscript: `We first met <strong>Bregy Malpartida</strong> at <u><a href="https://www.linkedin.com/posts/cuevaio_casual-code-brew-chatting-open-source-ts-activity-7373043014400647168-4jr9" target="_blank" rel="noopener noreferrer">Code Brew</a></u> — a casual community event we hosted in Lima to bring together developers, designers, and builders who love to create things that matter.  
+Among everyone there, Bregy instantly stood out. He was that kind of person who could talk about math, art, and code in the same sentence — and somehow make it make sense. We knew we had to know more, so we invited him for a proper chat.  
 
-The conversation explores current projects involving diagnostic assistance tools, the challenges of working with limited medical data in developing regions, and innovative approaches to model training and validation. Carlos also discusses his work mentoring students and building AI research capacity in Peru.
+When you meet Bregy, it’s hard to tell where the artist ends and the developer begins. He writes code the same way some people paint — with curiosity, precision, and emotion.  
 
-"The most impactful AI research addresses real problems for real people. We need to build systems that are not just technically impressive, but genuinely useful and accessible."`,
-      },
-    },
+He started programming when he was twelve, long before he realized it could become a career. He grew up surrounded by cardboard, glue, and old machines that his grandfather kept in storage. “I used to take things apart just to see how they worked,” he says. That mix of curiosity and creation never left him — it just evolved from paper mechanisms to digital ones.  
+
+Today, Bregy’s work lives somewhere between technology, mathematics, and philosophy. He co-founded **Minski**, a tech collective built on the belief that knowledge should be open and shared. “If you write a book, you want people to read it,” he says. “Code should work the same way.”  
+
+From there, he went on to explore **AI, generative art, and complex systems**, creating visuals that look less like computer outputs and more like living organisms. His pieces explore how machines might someday *feel* alive — not just execute logic, but express it.  
+
+Earlier this year, his work appeared at the **MALI Museum in Lima**, where he exhibited live plotter-generated prints — algorithmic drawings that evolve in real time, blending math, motion, and emotion. Watching the machine draw felt almost meditative, like a quiet collaboration between human intent and machine precision.  
+
+Talking to Bregy feels like stepping into a lab and an art studio at once. He moves easily between equations, thoughts on consciousness, and stories from his graffiti days — when he tagged Barranco’s streets with fractal triangles.  
+
+What makes him stand out isn’t just his technical skill; it’s his way of seeing. For Bregy, coding isn’t about building software — it’s about understanding life itself.`
+  }
+},
   ];
 
   return talents.map((talent) => ({
@@ -150,6 +165,21 @@ const { talent } = Astro.props;
               </>
             )
           }
+          {
+            talent.github && (
+              <>
+                <span>·</span>
+                <a
+                  href={talent.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-foreground/60 transition-colors"
+                >
+                  GitHub
+                </a>
+              </>
+            )
+          }
         </div>
       </div>
     </div>
@@ -162,29 +192,33 @@ const { talent } = Astro.props;
       </div>
 
       <div>
-        <h2 class="text-[15px] font-medium text-foreground mb-4">Highlights</h2>
-        <div class="space-y-2">
-          {
-            talent.interview.highlights.map((highlight) => (
-              <div class="flex items-start gap-2">
-                <span class="text-foreground/30 mt-1.5">·</span>
-                <span class="text-[15px] text-foreground/60 leading-relaxed flex-1">
-                  {highlight}
-                </span>
-              </div>
-            ))
-          }
+  <h2 class="text-[18px] font-semibold text-foreground mb-4">
+    {talent.interview.title}
+  </h2>
+
+  <h3 class="text-[15px] font-medium text-foreground mb-4">Highlights</h3>
+  <div class="space-y-2">
+    {
+      talent.interview.highlights.map((highlight) => (
+        <div class="flex items-start gap-2">
+          <span class="text-foreground/30 mt-1.5">·</span>
+          <span class="text-[15px] text-foreground/60 leading-relaxed flex-1">
+            {highlight}
+          </span>
         </div>
-      </div>
+      ))
+    }
+  </div>
+</div>
+
 
       <div>
         <h2 class="text-[15px] font-medium text-foreground mb-4">Interview</h2>
         <div class="space-y-4 text-[15px] text-foreground/60 leading-relaxed">
           {
             talent.interview.fullTranscript.split("\n\n").map((paragraph) => (
-              <p>{paragraph}</p>
-            ))
-          }
+            <p set:html={paragraph}></p>
+            ))}
         </div>
       </div>
 
