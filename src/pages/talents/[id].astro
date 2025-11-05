@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { marked } from "marked";
 
 interface Talent {
   id: string;
@@ -66,22 +67,38 @@ Throughout the conversation, María shares insights on building trust with users
       "Creator of generative and mathematical art, exhibited at MALI Museum",
       "Sees programming as a way to express life, emotion, and human curiosity through machines"
     ],
-    fullTranscript: `We first met <strong>Bregy Malpartida</strong> at <u><a href="https://www.linkedin.com/posts/cuevaio_casual-code-brew-chatting-open-source-ts-activity-7373043014400647168-4jr9" target="_blank" rel="noopener noreferrer">Code Brew</a></u> ,a casual community event we hosted in Lima to bring together developers, designers, and builders who love to create digital stuff.  
-Among everyone there, Bregy instantly stood out. He was that kind of person who could talk about math, art, and code in the same sentence, and somehow make it make sense. We knew we had to know more, so we invited him for a proper interview.  
+fullTranscript: `
+We first met **Bregy Malpartida** at [Code Brew](https://www.linkedin.com/posts/cuevaio_casual-code-brew-chatting-open-source-ts-activity-7373043014400647168-4jr9),
+a casual community event we hosted in Lima to bring together developers, designers, and builders who love to create digital stuff.
 
-He started programming when he was twelve, long before he realized it could become a career. He grew up surrounded by cardboard, glue, and old machines that his grandfather kept in storage. 
+Among everyone there, Bregy instantly stood out. He was that kind of person who could talk about math, art, and code in the same sentence — and somehow make it make sense.
+We knew we had to know more, so we invited him for a proper interview.
 
-> “I used to take things apart just to see how they worked,” he says. That mix of curiosity and creation never left him — it just evolved from paper mechanisms to digital ones.  
+He started programming when he was twelve, long before he realized it could become a career.
+He grew up surrounded by cardboard, glue, and old machines that his grandfather kept in storage.
 
-Today, Bregy’s work lives somewhere between technology, mathematics, and philosophy. He co-founded **Minski**, a tech collective built on the belief that knowledge should be open and shared. “If you write a book, you want people to read it,” he says. “Code should work the same way.”  
+> I used to take things apart just to see how they worked.
+> That mix of curiosity and creation never left him. It just evolved from paper mechanisms to digital ones.
 
-From there, he went on to explore **AI, generative art, and complex systems**, creating visuals that look less like computer outputs and more like living organisms. His pieces explore how machines might someday *feel* alive — not just execute logic, but express it.  
+Today, Bregy’s work relies between technology, mathematics, and philosophy.
+He co-founded **Minski**, a tech collective built on the belief that knowledge should be open and shared.
+> If you write a book, you want people to read it. Code should work the same way.
 
-Earlier this year, his work appeared at the **MALI Museum in Lima**, where he exhibited live plotter-generated prints — algorithmic drawings that evolve in real time, blending math, motion, and emotion. Watching the machine draw felt almost meditative, like a quiet collaboration between human intent and machine precision.  
+From there, he went on to explore **AI, generative art, and complex systems**, creating visuals that look less like computer outputs and more like living organisms.
+His pieces explore how machines might someday *feel* alive, not just execute logic, but express it.
 
-Talking to Bregy feels like stepping into a lab and an art studio at once. He moves easily between equations, thoughts on consciousness, and stories from his graffiti days — when he tagged Barranco’s streets with fractal triangles.  
+Earlier this year, his work appeared at the **MALI Museum in Lima**,
+where he exhibited live plotter-generated prints, algorithmic drawings that evolve in real time, blending math, motion, and emotion.
+Watching the machine draw felt almost meditative, like a quiet collaboration between human intent and machine precision.
 
-What makes him stand out isn’t just his technical skill; it’s his way of seeing. For Bregy, coding isn’t about building software — it’s about understanding life itself.`
+Talking to Bregy feels really inspiring.
+He moves easily between equations, thoughts on consciousness, and stories from his graffiti days, when he tagged Barranco’s streets with fractal triangles.
+
+What makes him stand out isn’t just his technical skill; it’s his way of seeing.
+
+`
+
+
   }
 },
   ];
@@ -214,11 +231,8 @@ const { talent } = Astro.props;
 
       <div>
         <h2 class="text-[15px] font-medium text-foreground mb-4">Interview</h2>
-        <div class="space-y-4 text-[15px] text-foreground/60 leading-relaxed">
-          {
-            talent.interview.fullTranscript.split("\n\n").map((paragraph) => (
-            <p set:html={paragraph}></p>
-            ))}
+        <div class="space-y-4 text-[15px] text-foreground/60 leading-relaxed prose prose-invert max-w-none">
+        <div set:html={marked(talent.interview.fullTranscript)}></div>
         </div>
       </div>
 
@@ -230,3 +244,24 @@ const { talent } = Astro.props;
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .prose blockquote {
+    border-left: 3px solid #facc15; 
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #d4d4d8;
+    font-style: italic;
+  }
+
+  .prose a {
+    color: #facc15;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .prose a:hover {
+    color: #fde047;
+    text-decoration: underline;
+  }
+</style>
