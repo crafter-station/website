@@ -1,0 +1,112 @@
+---
+import SidebarLayout from "@/layouts/SidebarLayout.astro";
+import { teamMembers } from "@/lib/constants/team";
+import GithubIcon from "@/icons/github.svg";
+import InstagramIcon from "@/icons/instagram.svg";
+
+const member = teamMembers.find((m) => m.username === "shiara")!;
+---
+
+<SidebarLayout
+  title={`${member.name} | Crafter Station`}
+  description={`${member.name} - ${member.position} at Crafter Station`}
+>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-animation { animation: float 6s ease-in-out infinite; }
+    .float-delay-1 { animation-delay: -2s; }
+    .float-delay-2 { animation-delay: -4s; }
+  </style>
+
+  <div class="max-w-5xl pt-12 lg:pt-0 mx-auto">
+    <a
+      href="/team"
+      class="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-12"
+    >
+      <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Back to team
+    </a>
+
+    <div class="relative mb-16">
+      <div class="absolute top-10 left-10 w-20 h-20 rounded-full bg-pink-500/20 blur-2xl float-animation"></div>
+      <div class="absolute top-20 right-20 w-32 h-32 rounded-full bg-orange-500/20 blur-2xl float-animation float-delay-1"></div>
+      <div class="absolute bottom-0 left-1/2 w-24 h-24 rounded-full bg-yellow-500/20 blur-2xl float-animation float-delay-2"></div>
+
+      <div class="relative text-center py-12">
+        <img
+          src={member.photoUrl}
+          alt={member.name}
+          class="w-28 h-28 object-cover mx-auto mb-6 ring-4 ring-pink-500/20 float-animation"
+        />
+        <h1 class="text-4xl font-light tracking-tight mb-2 text-white">
+          <span class="text-pink-400">S</span>hiara
+          <span class="text-orange-400">A</span>rauzo
+        </h1>
+        <p class="text-neutral-500 italic">{member.position}</p>
+      </div>
+    </div>
+
+    <div class="space-y-12">
+      <div class="relative">
+        <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-pink-500 via-orange-500 to-yellow-500"></div>
+        <div class="pl-6">
+          <p class="text-lg text-neutral-400 leading-relaxed">
+            Creo que el diseño es una conversación entre la forma y la función.
+            Me apasiona crear experiencias digitales que sean tanto bellas como útiles.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <h3 class="text-pink-400 text-sm font-medium">Design</h3>
+          <div class="h-2 bg-neutral-800 overflow-hidden">
+            <div class="h-full w-[90%] bg-gradient-to-r from-pink-500 to-orange-500"></div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-orange-400 text-sm font-medium">Code</h3>
+          <div class="h-2 bg-neutral-800 overflow-hidden">
+            <div class="h-full w-[85%] bg-gradient-to-r from-orange-500 to-yellow-500"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        {member.skills.map((skill, i) => {
+          const rotations = ["-rotate-2", "rotate-1", "-rotate-1", "rotate-2", "rotate-0"];
+          return (
+            <span class={`px-4 py-2 border border-pink-500/20 bg-pink-500/5 text-neutral-300 ${rotations[i % rotations.length]} hover:rotate-0 transition-transform`}>
+              {skill}
+            </span>
+          );
+        })}
+      </div>
+
+      <div class="flex justify-center gap-6 pt-8">
+        {member.github && (
+          <a href={member.github} target="_blank" class="text-neutral-500 hover:text-pink-400 transition-colors">
+            <GithubIcon class="size-5" />
+          </a>
+        )}
+        {member.instagram && (
+          <a href={member.instagram} target="_blank" class="text-neutral-500 hover:text-orange-400 transition-colors">
+            <InstagramIcon class="size-5" />
+          </a>
+        )}
+        {member.website && (
+          <a href={member.website} target="_blank" class="text-neutral-500 hover:text-yellow-400 transition-colors">
+            <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</SidebarLayout>

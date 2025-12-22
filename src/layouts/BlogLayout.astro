@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 import FormattedDate from "@/components/FormattedDate.astro";
-import Analytics from "@vercel/analytics/astro";
+import CrafterIcon from "@/icons/crafter.svg";
 
 type Props = {
   post: CollectionEntry<"blog">;
@@ -13,41 +13,77 @@ const { title, description, pubDate, updatedDate, heroImage } = post.data;
 ---
 
 <BaseLayout title={title} description={description}>
-  <article class="mx-auto w-full py-8">
-    <div class="mb-8 text-center">
-      {
-        heroImage && (
+  <div class="min-h-screen bg-black">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-neutral-900">
+      <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3 text-white hover:text-primary transition-colors">
+          <div class="p-2 border border-neutral-800">
+            <CrafterIcon class="size-5 text-primary" />
+          </div>
+          <span class="text-sm font-medium hidden sm:block">Crafter Station</span>
+        </a>
+        <a href="/blog" class="text-sm text-neutral-400 hover:text-white transition-colors">
+          ← All posts
+        </a>
+      </div>
+    </header>
+
+    <!-- Article -->
+    <article class="max-w-3xl mx-auto px-6 pt-32 pb-24">
+      <header class="mb-12">
+        {heroImage && (
           <img
-            class="mx-auto mb-6 rounded-lg"
-            width={720}
-            height={360}
+            class="w-full mb-8 border border-neutral-800"
             src={heroImage}
             alt=""
           />
-        )
-      }
-      <h1 class="mb-2 text-3xl font-bold text-foreground/90 md:text-4xl">
-        {title}
-      </h1>
-      <div
-        class="flex items-center justify-center gap-2 text-sm text-foreground/60"
-      >
-        <FormattedDate date={pubDate} />
-        {
-          updatedDate && (
+        )}
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+          {title}
+        </h1>
+        <p class="text-lg text-neutral-400 mb-6">{description}</p>
+        <div class="flex items-center gap-3 text-sm text-neutral-500">
+          <FormattedDate date={pubDate} />
+          {updatedDate && (
             <>
-              <span>•</span>
-              <span>
-                Updated: <FormattedDate date={updatedDate} />
-              </span>
+              <span class="text-neutral-700">·</span>
+              <span>Updated <FormattedDate date={updatedDate} /></span>
             </>
-          )
-        }
+          )}
+        </div>
+      </header>
+
+      <div class="prose prose-invert prose-neutral max-w-none
+        prose-headings:text-white prose-headings:font-bold
+        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
+        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+        prose-p:text-neutral-300 prose-p:leading-relaxed
+        prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+        prose-strong:text-white
+        prose-code:text-primary prose-code:bg-neutral-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-none prose-code:before:content-none prose-code:after:content-none
+        prose-pre:bg-neutral-950 prose-pre:border prose-pre:border-neutral-800 prose-pre:rounded-none
+        prose-blockquote:border-l-primary prose-blockquote:bg-neutral-950 prose-blockquote:py-1 prose-blockquote:px-6
+        prose-li:text-neutral-300
+        prose-img:border prose-img:border-neutral-800
+      ">
+        <slot />
       </div>
-    </div>
-    <div class="prose prose-neutral dark:prose-invert max-w-none">
-      <slot />
-    </div>
-  </article>
-  <Analytics />
+    </article>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-900 bg-gradient-to-t from-neutral-950 to-transparent">
+      <div class="max-w-3xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <CrafterIcon class="size-5 text-primary" />
+          <span class="text-sm text-neutral-400">Crafter Station</span>
+        </div>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="/blog" class="text-neutral-500 hover:text-white transition-colors">Blog</a>
+          <a href="/team" class="text-neutral-500 hover:text-white transition-colors">Team</a>
+          <a href="https://github.com/crafter-station" target="_blank" class="text-neutral-500 hover:text-white transition-colors">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
 </BaseLayout>

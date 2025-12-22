@@ -1,0 +1,112 @@
+---
+import SidebarLayout from "@/layouts/SidebarLayout.astro";
+import { teamMembers } from "@/lib/constants/team";
+import GithubIcon from "@/icons/github.svg";
+import LinkedinIcon from "@/icons/linkedin.svg";
+
+const member = teamMembers.find((m) => m.username === "ignacio")!;
+
+const endpoints = [
+  { method: "GET", path: "/api/users", desc: "List all users" },
+  { method: "POST", path: "/api/auth", desc: "Authenticate" },
+  { method: "PUT", path: "/api/data", desc: "Update records" },
+];
+---
+
+<SidebarLayout
+  title={`${member.name} | Crafter Station`}
+  description={`${member.name} - ${member.position} at Crafter Station`}
+>
+  <div class="max-w-5xl pt-12 lg:pt-0 mx-auto">
+    <a
+      href="/team"
+      class="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-12"
+    >
+      <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Back to team
+    </a>
+
+    <div class="border-l-4 border-amber-500 pl-6 mb-12">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="w-16 h-16 overflow-hidden border border-neutral-800">
+          <img src={member.photoUrl} alt={member.name} class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold text-white">{member.name}</h1>
+          <code class="text-sm text-amber-500 bg-amber-500/10 px-2 py-0.5">{member.position}</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-8">
+      <section>
+        <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4 flex items-center gap-2">
+          <span class="w-4 h-px bg-neutral-700"></span>
+          Overview
+        </h2>
+        <p class="text-neutral-400 leading-relaxed">
+          Backend Developer especializado en diseñar y construir APIs robustas y escalables.
+          Enfocado en arquitectura limpia y buenas prácticas de desarrollo.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4 flex items-center gap-2">
+          <span class="w-4 h-px bg-neutral-700"></span>
+          Tech Stack
+        </h2>
+        <div class="grid grid-cols-2 gap-2">
+          {member.skills.map((skill) => (
+            <div class="flex items-center gap-2 p-2 bg-neutral-900 border border-neutral-800">
+              <div class="w-2 h-2 bg-amber-500"></div>
+              <span class="text-sm text-neutral-300">{skill}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4 flex items-center gap-2">
+          <span class="w-4 h-px bg-neutral-700"></span>
+          Sample Endpoints
+        </h2>
+        <div class="space-y-2 font-mono text-sm">
+          {endpoints.map((ep) => (
+            <div class="flex items-center gap-3 p-3 bg-neutral-900 border border-neutral-800">
+              <span class={`px-2 py-0.5 text-xs font-bold ${
+                ep.method === "GET" ? "bg-green-500/20 text-green-400" :
+                ep.method === "POST" ? "bg-blue-500/20 text-blue-400" :
+                "bg-amber-500/20 text-amber-400"
+              }`}>{ep.method}</span>
+              <span class="text-neutral-300">{ep.path}</span>
+              <span class="text-neutral-600 ml-auto text-xs">{ep.desc}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4 flex items-center gap-2">
+          <span class="w-4 h-px bg-neutral-700"></span>
+          Links
+        </h2>
+        <div class="flex gap-4">
+          {member.github && (
+            <a href={member.github} target="_blank" class="flex items-center gap-2 text-sm text-neutral-500 hover:text-amber-500 transition-colors">
+              <GithubIcon class="size-4" />
+              GitHub
+            </a>
+          )}
+          {member.linkedin && (
+            <a href={member.linkedin} target="_blank" class="flex items-center gap-2 text-sm text-neutral-500 hover:text-amber-500 transition-colors">
+              <LinkedinIcon class="size-4" />
+              LinkedIn
+            </a>
+          )}
+        </div>
+      </section>
+    </div>
+  </div>
+</SidebarLayout>

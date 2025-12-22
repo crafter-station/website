@@ -1,7 +1,5 @@
 ---
-import Footer from "@/components/Footer.astro";
 import "../styles/global.css";
-import Header from "@/components/header.astro";
 import Analytics from "@vercel/analytics/astro";
 
 interface Props {
@@ -12,52 +10,22 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 		<title>{title}</title>
 	</head>
-	<body class="selection:bg-primary/20">
-		<main
-			class="mx-auto max-w-[720px] overflow-x-hidden px-6 py-8 md:py-16 md:overflow-x-visible"
-		>
-			<div class="container w-full items-center space-y-10 md:space-y-12">
-				<Header />
-				<slot />
-				<Footer />
-			</div>
+	<body class="min-h-screen selection:bg-primary/30 selection:text-primary-foreground">
+		<main class="h-full w-full">
+			<slot />
 		</main>
 		<Analytics />
 	</body>
 </html>
-
-<script is:inline>
-	const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-	const getThemePreference = () => {
-		if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-			return localStorage.getItem("theme");
-		}
-		return darkModeMediaQuery.matches ? "dark" : "light";
-	};
-
-	const setTheme = (theme) => {
-		document.documentElement.classList.toggle("dark", theme === "dark");
-		if (typeof localStorage !== "undefined") {
-			localStorage.setItem("theme", theme);
-		}
-	};
-
-	// Set theme on load
-	setTheme(getThemePreference());
-
-	// Listen for system theme changes
-	darkModeMediaQuery.addListener((e) => {
-		const theme = e.matches ? "dark" : "light";
-		setTheme(theme);
-	});
-</script>

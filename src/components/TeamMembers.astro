@@ -3,84 +3,7 @@ import LinkedinIcon from "@/icons/linkedin.svg";
 import GithubIcon from "@/icons/github.svg";
 import InstagramIcon from "@/icons/instagram.svg";
 import XIcon from "@/icons/x.svg";
-
-interface TeamMember {
-    name: string;
-    position: string;
-    photoUrl: string;
-    github?: string;
-    linkedin?: string;
-    x?: string;
-    instagram?:string;
-    website?: string;
-}
-
-const teamMembers: TeamMember[] = [
-    {
-        name: "Railly Hugo",
-        position: "Design Engineer",
-        photoUrl: "/team/railly.webp",
-        github: "https://github.com/Railly",
-        linkedin: "https://linkedin.com/in/railly-hugo",
-        x: "https://x.com/raillyhugo",
-        website: "https://railly.dev",
-    },
-    {
-        name: "Anthony Cueva",
-        position: "Product Engineer",
-        photoUrl: "/team/cueva.webp",
-        github: "https://github.com/cuevaio",
-        linkedin: "https://linkedin.com/in/cuevaio",
-        x: "https://x.com/cuevaio",
-        website: "https://www.cueva.io",
-    },
-    {
-        name: "Cristian Correa",
-        position: "Data & Software Engineer",
-        photoUrl: "/team/cris.webp",
-        github: "https://github.com/camilocbarrera",
-        linkedin: "https://www.linkedin.com/in/cristiancamilocorrea/",
-        x: "https://x.com/camilocbarrera",
-        website: "https://cristiancorrea.xyz/",
-    },
-    {
-        name: "Shiara Arauzo",
-        position: "Design Engineer",
-        photoUrl: "/team/shiara.webp",
-        github: "https://github.com/shiarauzo",
-        linkedin: "https://www.linkedin.com/in/shiara-arauzo/",
-        instagram: "https://www.instagram.com/the.research.blog",
-        website: "https://shiara.dev/",
-    },
-    {
-        name: "Ignacio Rueda",
-        position: "Backend Dev",
-        photoUrl: "/team/ignacio.webp",
-        github: "https://github.com/Jibaru",
-        linkedin: "https://www.linkedin.com/in/ignacior97/",
-    },
-    {
-        name: "Carlos Tarmeño",
-        position: "Frontend Dev",
-        photoUrl: "/team/tarmeno.webp",
-        github: "https://github.com/carlosdtn",
-        linkedin: "https://www.linkedin.com/in/carlos-tarmeno/",
-        website: "https://www.carlostarmeno.com/",
-    },
-    {
-        name: "Edward Ramos",
-        position: "Frontend Dev",
-        photoUrl: "/team/edward.webp",
-        github: "https://github.com/EdwardR0507",
-        linkedin: "https://www.linkedin.com/in/edwardramosvillarreal/",
-    },
-    {
-        name: "Liz Riveros",
-        position: "Project Manager",
-        photoUrl: "/team/liz.webp",
-        linkedin: "https://www.linkedin.com/in/lizethriveros/",
-    },
-];
+import { teamMembers } from "@/lib/constants/team";
 ---
 
 <div class="mt-4 sm:mt-6">
@@ -117,7 +40,7 @@ const teamMembers: TeamMember[] = [
     >
         {
             teamMembers.map((member) => (
-                <div class="group relative">
+                <a href={`/team/${member.username}`} class="group relative block">
                     <div class="aspect-square overflow-hidden rounded-lg sm:rounded-xl">
                         <img
                             src={member.photoUrl}
@@ -133,7 +56,7 @@ const teamMembers: TeamMember[] = [
                         <p class="text-[11px] sm:text-[12px] text-foreground/60">
                             {member.position}
                         </p>
-                        <div class="mt-1.5 sm:mt-2 flex">
+                        <div class="mt-1.5 sm:mt-2 flex" onclick="event.stopPropagation()">
                             {member.github && (
                                 <a
                                     href={member.github}
@@ -206,7 +129,7 @@ const teamMembers: TeamMember[] = [
                             )}
                         </div>
                     </div>
-                </div>
+                </a>
             ))
         }
     </div>

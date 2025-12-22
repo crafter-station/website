@@ -1,0 +1,100 @@
+---
+import SidebarLayout from "@/layouts/SidebarLayout.astro";
+import { teamMembers } from "@/lib/constants/team";
+import GithubIcon from "@/icons/github.svg";
+import LinkedinIcon from "@/icons/linkedin.svg";
+
+const member = teamMembers.find((m) => m.username === "tarmeno")!;
+
+const projects = [
+  { name: "UI Components", tech: "React + TS", status: "Active" },
+  { name: "Design System", tech: "Tailwind", status: "Active" },
+  { name: "Dashboard", tech: "Next.js", status: "Shipped" },
+];
+---
+
+<SidebarLayout
+  title={`${member.name} | Crafter Station`}
+  description={`${member.name} - ${member.position} at Crafter Station`}
+>
+  <div class="max-w-5xl pt-12 lg:pt-0 mx-auto">
+    <a
+      href="/team"
+      class="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-12"
+    >
+      <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Back to team
+    </a>
+
+    <div class="grid grid-cols-3 gap-4 mb-12">
+      <div class="col-span-1 row-span-2">
+        <div class="aspect-square overflow-hidden border border-neutral-800">
+          <img src={member.photoUrl} alt={member.name} class="w-full h-full object-cover" />
+        </div>
+      </div>
+      <div class="col-span-2 p-6 border border-indigo-500/30 bg-indigo-500/5">
+        <h1 class="text-3xl font-bold text-white mb-1">{member.name}</h1>
+        <p class="text-indigo-400">{member.position}</p>
+      </div>
+      <div class="col-span-2 p-6 border border-neutral-800 bg-neutral-900/50">
+        <p class="text-neutral-400 leading-relaxed">
+          Frontend Developer apasionado por crear interfaces intuitivas y accesibles.
+          Me encanta transformar diseños en código limpio y performante.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-5 gap-2 mb-12">
+      {member.skills.map((skill, i) => {
+        const sizes = ["col-span-2", "col-span-3", "col-span-2", "col-span-3", "col-span-2"];
+        return (
+          <div class={`${sizes[i % sizes.length]} p-4 border border-indigo-500/20 bg-indigo-500/5 hover:border-indigo-500/40 transition-colors`}>
+            <span class="text-sm text-neutral-300">{skill}</span>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-lg font-semibold text-white mb-4">Projects</h2>
+      <div class="grid grid-cols-3 gap-3">
+        {projects.map((project) => (
+          <div class="p-4 border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-800/50 transition-colors">
+            <div class="flex items-center justify-between mb-2">
+              <span class={`text-xs px-2 py-0.5 ${project.status === 'Active' ? 'bg-green-500/20 text-green-400' : 'bg-indigo-500/20 text-indigo-400'}`}>
+                {project.status}
+              </span>
+            </div>
+            <h3 class="font-medium text-white mb-1">{project.name}</h3>
+            <p class="text-xs text-neutral-500">{project.tech}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="flex gap-3">
+      {member.github && (
+        <a href={member.github} target="_blank" class="flex-1 p-4 border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-800/50 transition-colors text-center">
+          <GithubIcon class="size-5 mx-auto mb-1 text-neutral-400" />
+          <span class="text-sm text-neutral-500">GitHub</span>
+        </a>
+      )}
+      {member.linkedin && (
+        <a href={member.linkedin} target="_blank" class="flex-1 p-4 border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-800/50 transition-colors text-center">
+          <LinkedinIcon class="size-5 mx-auto mb-1 text-neutral-400" />
+          <span class="text-sm text-neutral-500">LinkedIn</span>
+        </a>
+      )}
+      {member.website && (
+        <a href={member.website} target="_blank" class="flex-1 p-4 border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 transition-colors text-center">
+          <svg class="size-5 mx-auto mb-1 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+          </svg>
+          <span class="text-sm text-indigo-400">Website</span>
+        </a>
+      )}
+    </div>
+  </div>
+</SidebarLayout>

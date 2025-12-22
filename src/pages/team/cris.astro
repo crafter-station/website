@@ -1,0 +1,97 @@
+---
+import SidebarLayout from "@/layouts/SidebarLayout.astro";
+import { teamMembers } from "@/lib/constants/team";
+import GithubIcon from "@/icons/github.svg";
+import LinkedinIcon from "@/icons/linkedin.svg";
+import XIcon from "@/icons/x.svg";
+
+const member = teamMembers.find((m) => m.username === "cris")!;
+
+const stats = [
+  { label: "Pipelines", value: "50+", color: "text-blue-400 border-blue-500/30 bg-blue-500/10" },
+  { label: "TB Data", value: "100+", color: "text-cyan-400 border-cyan-500/30 bg-cyan-500/10" },
+  { label: "ML Models", value: "20+", color: "text-teal-400 border-teal-500/30 bg-teal-500/10" },
+];
+---
+
+<SidebarLayout
+  title={`${member.name} | Crafter Station`}
+  description={`${member.name} - ${member.position} at Crafter Station`}
+>
+  <div class="max-w-5xl pt-12 lg:pt-0 mx-auto">
+    <a
+      href="/team"
+      class="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-12"
+    >
+      <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Back to team
+    </a>
+
+    <div class="flex items-start gap-6 mb-10">
+      <div class="w-20 h-20 overflow-hidden border border-neutral-800">
+        <img src={member.photoUrl} alt={member.name} class="w-full h-full object-cover" />
+      </div>
+      <div>
+        <h1 class="text-3xl font-bold text-white mb-1">{member.name}</h1>
+        <p class="text-cyan-400">{member.position}</p>
+        <div class="flex gap-3 mt-3">
+          {member.github && (
+            <a href={member.github} target="_blank" class="text-neutral-500 hover:text-white transition-colors">
+              <GithubIcon class="size-5" />
+            </a>
+          )}
+          {member.x && (
+            <a href={member.x} target="_blank" class="text-neutral-500 hover:text-white transition-colors">
+              <XIcon class="size-5" />
+            </a>
+          )}
+          {member.linkedin && (
+            <a href={member.linkedin} target="_blank" class="text-neutral-500 hover:text-white transition-colors">
+              <LinkedinIcon class="size-5" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mb-10">
+      {stats.map((stat) => (
+        <div class={`p-4 border ${stat.color}`}>
+          <div class="text-2xl font-bold">{stat.value}</div>
+          <div class="text-xs text-neutral-500 mt-1">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mb-10">
+      <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4">About</h2>
+      <p class="text-neutral-400 leading-relaxed">
+        Data & Software Engineer apasionado por transformar datos en insights accionables.
+        Me especializo en construir pipelines de datos escalables y modelos de ML que resuelven problemas reales.
+      </p>
+    </div>
+
+    <div class="mb-10">
+      <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4">Tech Stack</h2>
+      <div class="flex flex-wrap gap-2">
+        {member.skills.map((skill, i) => {
+          const colors = ["border-blue-500/30 text-blue-400", "border-cyan-500/30 text-cyan-400", "border-teal-500/30 text-teal-400"];
+          return (
+            <span class={`px-3 py-1 text-sm border bg-neutral-900/50 ${colors[i % colors.length]}`}>
+              {skill}
+            </span>
+          );
+        })}
+      </div>
+    </div>
+
+    <div class="p-4 border border-neutral-800 bg-gradient-to-r from-blue-500/5 via-cyan-500/5 to-teal-500/5">
+      <div class="flex items-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+        <span class="text-sm text-neutral-500">Currently working on data infrastructure @ Crafter Station</span>
+      </div>
+    </div>
+  </div>
+</SidebarLayout>
