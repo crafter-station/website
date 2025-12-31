@@ -101,4 +101,12 @@ export const teamMembers: TeamMember[] = [
     skills: ["Project Management", "Agile", "Scrum", "Leadership"],
     linkedin: "https://www.linkedin.com/in/lizethriveros/",
   },
+  {
+    username: "nicolas",
+    name: "Nicolas Vargas",
+    position: "",
+    photoUrl: "/team/nicolas.svg",
+    bio: "",
+    skills: [],
+  },
 ];
