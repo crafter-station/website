@@ -1,0 +1,85 @@
+---
+import SidebarLayout from "@/layouts/SidebarLayout.astro";
+import { teamMembers } from "@/lib/constants/team";
+
+const member = teamMembers.find((m) => m.username === "nicolas")!;
+---
+
+<SidebarLayout
+  title={`${member.name} | Crafter Station`}
+  description={`${member.name} - ${member.position} at Crafter Station`}
+>
+  <div class="max-w-5xl pt-12 lg:pt-0 mx-auto font-mono">
+    <a
+      href="/team"
+      class="inline-flex items-center gap-2 text-sm text-green-500/60 hover:text-green-500 transition-colors mb-12"
+    >
+      <span>cd ..</span>
+    </a>
+
+    <div class="border border-green-500/30 overflow-hidden bg-black/50">
+      <div class="flex items-center gap-2 px-4 py-2 bg-green-500/10 border-b border-green-500/30">
+        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+        <span class="ml-2 text-xs text-green-500/60">nicolas@crafter-station:~</span>
+      </div>
+
+      <div class="p-6 space-y-4 text-sm">
+        <div>
+          <span class="text-green-500">$</span>
+          <span class="text-neutral-400 ml-2">cat profile.json</span>
+        </div>
+
+        <pre class="text-green-400/90 overflow-x-auto"><code>{`{
+  "name": "${member.name}",
+  "role": "${member.position}",
+  "location": "Boyacá, Colombia",
+  "status": "Building cool stuff"
+}`}</code></pre>
+
+        <div class="pt-4">
+          <span class="text-green-500">$</span>
+          <span class="text-neutral-400 ml-2">cat links.txt</span>
+        </div>
+
+        <div class="space-y-1 text-sm">
+          {member.github && (
+            <div>
+              <span class="text-yellow-400">github</span>
+              <span class="text-neutral-500"> → </span>
+              <a href={member.github} target="_blank" class="text-blue-400 hover:underline">{member.github}</a>
+            </div>
+          )}
+          {member.x && (
+            <div>
+              <span class="text-yellow-400">x</span>
+              <span class="text-neutral-500"> → </span>
+              <a href={member.x} target="_blank" class="text-blue-400 hover:underline">{member.x}</a>
+            </div>
+          )}
+          {member.website && (
+            <div>
+              <span class="text-yellow-400">web</span>
+              <span class="text-neutral-500"> → </span>
+              <a href={member.website} target="_blank" class="text-blue-400 hover:underline">{member.website}</a>
+            </div>
+          )}
+        </div>
+
+        <div class="pt-4 flex items-center">
+          <span class="text-green-500">$</span>
+          <span class="ml-2 w-2 h-4 bg-green-500 animate-pulse"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <img
+        src={member.photoUrl}
+        alt={member.name}
+        class="w-24 h-24 border-2 border-green-500/50 grayscale hover:grayscale-0 transition-all"
+      />
+    </div>
+  </div>
+</SidebarLayout>
