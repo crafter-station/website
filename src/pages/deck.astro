@@ -1,0 +1,50 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { PresentationDeck } from "@/components/PresentationDeck";
+import { teamMembers } from "@/lib/constants/team";
+
+const projects = [
+    {
+        name: "tinte",
+        description: "Theme generator for VSCode & shadcn/ui",
+        href: "https://www.tinte.dev",
+        tags: ["VSCode", "shadcn/ui"],
+        stars: "500+",
+    },
+    {
+        name: "lupa",
+        description: "Knowledge Platform for AI Agents",
+        href: "https://www.lupa.build",
+        tags: ["AI", "RAG"],
+        stars: "New",
+    },
+    {
+        name: "elements",
+        description: "Fullstack shadcn/ui components",
+        href: "https://www.tryelements.dev/",
+        tags: ["React", "Fullstack"],
+        stars: "200+",
+    },
+    {
+        name: "text0",
+        description: "Absurdly smart autocomplete",
+        href: "https://www.text0.dev",
+        tags: ["AI", "Editor"],
+        stars: "Winner",
+    },
+];
+
+const teamData = teamMembers.map((member) => ({
+    username: member.username,
+    name: member.name,
+    position: member.position,
+    photoUrl: member.photoUrl,
+}));
+---
+
+<BaseLayout
+    title="Deck | Crafter Station"
+    description="Learn about Crafter Station - an open source community building developer tools in public from Peru."
+>
+    <PresentationDeck client:load teamMembers={teamData} projects={projects} />
+</BaseLayout>
