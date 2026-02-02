@@ -1,0 +1,321 @@
+---
+import SidebarLayout from "@/layouts/SidebarLayout.astro";
+import CrafterIcon from "@/icons/crafter.svg";
+
+const logoAssets = [
+    {
+        name: "Logo (Gold)",
+        description: "Primary logo with gold accent",
+        preview: "/brand/logo-gold.svg",
+        svg: "/brand/logo-gold.svg",
+        darkBg: true,
+    },
+    {
+        name: "Logo (White)",
+        description: "White logo for dark backgrounds",
+        preview: "/brand/logo-white.svg",
+        svg: "/brand/logo-white.svg",
+        darkBg: true,
+    },
+    {
+        name: "Logo (Black)",
+        description: "Black logo for light backgrounds",
+        preview: "/brand/logo-black.svg",
+        svg: "/brand/logo-black.svg",
+        darkBg: false,
+    },
+];
+
+const iconAssets = [
+    {
+        name: "Icon (Gold)",
+        description: "Primary brand color",
+        preview: "/brand/icon-gold.svg",
+        svg: "/brand/icon-gold.svg",
+        darkBg: true,
+    },
+    {
+        name: "Icon (White)",
+        description: "For dark backgrounds",
+        preview: "/brand/icon-white.svg",
+        svg: "/brand/icon-white.svg",
+        darkBg: true,
+    },
+    {
+        name: "Icon (Black)",
+        description: "For light backgrounds",
+        preview: "/brand/icon-black.svg",
+        svg: "/brand/icon-black.svg",
+        darkBg: false,
+    },
+];
+
+const wordmarkAssets = [
+    {
+        name: "Wordmark (Gold)",
+        description: "Primary wordmark style",
+        preview: "/brand/wordmark-gold.svg",
+        svg: "/brand/wordmark-gold.svg",
+        darkBg: true,
+    },
+    {
+        name: "Wordmark (White)",
+        description: "For dark backgrounds",
+        preview: "/brand/wordmark-white.svg",
+        svg: "/brand/wordmark-white.svg",
+        darkBg: true,
+    },
+    {
+        name: "Wordmark (Black)",
+        description: "For light backgrounds",
+        preview: "/brand/wordmark-black.svg",
+        svg: "/brand/wordmark-black.svg",
+        darkBg: false,
+    },
+];
+
+const colors = [
+    { name: "Primary Gold", hex: "#FFD700", textDark: true },
+    { name: "Background", hex: "#000000", textDark: false },
+    { name: "Foreground", hex: "#FAFAFA", textDark: true },
+    { name: "Card", hex: "#0A0A0A", textDark: false },
+    { name: "Secondary", hex: "#1A1A1A", textDark: false },
+    { name: "Muted", hex: "#666666", textDark: false },
+];
+---
+
+<SidebarLayout
+    title="Brand | Crafter Station"
+    description="Crafter Station brand assets, guidelines, and resources for press and partners."
+>
+    <div class="max-w-4xl">
+        <!-- Hero -->
+        <div class="mb-16">
+            <div class="flex items-center gap-4 mb-6">
+                <div class="p-3 bg-primary/10 border border-primary/20">
+                    <CrafterIcon class="size-8 text-primary" />
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Brand</h1>
+            <p class="text-lg text-neutral-400 max-w-2xl">
+                Resources and guidelines for using the Crafter Station brand. Download logos, access our color palette, and learn how to represent us correctly.
+            </p>
+        </div>
+
+        <!-- Naming -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-white mb-4">Naming</h2>
+            <div class="p-6 bg-neutral-950 border border-neutral-800 rounded-lg">
+                <p class="text-neutral-300 mb-4">
+                    <span class="text-white font-semibold">"Crafter Station"</span> is our brand name and should always be written as two words with capital letters.
+                </p>
+                <div class="flex flex-wrap gap-4 text-sm">
+                    <div class="flex items-center gap-2">
+                        <svg class="size-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-neutral-400">Crafter Station</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="size-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <span class="text-neutral-500 line-through">CrafterStation</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="size-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <span class="text-neutral-500 line-through">crafter station</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="size-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <span class="text-neutral-500 line-through">Crafter-Station</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logo -->
+        <section class="mb-16">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-white">Logo</h2>
+            </div>
+            <p class="text-neutral-400 mb-6">
+                The full logo combines our icon with the wordmark. Use this as the primary representation of our brand.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {logoAssets.map((asset) => (
+                    <div class="group relative border border-neutral-800 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
+                        <div class:list={["aspect-[5/3] flex items-center justify-center p-6", asset.darkBg ? "bg-neutral-950" : "bg-white"]}>
+                            <img src={asset.preview} alt={asset.name} class="max-h-12 w-auto" />
+                        </div>
+                        <div class="p-4 bg-neutral-900/50">
+                            <p class="text-sm font-medium text-white">{asset.name}</p>
+                            <p class="text-xs text-neutral-500">{asset.description}</p>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a
+                                href={asset.svg}
+                                download
+                                class="px-4 py-2 bg-primary text-black text-sm font-medium hover:bg-primary/90 transition-colors"
+                            >
+                                Download SVG
+                            </a>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Icon -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-white mb-4">Icon</h2>
+            <p class="text-neutral-400 mb-6">
+                Use the icon alone when space is limited or when the brand is already established in context.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {iconAssets.map((asset) => (
+                    <div class="group relative border border-neutral-800 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
+                        <div class:list={["aspect-square flex items-center justify-center p-8", asset.darkBg ? "bg-neutral-950" : "bg-white"]}>
+                            <img src={asset.preview} alt={asset.name} class="size-20" />
+                        </div>
+                        <div class="p-4 bg-neutral-900/50">
+                            <p class="text-sm font-medium text-white">{asset.name}</p>
+                            <p class="text-xs text-neutral-500">{asset.description}</p>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a
+                                href={asset.svg}
+                                download
+                                class="px-4 py-2 bg-primary text-black text-sm font-medium hover:bg-primary/90 transition-colors"
+                            >
+                                Download SVG
+                            </a>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Wordmark -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-white mb-4">Wordmark</h2>
+            <p class="text-neutral-400 mb-6">
+                The wordmark can be used when horizontal space is available and the icon isn't necessary.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {wordmarkAssets.map((asset) => (
+                    <div class="group relative border border-neutral-800 rounded-lg overflow-hidden hover:border-primary/50 transition-colors">
+                        <div class:list={["aspect-[3/1] flex items-center justify-center p-6", asset.darkBg ? "bg-neutral-950" : "bg-white"]}>
+                            <img src={asset.preview} alt={asset.name} class="max-h-8 w-auto" />
+                        </div>
+                        <div class="p-4 bg-neutral-900/50">
+                            <p class="text-sm font-medium text-white">{asset.name}</p>
+                            <p class="text-xs text-neutral-500">{asset.description}</p>
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <a
+                                href={asset.svg}
+                                download
+                                class="px-4 py-2 bg-primary text-black text-sm font-medium hover:bg-primary/90 transition-colors"
+                            >
+                                Download SVG
+                            </a>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Colors -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-white mb-4">Colors</h2>
+            <p class="text-neutral-400 mb-6">
+                Our primary color is gold, representing craft, quality, and innovation. The dark palette provides contrast and sophistication.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {colors.map((color) => (
+                    <div class="border border-neutral-800 rounded-lg overflow-hidden">
+                        <div
+                            class="h-24 flex items-end p-3"
+                            style={`background-color: ${color.hex};`}
+                        >
+                            <span class:list={["text-xs font-mono", color.textDark ? "text-black" : "text-white"]}>
+                                {color.hex}
+                            </span>
+                        </div>
+                        <div class="p-3 bg-neutral-900/50">
+                            <p class="text-sm font-medium text-white">{color.name}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-white mb-4">Typography</h2>
+            <p class="text-neutral-400 mb-6">
+                We use Inter as our primary typeface for its clarity and modern feel.
+            </p>
+            <div class="space-y-4">
+                <div class="p-6 bg-neutral-950 border border-neutral-800 rounded-lg">
+                    <p class="text-xs text-neutral-500 mb-2">Primary Font</p>
+                    <p class="text-4xl font-bold text-white mb-2" style="font-family: Inter, system-ui, sans-serif;">Inter</p>
+                    <p class="text-neutral-400 text-sm">
+                        Used for headings, body text, and UI elements. Weights: 400, 500, 600, 700, 800, 900.
+                    </p>
+                    <a
+                        href="https://fonts.google.com/specimen/Inter"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 text-primary text-sm mt-4 hover:underline"
+                    >
+                        Get Inter on Google Fonts
+                        <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="p-6 bg-neutral-950 border border-neutral-800 rounded-lg">
+                    <p class="text-xs text-neutral-500 mb-2">Monospace Font</p>
+                    <p class="text-4xl font-bold text-white mb-2 font-mono">JetBrains Mono</p>
+                    <p class="text-neutral-400 text-sm">
+                        Used for code snippets and technical content. Weights: 400, 500, 600.
+                    </p>
+                    <a
+                        href="https://fonts.google.com/specimen/JetBrains+Mono"
+                        target="_blank"
+                        class="inline-flex items-center gap-2 text-primary text-sm mt-4 hover:underline"
+                    >
+                        Get JetBrains Mono on Google Fonts
+                        <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Questions -->
+        <section class="mb-8">
+            <div class="p-6 bg-primary/5 border border-primary/20 rounded-lg">
+                <h2 class="text-xl font-bold text-white mb-2">Questions?</h2>
+                <p class="text-neutral-400 mb-4">
+                    If you need additional assets or have questions about using our brand, feel free to reach out.
+                </p>
+                <a
+                    href="mailto:hello@crafter.run"
+                    class="inline-flex items-center gap-2 text-primary hover:underline"
+                >
+                    hello@crafter.run
+                    <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </div>
+</SidebarLayout>
