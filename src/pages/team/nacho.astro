@@ -1,0 +1,154 @@
+---
+import SidebarLayout from "@/layouts/SidebarLayout.astro";
+import { teamMembers } from "@/lib/constants/team";
+import LinkedinIcon from "@/icons/linkedin.svg";
+
+const member = teamMembers.find((m) => m.username === "nacho")!;
+
+const stats = [
+  { label: "Products Launched", value: "150+", icon: "🚀" },
+  { label: "PH Upvotes", value: "7K+", icon: "⬆" },
+  { label: "Happy Customers", value: "70K+", icon: "⚡" },
+];
+---
+
+<SidebarLayout
+  title={`${member.name} | Crafter Station`}
+  description={`${member.name} - ${member.position} at Crafter Station`}
+>
+  <style>
+    @keyframes launch {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-40px); opacity: 0; }
+    }
+    @keyframes count {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .launch-particle {
+      animation: launch 2s ease-out infinite;
+    }
+    .launch-delay-1 { animation-delay: 0.5s; }
+    .launch-delay-2 { animation-delay: 1s; }
+    .stat-pulse {
+      animation: count 3s ease-in-out infinite;
+    }
+    .stat-delay-1 { animation-delay: 1s; }
+    .stat-delay-2 { animation-delay: 2s; }
+  </style>
+
+  <div class="max-w-5xl pt-12 lg:pt-0 mx-auto">
+    <a
+      href="/team"
+      class="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors mb-12"
+    >
+      <svg class="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+      Back to team
+    </a>
+
+    <div class="relative mb-12">
+      <div class="absolute -top-4 right-12 text-orange-400/30 text-2xl launch-particle">▲</div>
+      <div class="absolute top-0 right-24 text-amber-400/20 text-lg launch-particle launch-delay-1">▲</div>
+      <div class="absolute -top-2 right-6 text-yellow-400/25 text-xl launch-particle launch-delay-2">▲</div>
+
+      <div class="flex items-start gap-6">
+        <div class="relative">
+          <img
+            src={member.photoUrl}
+            alt={member.name}
+            class="w-24 h-24 object-cover border-2 border-orange-500/30"
+          />
+          <div class="absolute -bottom-1 -right-1 w-4 h-4 bg-orange-500 border-2 border-neutral-950 rounded-full"></div>
+        </div>
+        <div>
+          <h1 class="text-3xl font-bold text-white mb-1">{member.name}</h1>
+          <p class="text-orange-400 font-medium">{member.position}</p>
+          <p class="text-neutral-500 text-sm mt-1">Serial Indie Maker &middot; Lima, Peru</p>
+          <div class="flex gap-3 mt-3">
+            {member.linkedin && (
+              <a href={member.linkedin} target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-white transition-colors">
+                <LinkedinIcon class="size-5" />
+              </a>
+            )}
+            {member.website && (
+              <a href={member.website} target="_blank" rel="noopener noreferrer" class="text-neutral-500 hover:text-white transition-colors">
+                <svg class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                </svg>
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mb-10">
+      {stats.map((stat, i) => (
+        <div class={`p-4 border border-orange-500/20 bg-orange-500/5 text-center stat-pulse ${i === 1 ? 'stat-delay-1' : i === 2 ? 'stat-delay-2' : ''}`}>
+          <div class="text-lg mb-1">{stat.icon}</div>
+          <div class="text-2xl font-bold text-orange-400">{stat.value}</div>
+          <div class="text-xs text-neutral-500 mt-1">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mb-10">
+      <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4">About</h2>
+      <p class="text-neutral-400 leading-relaxed">
+        Maker serial con 150+ productos lanzados. Co-fundador de Nucleo Lab, la agencia lider de
+        automatizacion e IA en Peru. Head of Builders en Sundai Latam. Experto en Product Hunt
+        con 25+ productos en el Top 5 del dia y 7,000+ upvotes.
+      </p>
+    </div>
+
+    <div class="mb-10">
+      <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4">Stack</h2>
+      <div class="flex flex-wrap gap-2">
+        {member.skills.map((skill, i) => {
+          const colors = ["border-orange-500/30 text-orange-400", "border-amber-500/30 text-amber-400", "border-yellow-500/30 text-yellow-400"];
+          return (
+            <span class={`px-3 py-1 text-sm border bg-neutral-900/50 ${colors[i % colors.length]}`}>
+              {skill}
+            </span>
+          );
+        })}
+      </div>
+    </div>
+
+    <div class="mb-10">
+      <h2 class="text-xs uppercase tracking-wider text-neutral-500 mb-4">Ventures</h2>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3 p-3 border border-neutral-800 hover:border-orange-500/30 transition-colors">
+          <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+          <div>
+            <span class="text-white text-sm font-medium">Nucleo Lab</span>
+            <span class="text-neutral-500 text-sm ml-2">AI & Automation Agency</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 border border-neutral-800 hover:border-orange-500/30 transition-colors">
+          <div class="w-2 h-2 rounded-full bg-amber-500"></div>
+          <div>
+            <span class="text-white text-sm font-medium">GPT Chain</span>
+            <span class="text-neutral-500 text-sm ml-2">Automation Engine for Chat</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 border border-neutral-800 hover:border-orange-500/30 transition-colors">
+          <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+          <div>
+            <span class="text-white text-sm font-medium">Sundai Latam</span>
+            <span class="text-neutral-500 text-sm ml-2">Head of Builders</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4 border border-neutral-800 bg-gradient-to-r from-orange-500/5 via-amber-500/5 to-yellow-500/5">
+      <div class="flex items-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+        <span class="text-sm text-neutral-500">Launching products & growing communities @ Crafter Station</span>
+      </div>
+    </div>
+  </div>
+</SidebarLayout>

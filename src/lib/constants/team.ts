@@ -112,4 +112,14 @@ export const teamMembers: TeamMember[] = [
     x: "https://x.com/MrUprizing",
     website: "https://uprizing.me/",
   },
+  {
+    username: "nacho",
+    name: "Ignacio Velásquez",
+    position: "Growth & Automation",
+    photoUrl: "/team/nacho.webp",
+    bio: "",
+    skills: ["Automation", "AI", "Notion", "Product Hunt", "Growth Hacking", "Content Marketing"],
+    linkedin: "https://www.linkedin.com/in/ignacio-velasquez-franco/",
+    website: "https://theveller.gumroad.com/",
+  },
 ];
