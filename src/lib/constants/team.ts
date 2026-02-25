@@ -119,7 +119,7 @@ export const teamMembers: TeamMember[] = [
     photoUrl: "/team/nacho.webp",
     bio: "",
     skills: ["Automation", "AI", "Notion", "Product Hunt", "Growth Hacking", "Content Marketing"],
-    linkedin: "https://www.linkedin.com/in/ignacio-velasquez-franco/",
+    linkedin: "https://www.linkedin.com/in/ignacio-vel%C3%A1squez-franco-3a5765204/",
     website: "https://theveller.gumroad.com/",
   },
 ];
