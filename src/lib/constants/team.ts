@@ -142,6 +142,7 @@ export const teamMembers: TeamMember[] = [
     skills: ['Go', 'Python', 'PostgreSQL', 'Docker', 'REST APIs', 'Distributed Systems'],
     github: 'https://github.com/Jibaru',
     linkedin: 'https://www.linkedin.com/in/ignacior97/',
+    cal: "https://cal.com/irueda/30min",
     joinedYear: 2024,
   },
   {
