@@ -159,6 +159,7 @@ const calSlug = member.cal ? member.cal.replace('https://cal.com/', '') : null;
           id={`cal-embed-${member.username}`}
           class="max-w-[1280px] mx-auto"
           style="width:100%;height:660px;overflow:scroll;"
+          data-member={member.username}
         ></div>
       </section>
     )}
@@ -168,10 +169,7 @@ const calSlug = member.cal ? member.cal.replace('https://cal.com/', '') : null;
 </BaseLayout>
 
 {member.cal && calSlug && (
-  <script define:vars={{ calSlug, memberId: member.username }}>
-    import { track } from '@vercel/analytics';
-    track('cal_booking_init', { member: memberId });
-
+  <script define:vars={{ calSlug, memberId: member.username }} is:inline>
     (function(C, A, L) {
       var p = function(a, ar) { a.q.push(ar); };
       var d = C.document;
@@ -226,5 +224,13 @@ const calSlug = member.cal ? member.cal.replace('https://cal.com/', '') : null;
       hideEventTypeDetails: false,
       layout: "month_view"
     });
+  </script>
+)}
+
+{member.cal && calSlug && (
+  <script>
+    import { track } from '@vercel/analytics';
+    const el = document.querySelector('[data-member]') as HTMLElement | null;
+    if (el?.dataset.member) track('cal_booking_init', { member: el.dataset.member });
   </script>
 )}
