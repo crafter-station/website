@@ -24,6 +24,7 @@ export const ui = {
     // Hero
     'hero.headline': 'The new generation of shippers in LATAM',
     'hero.sub': 'A community of engineers, designers, and builders who ship products and share what they learn.',
+    'hero.mentoring': 'Free mentoring available — book a call with our team',
 
     // What is section
     'what.heading': 'What is Crafter Station?',
@@ -150,6 +151,7 @@ export const ui = {
     // Hero
     'hero.headline': 'La nueva generación de shippers en LATAM',
     'hero.sub': 'Una comunidad de ingenieros, diseñadores y builders que shippen productos y comparten lo que aprenden.',
+    'hero.mentoring': 'Mentoría gratuita disponible — agenda una llamada con nuestro equipo',
 
     // What is section
     'what.heading': '¿Qué es Crafter Station?',
@@ -276,6 +278,7 @@ export const ui = {
     // Hero
     'hero.headline': 'A nova geração de shippers no LATAM',
     'hero.sub': 'Uma comunidade de engenheiros, designers e builders que fazem ship de produtos e compartilham o que aprendem.',
+    'hero.mentoring': 'Mentoria gratuita disponível — agende uma conversa com nosso time',
 
     // What is section
     'what.heading': 'O que é Crafter Station?',
