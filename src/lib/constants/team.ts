@@ -56,6 +56,7 @@ export const teamMembers: TeamMember[] = [
       linkedin: 'https://www.linkedin.com/in/cristiancamilocorrea/',
       x: 'https://x.com/camilocbarrera',
       website: 'https://cristiancorrea.xyz/',
+      cal: "https://cal.com/cristian-correa/30min",
       joinedYear: 2024,
     },
   {
@@ -158,6 +159,7 @@ export const teamMembers: TeamMember[] = [
     linkedin: 'https://linkedin.com/in/cuevaio',
     x: 'https://x.com/cuevaio',
     website: 'https://www.cueva.io',
+    instagram: "https://www.instagram.com/cueva.io",
     projects: ['text0', 'lupa'],
     cal: "https://cal.com/cuevaio/30min",
     joinedYear: 2023,
