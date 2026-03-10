@@ -48,11 +48,8 @@ export const ui = {
 
     // Stats
     'stats.heading': 'The community of shippers',
-    'stats.fig1': 'Fig 1.',
     'stats.fig1.label': 'Community members',
-    'stats.fig2': 'Fig 2.',
     'stats.fig2.label': 'Events hosted',
-    'stats.fig3': 'Fig 3.',
     'stats.fig3.label': 'Shipped products',
 
     // Story
@@ -177,11 +174,8 @@ export const ui = {
 
     // Stats
     'stats.heading': 'La comunidad de shippers',
-    'stats.fig1': 'Fig 1.',
     'stats.fig1.label': 'Miembros de la comunidad',
-    'stats.fig2': 'Fig 2.',
     'stats.fig2.label': 'Eventos realizados',
-    'stats.fig3': 'Fig 3.',
     'stats.fig3.label': 'Productos shipeados',
 
     // Story
@@ -306,11 +300,8 @@ export const ui = {
 
     // Stats
     'stats.heading': 'A comunidade de shippers',
-    'stats.fig1': 'Fig 1.',
     'stats.fig1.label': 'Membros da comunidade',
-    'stats.fig2': 'Fig 2.',
     'stats.fig2.label': 'Eventos realizados',
-    'stats.fig3': 'Fig 3.',
     'stats.fig3.label': 'Produtos entregues',
 
     // Story
