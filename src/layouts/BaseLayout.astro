@@ -1,31 +1,73 @@
 ---
 import "../styles/global.css";
 import Analytics from "@vercel/analytics/astro";
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { languages, defaultLang } from '@/i18n/utils';
+import type { Lang } from '@/i18n/utils';
 
 interface Props {
-	title: string;
-	description: string;
+  title: string;
+  description: string;
+  lang?: Lang;
+  ogImage?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, lang = defaultLang, ogImage } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://crafter-station.com');
+
+// Build hreflang alternates
+const routePath = (() => {
+  const pathname = Astro.url.pathname;
+  const [, maybeLang, ...rest] = pathname.split('/');
+  if (maybeLang in languages && maybeLang !== defaultLang) {
+    return `/${rest.join('/')}` || '/';
+  }
+  return pathname;
+})();
 ---
 
-<html lang="en" class="dark scroll-smooth">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="description" content={description} />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-		<title>{title}</title>
-	</head>
-	<body class="min-h-screen selection:bg-primary/30 selection:text-primary-foreground">
-		<main class="h-full w-full">
-			<slot />
-		</main>
-		<Analytics />
-	</body>
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- hreflang alternates -->
+    {Object.keys(languages).map((l) => (
+      <link
+        rel="alternate"
+        hreflang={l}
+        href={getAbsoluteLocaleUrl(l, routePath)}
+      />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl(defaultLang, routePath)} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- IBM Plex Mono — the single font for everything -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-background text-foreground antialiased">
+    <slot />
+    <Analytics />
+  </body>
 </html>

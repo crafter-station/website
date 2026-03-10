@@ -1,89 +1,79 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import BaseLayout from "./BaseLayout.astro";
-import FormattedDate from "@/components/FormattedDate.astro";
-import CrafterIcon from "@/icons/crafter.svg";
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Nav from '@/components/Nav.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
 
 type Props = {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 };
 
 const { post } = Astro.props;
-const { title, description, pubDate, updatedDate, heroImage } = post.data;
+const { title, description, pubDate, updatedDate } = post.data;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
 ---
 
-<BaseLayout title={title} description={description}>
-  <div class="min-h-screen bg-black">
-    <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-neutral-900">
-      <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-3 text-white hover:text-primary transition-colors">
-          <div class="p-2 border border-neutral-800">
-            <CrafterIcon class="size-5 text-primary" />
-          </div>
-          <span class="text-sm font-medium hidden sm:block">Crafter Station</span>
-        </a>
-        <a href="/blog" class="text-sm text-neutral-400 hover:text-white transition-colors">
-          ← All posts
-        </a>
-      </div>
-    </header>
+<BaseLayout lang={lang} title={`${title} — Crafter Station`} description={description}>
+  <Nav />
 
-    <!-- Article -->
-    <article class="max-w-3xl mx-auto px-6 pt-32 pb-24">
-      <header class="mb-12">
-        {heroImage && (
-          <img
-            class="w-full mb-8 border border-neutral-800"
-            src={heroImage}
-            alt=""
-          />
-        )}
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-          {title}
-        </h1>
-        <p class="text-lg text-neutral-400 mb-6">{description}</p>
-        <div class="flex items-center gap-3 text-sm text-neutral-500">
-          <FormattedDate date={pubDate} />
-          {updatedDate && (
-            <>
-              <span class="text-neutral-700">·</span>
-              <span>Updated <FormattedDate date={updatedDate} /></span>
-            </>
+  <main>
+    <!-- Article header -->
+    <section class="border-b border-divider px-6 py-16 max-w-[800px] mx-auto">
+      <a
+        href={tp('/blog')}
+        class="text-sm text-muted-foreground hover:text-foreground transition-colors mb-10 inline-block"
+      >
+        ← {t('blog.cta').replace(' →', '')}
+      </a>
+
+      <div class="flex flex-wrap items-center gap-4 mt-6 mb-6">
+        <time class="text-xs text-bullet">
+          {pubDate.toLocaleDateString(
+            lang === 'pt-br' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
+            { year: 'numeric', month: 'long', day: 'numeric' }
           )}
-        </div>
-      </header>
+        </time>
+        {updatedDate && (
+          <span class="text-xs text-bullet">
+            Updated: {updatedDate.toLocaleDateString(
+              lang === 'pt-br' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
+              { year: 'numeric', month: 'long', day: 'numeric' }
+            )}
+          </span>
+        )}
+      </div>
 
-      <div class="prose prose-invert prose-neutral max-w-none
-        prose-headings:text-white prose-headings:font-bold
-        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
-        prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-        prose-p:text-neutral-300 prose-p:leading-relaxed
-        prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-        prose-strong:text-white
-        prose-code:text-primary prose-code:bg-neutral-900 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-none prose-code:before:content-none prose-code:after:content-none
-        prose-pre:bg-neutral-950 prose-pre:border prose-pre:border-neutral-800 prose-pre:rounded-none
-        prose-blockquote:border-l-primary prose-blockquote:bg-neutral-950 prose-blockquote:py-1 prose-blockquote:px-6
-        prose-li:text-neutral-300
-        prose-img:border prose-img:border-neutral-800
+      <h1 class="text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4">{title}</h1>
+      <p class="text-sm text-muted-foreground leading-relaxed">{description}</p>
+    </section>
+
+    <!-- Article body -->
+    <article class="px-6 py-16 max-w-[800px] mx-auto">
+      <div class="prose prose-invert max-w-none
+        [&_h1]:font-bold [&_h1]:text-foreground [&_h1]:text-2xl [&_h1]:mt-12 [&_h1]:mb-4
+        [&_h2]:font-bold [&_h2]:text-foreground [&_h2]:text-xl [&_h2]:mt-12 [&_h2]:mb-4
+        [&_h3]:font-bold [&_h3]:text-foreground [&_h3]:text-lg [&_h3]:mt-8 [&_h3]:mb-3
+        [&_p]:text-muted-foreground [&_p]:leading-relaxed [&_p]:mb-4
+        [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-muted-foreground
+        [&_strong]:text-foreground [&_strong]:font-bold
+        [&_code]:text-foreground [&_code]:bg-secondary [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-xs [&_code]:before:content-none [&_code]:after:content-none
+        [&_pre]:bg-secondary [&_pre]:border [&_pre]:border-divider [&_pre]:p-4 [&_pre]:overflow-x-auto [&_pre]:rounded-none
+        [&_pre_code]:bg-transparent [&_pre_code]:p-0
+        [&_blockquote]:border-l-2 [&_blockquote]:border-divider [&_blockquote]:pl-6 [&_blockquote]:ml-0 [&_blockquote]:text-muted-foreground
+        [&_ul]:list-none [&_ul]:pl-0
+        [&_ul_li]:before:content-['[*]'] [&_ul_li]:before:text-bullet [&_ul_li]:before:mr-3 [&_ul_li]:before:text-sm [&_ul_li]:text-muted-foreground [&_ul_li]:mb-2 [&_ul_li]:flex [&_ul_li]:items-start [&_ul_li]:gap-2
+        [&_ol]:list-decimal [&_ol]:pl-6 [&_ol_li]:text-muted-foreground [&_ol_li]:mb-2
+        [&_img]:border [&_img]:border-divider [&_img]:w-full
+        [&_hr]:border-divider [&_hr]:my-8
       ">
         <slot />
       </div>
     </article>
+  </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-neutral-900 bg-gradient-to-t from-neutral-950 to-transparent">
-      <div class="max-w-3xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <CrafterIcon class="size-5 text-primary" />
-          <span class="text-sm text-neutral-400">Crafter Station</span>
-        </div>
-        <div class="flex items-center gap-6 text-sm">
-          <a href="/blog" class="text-neutral-500 hover:text-white transition-colors">Blog</a>
-          <a href="/team" class="text-neutral-500 hover:text-white transition-colors">Team</a>
-          <a href="https://github.com/crafter-station" target="_blank" class="text-neutral-500 hover:text-white transition-colors">GitHub</a>
-        </div>
-      </div>
-    </footer>
-  </div>
+  <SiteFooter />
 </BaseLayout>

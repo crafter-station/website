@@ -1,0 +1,452 @@
+---
+export const revalidate = 21600; // revalidate every 6 hours
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Nav from '@/components/Nav.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+import { teamMembers } from '@/lib/constants/team';
+import { fetchCrafterStationEvents, formatEventDate } from '@/lib/luma';
+import { getCollection } from 'astro:content';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+
+const projects = [
+  {
+    name: 'tinte',
+    description: 'Theme generator for VSCode & shadcn/ui',
+    href: 'https://www.tinte.dev',
+    badge: '500+ stars',
+  },
+  {
+    name: 'lupa',
+    description: 'Knowledge Platform for AI Agents',
+    href: 'https://www.lupa.build',
+    badge: 'New',
+  },
+  {
+    name: 'elements',
+    description: 'Fullstack shadcn/ui components',
+    href: 'https://www.tryelements.dev/',
+    badge: '200+ stars',
+  },
+  {
+    name: 'text0',
+    description: 'Absurdly smart autocomplete',
+    href: 'https://www.text0.dev',
+    badge: 'Winner',
+  },
+];
+
+const posts = await getCollection('blog');
+const publishedPosts = posts
+  .filter((p) => import.meta.env.DEV || !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const { upcoming, past } = await fetchCrafterStationEvents();
+const nextEvent = upcoming[0];
+const previewEvents = [
+  ...upcoming.slice(0, 4),
+  ...past.slice(0, Math.max(0, 4 - upcoming.length)),
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title="Crafter Station — The new generation of shippers in LATAM"
+  description="A community of engineers, designers, and builders who ship products and share what they learn. Code Brews, hackathons, and projects from LATAM."
+>
+  <Nav />
+
+  <main>
+    <!-- ── ANNOUNCEMENT BANNER ── -->
+    {nextEvent && (
+      <div class="w-full border-b border-divider px-6 py-3 flex items-center gap-3 max-w-[1280px] mx-auto">
+        <span class="inline-block px-2 py-0.5 bg-foreground text-background text-xs font-medium">
+          New
+        </span>
+        <span class="text-sm text-muted-foreground">
+          {nextEvent.title} — {nextEvent.location}
+        </span>
+        <a href={tp('/events')} class="text-sm text-muted-foreground hover:text-foreground transition-colors ml-auto shrink-0">
+          {t('announce.cta')}
+        </a>
+      </div>
+    )}
+
+    <!-- ── HERO ── -->
+    <section class="border-b border-divider px-6 py-20 md:py-28 max-w-[1280px] mx-auto">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-3xl">
+        {t('hero.headline')}
+      </h1>
+      <p class="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+        {t('hero.sub')}
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href="https://crafters.chat"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-medium hover:bg-muted-foreground transition-colors"
+        >
+          {t('nav.join')} →
+        </a>
+        <a
+          href={tp('/events')}
+          class="inline-flex items-center gap-2 px-5 py-2.5 border border-divider text-muted-foreground text-sm hover:text-foreground hover:border-muted-foreground transition-colors"
+        >
+          {t('events.cta')}
+        </a>
+      </div>
+    </section>
+
+    <!-- ── WHAT IS CRAFTER STATION ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-2">{t('what.heading')}</h2>
+      <p class="text-sm text-muted-foreground mb-10 max-w-2xl">{t('what.desc')}</p>
+
+      <ul class="flex flex-col gap-0 divide-y divide-divider">
+        {([
+          { title: t('what.b1.title'), desc: t('what.b1.desc') },
+          { title: t('what.b2.title'), desc: t('what.b2.desc') },
+          { title: t('what.b3.title'), desc: t('what.b3.desc') },
+          { title: t('what.b4.title'), desc: t('what.b4.desc') },
+          { title: t('what.b5.title'), desc: t('what.b5.desc') },
+          { title: t('what.b6.title'), desc: t('what.b6.desc') },
+        ] as { title: string; desc: string }[]).map(item => (
+          <li class="flex items-start gap-4 py-4">
+            <span class="text-bullet text-sm mt-0.5 shrink-0 select-none">[*]</span>
+            <div>
+              <span class="text-sm font-bold text-foreground">{item.title}</span>
+              <span class="text-sm text-muted-foreground">{"  "}{item.desc}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-8">
+        <a href={tp('/team')} class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          {t('team.cta')}
+        </a>
+      </div>
+    </section>
+
+    <!-- ── STATS ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-2">{t('stats.heading')}</h2>
+      <p class="text-sm text-muted-foreground mb-12 max-w-2xl">
+        {lang === 'en'
+          ? `With ${past.length} events hosted, ${teamMembers.length} team members, and 4 shipped products, Crafter Station is growing the next generation of shippers in LATAM.`
+          : lang === 'es'
+          ? `Con ${past.length} eventos realizados, ${teamMembers.length} miembros del equipo y 4 productos shipeados, Crafter Station está formando la próxima generación de shippers en LATAM.`
+          : `Com ${past.length} eventos realizados, ${teamMembers.length} membros da equipe e 4 produtos entregues, a Crafter Station está formando a próxima geração de shippers no LATAM.`
+        }
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-divider border border-divider">
+        <div class="px-8 py-10">
+          <p class="text-xs text-bullet mb-3">{t('stats.fig1')}</p>
+          <p class="text-4xl font-bold text-foreground mb-2">400+</p>
+          <p class="text-sm text-muted-foreground">{t('stats.fig1.label')}</p>
+        </div>
+        <div class="px-8 py-10">
+          <p class="text-xs text-bullet mb-3">{t('stats.fig2')}</p>
+          <p class="text-4xl font-bold text-foreground mb-2">50+</p>
+          <p class="text-sm text-muted-foreground">{t('stats.fig2.label')}</p>
+        </div>
+        <div class="px-8 py-10">
+          <p class="text-xs text-bullet mb-3">{t('stats.fig3')}</p>
+          <p class="text-4xl font-bold text-foreground mb-2">25+</p>
+          <p class="text-sm text-muted-foreground">{t('stats.fig3.label')}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STORY ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-8">{t('story.heading')}</h2>
+      <div class="flex flex-col gap-5 max-w-2xl">
+        <p class="flex items-start gap-4">
+          <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">[*]</span>
+          <span class="text-sm text-muted-foreground">{t('story.p1')}</span>
+        </p>
+        <p class="flex items-start gap-4">
+          <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">[*]</span>
+          <span class="text-sm text-muted-foreground">{t('story.p2')}</span>
+        </p>
+        <p class="flex items-start gap-4">
+          <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">[*]</span>
+          <span class="text-sm text-muted-foreground">{t('story.p3')}</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ── THREE PILLARS ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-10">{t('pillars.heading')}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-divider border border-divider">
+        <div class="px-8 py-10">
+          <p class="text-xs text-bullet mb-4 select-none">[1]</p>
+          <h3 class="text-sm font-bold text-foreground mb-3">{t('pillars.build.title')}</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">{t('pillars.build.desc')}</p>
+        </div>
+        <div class="px-8 py-10">
+          <p class="text-xs text-bullet mb-4 select-none">[2]</p>
+          <h3 class="text-sm font-bold text-foreground mb-3">{t('pillars.meet.title')}</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">{t('pillars.meet.desc')}</p>
+        </div>
+        <div class="px-8 py-10">
+          <p class="text-xs text-bullet mb-4 select-none">[3]</p>
+          <h3 class="text-sm font-bold text-foreground mb-3">{t('pillars.grow.title')}</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">{t('pillars.grow.desc')}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SHIPPING BIBLE ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-2">{t('bible.heading')}</h2>
+      <p class="text-sm text-muted-foreground mb-10 max-w-2xl">{t('bible.sub')}</p>
+      <div class="flex flex-col gap-5 max-w-2xl mb-10">
+        <p class="flex items-start gap-4">
+          <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">[1]</span>
+          <span class="text-sm text-muted-foreground">{t('bible.p1')}</span>
+        </p>
+        <p class="flex items-start gap-4">
+          <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">[2]</span>
+          <span class="text-sm text-muted-foreground">{t('bible.p2')}</span>
+        </p>
+        <p class="flex items-start gap-4">
+          <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">[3]</span>
+          <span class="text-sm text-muted-foreground">{t('bible.p3')}</span>
+        </p>
+      </div>
+      <a
+        href="https://theshippingbible.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+      >
+        {t('bible.cta')}
+      </a>
+    </section>
+
+    <!-- ── EVENTS PREVIEW ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-2">{t('events.heading')}</h2>
+      <p class="text-sm text-muted-foreground mb-10">{t('events.sub')}</p>
+
+      <div class="flex flex-col gap-0 divide-y divide-divider border-t border-divider">
+        {previewEvents.map(event => (
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 py-4">
+            <div class="flex items-center gap-4">
+              <a href={event.url} target="_blank" rel="noopener noreferrer" class="shrink-0">
+                {event.coverUrl ? (
+                  <img
+                    src={event.coverUrl}
+                    alt={event.title}
+                    class="w-10 h-10 object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-10 h-10 bg-divider shrink-0"></div>
+                )}
+              </a>
+              <a href={event.url} target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-foreground hover:underline">
+                {event.title}
+              </a>
+            </div>
+            <div class="flex items-center gap-4 pl-14 sm:pl-0 shrink-0">
+              <span class="text-xs text-bullet">{formatEventDate(event.startAt, lang)}</span>
+              <span class="text-xs text-bullet">{event.location}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8">
+        <a href={tp('/events')} class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          {t('events.cta')}
+        </a>
+      </div>
+    </section>
+
+    <!-- ── TEAM PREVIEW ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-2">{t('team.heading')}</h2>
+      <p class="text-sm text-muted-foreground mb-10 max-w-2xl">{t('team.sub')}</p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-0 divide-y sm:divide-y-0">
+        {teamMembers.slice(0, 10).map(member => (
+          <a
+            href={tp(`/team/${member.username}`)}
+            class="group flex flex-col items-center p-4 border border-divider -mt-px -ml-px hover:bg-secondary transition-colors"
+          >
+            <div class="w-14 h-14 overflow-hidden mb-3">
+              <img
+                src={member.photoUrl}
+                alt={member.name}
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                loading="lazy"
+              />
+            </div>
+            <p class="text-xs font-bold text-foreground text-center leading-snug">{member.name}</p>
+            <p class="text-xs text-muted-foreground text-center mt-0.5 leading-snug">{member.position}</p>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-8">
+        <a href={tp('/team')} class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          {t('team.cta')}
+        </a>
+      </div>
+    </section>
+
+    <!-- ── SHIPPED PRODUCTS ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-2">{t('projects.heading')}</h2>
+      <p class="text-sm text-muted-foreground mb-10">{t('projects.sub')}</p>
+
+      <div class="flex flex-col gap-0 divide-y divide-divider border-t border-divider">
+        {projects.map(p => (
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center justify-between py-4 hover:bg-secondary transition-colors px-0"
+          >
+            <div class="flex items-center gap-6">
+              <span class="text-bullet text-sm select-none">[*]</span>
+              <span class="text-sm font-bold text-foreground group-hover:text-foreground">{p.name}</span>
+              <span class="hidden sm:inline text-sm text-muted-foreground">{p.description}</span>
+            </div>
+            <span class="text-xs text-bullet shrink-0">{p.badge}</span>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-8">
+        <a
+          href="https://github.com/crafter-station"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {t('projects.cta')}
+        </a>
+      </div>
+    </section>
+
+    <!-- ── BLOG PREVIEW ── -->
+    {publishedPosts.length > 0 && (
+      <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+        <h2 class="text-base font-bold text-foreground mb-2">{t('blog.heading')}</h2>
+        <p class="text-sm text-muted-foreground mb-10">{t('blog.sub')}</p>
+
+        <div class="flex flex-col gap-0 divide-y divide-divider border-t border-divider">
+          {publishedPosts.map(post => (
+            <a
+              href={`/blog/${post.id}/`}
+              class="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 py-4 hover:bg-secondary transition-colors"
+            >
+              <div class="flex items-start gap-4">
+                <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">[*]</span>
+                <span class="text-sm font-bold text-foreground">{post.data.title}</span>
+              </div>
+              <span class="text-xs text-bullet shrink-0 pl-8 sm:pl-0">
+                {post.data.pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-8">
+          <a href={tp('/blog')} class="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            {t('blog.cta')}
+          </a>
+        </div>
+      </section>
+    )}
+
+    <!-- ── NEWSLETTER ── -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h2 class="text-base font-bold text-foreground mb-2">{t('newsletter.heading')}</h2>
+      <p class="text-sm text-muted-foreground mb-8">{t('newsletter.sub')}</p>
+
+      <form
+        id="subscribe-form"
+        class="flex flex-col sm:flex-row gap-0 max-w-lg border border-divider"
+      >
+        <input
+          id="subscribe-email"
+          type="email"
+          required
+          placeholder={t('newsletter.placeholder')}
+          class="flex-1 px-4 py-3 bg-transparent text-sm text-foreground placeholder:text-bullet outline-none border-r border-divider"
+        />
+        <button
+          id="subscribe-btn"
+          type="submit"
+          class="px-5 py-3 bg-foreground text-background text-sm font-medium hover:bg-muted-foreground transition-colors shrink-0"
+        >
+          {t('newsletter.cta')}
+        </button>
+      </form>
+      <p id="subscribe-msg" class="mt-4 text-sm" style="display:none;"></p>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<script is:inline>
+  (function() {
+    var form = document.getElementById('subscribe-form');
+    var emailInput = document.getElementById('subscribe-email');
+    var btn = document.getElementById('subscribe-btn');
+    var msg = document.getElementById('subscribe-msg');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = emailInput.value.trim();
+      if (!email) return;
+
+      btn.disabled = true;
+      btn.textContent = '...';
+      msg.style.display = 'none';
+
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: email }),
+      })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data.ok) {
+            form.style.display = 'none';
+            msg.style.display = 'block';
+            msg.style.color = '#B8B2B2';
+            msg.textContent = '[*] Inscrito. Bem-vindo a comunidade.';
+          } else {
+            msg.style.display = 'block';
+            msg.style.color = '#B8B2B2';
+            msg.textContent = '[!] ' + (data.error || 'Algo deu errado. Por favor tente novamente.');
+            btn.disabled = false;
+            btn.textContent = 'Inscrever';
+          }
+        })
+        .catch(function() {
+          msg.style.display = 'block';
+          msg.style.color = '#B8B2B2';
+          msg.textContent = '[!] Erro de rede. Por favor tente novamente.';
+          btn.disabled = false;
+          btn.textContent = 'Inscrever';
+        });
+    });
+  })();
+</script>

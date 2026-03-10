@@ -1,0 +1,130 @@
+---
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+import LanguagePicker from './LanguagePicker.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+
+
+const currentPath = Astro.url.pathname;
+
+interface NavItem {
+  key: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { key: t('nav.events'),   href: tp('/events') },
+  { key: t('nav.projects'), href: tp('/projects') },
+  { key: t('nav.team'),     href: tp('/team') },
+  { key: t('nav.blog'),     href: tp('/blog') },
+];
+---
+
+<header class="sticky top-0 z-50 w-full bg-background border-b border-divider">
+  <div class="flex items-center justify-between px-6 h-[72px] max-w-[1280px] mx-auto">
+    <!-- Logo -->
+    <a href={tp('/')} class="flex items-center gap-2 group" aria-label="Crafter Station">
+      <img src="/brand/icon-white.svg" alt="" width="20" height="20" class="shrink-0" aria-hidden="true" />
+      <span class="text-foreground font-bold text-base leading-none tracking-tight">crafter</span>
+      <span class="text-muted-foreground font-bold text-base leading-none tracking-tight">station</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class:list={[
+            "text-sm transition-colors",
+            currentPath === item.href
+              ? "text-foreground"
+              : "text-muted-foreground hover:text-foreground"
+          ]}
+        >
+          {item.key}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right: Join + Language Picker -->
+    <div class="flex items-center gap-4">
+      <LanguagePicker />
+
+      <a
+        href="https://crafters.chat"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background text-sm font-medium hover:bg-muted-foreground transition-colors"
+      >
+        {t('nav.join')}
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        class="md:hidden flex flex-col gap-1.5 p-2 text-muted-foreground hover:text-foreground transition-colors"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+      >
+        <span class="block w-5 h-px bg-current transition-transform" id="menu-line-1"></span>
+        <span class="block w-5 h-px bg-current transition-opacity" id="menu-line-2"></span>
+        <span class="block w-5 h-px bg-current transition-transform" id="menu-line-3"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav drawer -->
+  <div
+    id="mobile-nav"
+    class="hidden md:hidden border-t border-divider bg-background"
+    role="navigation"
+    aria-label="Mobile navigation"
+  >
+    <div class="flex flex-col px-6 py-4 gap-0">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors py-3 border-b border-divider last:border-b-0"
+        >
+          {item.key}
+        </a>
+      ))}
+      <a
+        href="https://crafters.chat"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-4 text-sm text-foreground font-medium py-3"
+      >
+        {t('nav.join')} →
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const nav = document.getElementById('mobile-nav');
+  const line1 = document.getElementById('menu-line-1');
+  const line2 = document.getElementById('menu-line-2');
+  const line3 = document.getElementById('menu-line-3');
+  let open = false;
+
+  toggle?.addEventListener('click', () => {
+    open = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open) {
+      nav?.classList.remove('hidden');
+      line1?.classList.add('rotate-45', 'translate-y-2.5');
+      line2?.classList.add('opacity-0');
+      line3?.classList.add('-rotate-45', '-translate-y-2.5');
+    } else {
+      nav?.classList.add('hidden');
+      line1?.classList.remove('rotate-45', 'translate-y-2.5');
+      line2?.classList.remove('opacity-0');
+      line3?.classList.remove('-rotate-45', '-translate-y-2.5');
+    }
+  });
+</script>

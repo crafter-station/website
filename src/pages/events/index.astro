@@ -1,0 +1,267 @@
+---
+export const revalidate = 21600; // revalidate every 6 hours
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Nav from '@/components/Nav.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+import { fetchCrafterStationEvents, formatEventDate } from '@/lib/luma';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+
+const { upcoming, past, filterTags } = await fetchCrafterStationEvents();
+
+const lumaLinkText = lang === 'es'
+  ? 'Ver todos los eventos en Luma'
+  : lang === 'pt-br'
+  ? 'Ver todos os eventos no Luma'
+  : 'View all events on Luma';
+
+const hack0Intro = lang === 'es'
+  ? 'Descubre mas eventos tech en LATAM en hack0.dev — la plataforma que estamos construyendo para conectar developers, disenadores y builders con hackathones, conferencias y meetups.'
+  : lang === 'pt-br'
+  ? 'Descubra mais eventos tech na LATAM em hack0.dev — a plataforma que estamos construindo para conectar developers, designers e builders com hackathons, conferencias e meetups.'
+  : 'Discover more tech events in LATAM at hack0.dev — a platform we\'re building to connect developers, designers, and builders with hackathons, conferences, and meetups.';
+
+const hack0LinkText = lang === 'es'
+  ? 'Ir a hack0.dev'
+  : lang === 'pt-br'
+  ? 'Ir para hack0.dev'
+  : 'Go to hack0.dev';
+---
+
+<BaseLayout
+  lang={lang}
+  title="Events — Crafter Station"
+  description="Code Brews, hackathons, and product launches across LATAM. Meet shippers and grow the culture of shipping."
+>
+  <Nav />
+
+  <main>
+    <!-- Header -->
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h1 class="text-base font-bold text-foreground mb-2">{t('events.heading')}</h1>
+      <p class="text-sm text-muted-foreground max-w-2xl">{t('events.sub')}</p>
+    </section>
+
+    <!-- Tag filters -->
+    {filterTags.length > 0 && (
+      <section class="border-b border-divider px-6 py-4 max-w-[1280px] mx-auto">
+        <div class="flex flex-wrap gap-2 items-center" id="tag-filters">
+          <button
+            class="tag-filter-btn active text-xs px-3 py-1 border border-foreground bg-foreground text-background font-medium transition-colors"
+            data-tag="all"
+          >
+            All
+          </button>
+          {filterTags.map(tag => (
+            <button
+              class="tag-filter-btn text-xs px-3 py-1 border border-divider text-muted-foreground font-medium transition-colors hover:border-foreground hover:text-foreground"
+              data-tag={tag}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Upcoming events -->
+    {upcoming.length > 0 && (
+      <section class="border-b border-divider px-6 py-12 max-w-[1280px] mx-auto" id="upcoming-section">
+        <h2 class="text-xs font-bold text-bullet mb-6 uppercase tracking-widest">{t('events.upcoming')}</h2>
+        <div class="flex flex-col gap-0 divide-y divide-divider border-t border-divider">
+          {upcoming.map(event => (
+            <div
+              class="event-row py-6"
+              data-tags={event.tags.join(',')}
+            >
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div class="flex items-start gap-4">
+                  <!-- Cover image (always shown, fallback placeholder) -->
+                  <a href={event.url} target="_blank" rel="noopener noreferrer" class="shrink-0">
+                    {event.coverUrl ? (
+                      <img
+                        src={event.coverUrl}
+                        alt={event.title}
+                        class="w-14 h-14 object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="w-14 h-14 bg-divider flex items-center justify-center">
+                        <span class="text-xs text-muted-foreground select-none">[img]</span>
+                      </div>
+                    )}
+                  </a>
+                  <div>
+                    <h3 class="text-sm font-bold text-foreground">
+                      <a href={event.url} target="_blank" rel="noopener noreferrer" class="hover:underline">
+                        {event.title}
+                      </a>
+                    </h3>
+                    {event.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-1 mt-1">
+                        {event.tags.map(tag => (
+                          <span class="text-xs text-bullet">[{tag}]</span>
+                        ))}
+                      </div>
+                    )}
+                    {event.description && (
+                      <p class="text-sm text-muted-foreground mt-2 leading-relaxed max-w-xl">
+                        {event.description.slice(0, 200)}
+                      </p>
+                    )}
+                    <div class="flex flex-wrap gap-4 mt-3">
+                      <span class="text-xs text-bullet">{formatEventDate(event.startAt, lang)}</span>
+                      <span class="text-xs text-bullet">{event.location}</span>
+                    </div>
+                  </div>
+                </div>
+                <a
+                  href={event.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background text-xs font-medium hover:bg-muted-foreground transition-colors shrink-0 self-start"
+                >
+                  {t('events.register')}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Past events -->
+    {past.length > 0 && (
+      <section class="border-b border-divider px-6 py-12 max-w-[1280px] mx-auto" id="past-section">
+        <h2 class="text-xs font-bold text-bullet mb-6 uppercase tracking-widest">{t('events.past')}</h2>
+        <div class="flex flex-col gap-0 divide-y divide-divider border-t border-divider">
+          {past.map(event => (
+            <div
+              class="event-row flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-4"
+              data-tags={event.tags.join(',')}
+            >
+              <div class="flex items-center gap-4">
+                <!-- Cover image replacing Fig N. label -->
+                <a href={event.url} target="_blank" rel="noopener noreferrer" class="shrink-0">
+                  {event.coverUrl ? (
+                    <img
+                      src={event.coverUrl}
+                      alt={event.title}
+                      class="w-10 h-10 object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div class="w-10 h-10 bg-divider shrink-0"></div>
+                  )}
+                </a>
+                <div>
+                  <h3 class="text-sm font-bold text-foreground">
+                    <a href={event.url} target="_blank" rel="noopener noreferrer" class="hover:underline">
+                      {event.title}
+                    </a>
+                  </h3>
+                  {event.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-1 mt-0.5">
+                      {event.tags.map(tag => (
+                        <span class="text-xs text-bullet">[{tag}]</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center gap-4 pl-14 sm:pl-0 shrink-0">
+                <span class="text-xs text-bullet">{formatEventDate(event.startAt, lang)}</span>
+                <span class="text-xs text-bullet">{event.location}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Empty state -->
+    {upcoming.length === 0 && past.length === 0 && (
+      <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+        <p class="text-sm text-muted-foreground">[*] No events found. Check back soon.</p>
+      </section>
+    )}
+
+    <!-- CTA: Luma + hack0.dev -->
+    <section class="border-divider px-6 py-12 max-w-[1280px] mx-auto">
+      <a
+        href="https://luma.com/hack0"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-bold text-foreground hover:underline"
+      >
+        {lumaLinkText} →
+      </a>
+      <div class="mt-8 border-t border-divider pt-8">
+        <p class="text-xs text-bullet mb-3">[*] hack0.dev</p>
+        <p class="text-sm text-muted-foreground max-w-2xl mb-4">{hack0Intro}</p>
+        <a
+          href="https://hack0.dev/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        >
+          {hack0LinkText} →
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .tag-filter-btn.active {
+    border-color: var(--color-foreground);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+</style>
+
+<script is:inline>
+  (function() {
+    var buttons = document.querySelectorAll('.tag-filter-btn');
+    var rows = document.querySelectorAll('.event-row');
+    var upcomingSection = document.getElementById('upcoming-section');
+    var pastSection = document.getElementById('past-section');
+
+    function applyFilter(activeTag) {
+      var upcomingVisible = 0;
+      var pastVisible = 0;
+      rows.forEach(function(row) {
+        var tags = row.dataset.tags || '';
+        var tagList = tags ? tags.split(',') : [];
+        var visible = activeTag === 'all' || tagList.indexOf(activeTag) !== -1;
+        row.style.display = visible ? '' : 'none';
+        var inUpcoming = upcomingSection && upcomingSection.contains(row);
+        var inPast = pastSection && pastSection.contains(row);
+        if (inUpcoming && visible) upcomingVisible++;
+        if (inPast && visible) pastVisible++;
+      });
+      if (upcomingSection) upcomingSection.style.display = upcomingVisible === 0 ? 'none' : '';
+      if (pastSection) pastSection.style.display = pastVisible === 0 ? 'none' : '';
+    }
+
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var tag = btn.dataset.tag || 'all';
+        buttons.forEach(function(b) {
+          b.classList.remove('active');
+          b.style.backgroundColor = '';
+          b.style.color = '';
+          b.style.borderColor = '';
+        });
+        btn.classList.add('active');
+        applyFilter(tag);
+      });
+    });
+  })();
+</script>

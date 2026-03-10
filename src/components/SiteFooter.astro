@@ -1,0 +1,97 @@
+---
+import {
+    getLangFromUrl,
+    useTranslations,
+    useTranslatedPath,
+} from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+
+const socialLinks = [
+    {
+        label: t("footer.github"),
+        href: "https://github.com/crafter-station",
+        external: true,
+    },
+    {
+        label: t("footer.discord"),
+        href: "https://discord.gg/QvsS4jNpKa",
+        external: true,
+    },
+    {
+        label: t("footer.linkedin"),
+        href: "https://linkedin.com/company/crafter-station",
+        external: true,
+    },
+    {
+        label: t("footer.x"),
+        href: "https://x.com/CrafterStation",
+        external: true,
+    },
+    {
+        label: t("footer.instagram"),
+        href: "https://www.instagram.com/crafter.station/",
+        external: true,
+    },
+    {
+        label: t("footer.whatsapp"),
+        href: "https://crafters.chat",
+        external: true,
+    },
+    { label: t("footer.luma"), href: "https://luma.com/hack0", external: true },
+];
+---
+
+<footer class="w-full border-t border-divider">
+    <!-- Social links row — horizontal grid like opencode.ai footer -->
+    <div
+        class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-[repeat(7,1fr)] border-b border-divider"
+    >
+        {
+            socialLinks.map((link, i) => (
+                <a
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    class:list={[
+                        "flex items-center justify-center py-5 text-sm text-muted-foreground hover:text-foreground transition-colors",
+                        i < socialLinks.length - 1
+                            ? "border-r border-divider"
+                            : "",
+                    ]}
+                >
+                    {link.label}
+                </a>
+            ))
+        }
+    </div>
+
+    <!-- Copyright row -->
+    <div
+        class="flex flex-wrap items-center justify-between gap-4 px-6 py-5 max-w-[1280px] mx-auto"
+    >
+        <span class="text-sm text-muted-foreground">{t("footer.copy")}</span>
+        <div class="flex items-center gap-6">
+            <a
+                href={tp("/brand")}
+                class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+                {t("footer.brand")}
+            </a>
+            <a
+                href="/legal/privacy-policy"
+                class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+                {t("footer.privacy")}
+            </a>
+            <a
+                href="/legal/terms-of-service"
+                class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+                {t("footer.terms")}
+            </a>
+        </div>
+    </div>
+</footer>

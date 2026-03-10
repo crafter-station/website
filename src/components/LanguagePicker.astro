@@ -1,0 +1,69 @@
+---
+import { getLangFromUrl, getRouteFromUrl, languages } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const route = getRouteFromUrl(Astro.url);
+---
+
+<div class="relative group">
+  <button
+    type="button"
+    class="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-label="Select language"
+    id="lang-btn"
+  >
+    {lang.toUpperCase()}
+    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" class="transition-transform group-hover:rotate-180" aria-hidden="true">
+      <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div
+    id="lang-dropdown"
+    class="absolute right-0 top-full mt-1 hidden min-w-[120px] bg-background border border-divider z-50"
+    role="menu"
+  >
+    {Object.entries(languages).map(([code, label]) => (
+      <a
+        href={getRelativeLocaleUrl(code, route)}
+        role="menuitem"
+        class:list={[
+          "block px-4 py-2 text-sm transition-colors",
+          code === lang
+            ? "text-foreground font-medium"
+            : "text-muted-foreground hover:text-foreground"
+        ]}
+        hreflang={code}
+      >
+        {label}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('lang-btn');
+  const dropdown = document.getElementById('lang-dropdown');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !dropdown?.classList.contains('hidden');
+    if (isOpen) {
+      dropdown?.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      dropdown?.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!btn?.contains(e.target as Node) && !dropdown?.contains(e.target as Node)) {
+      dropdown?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>

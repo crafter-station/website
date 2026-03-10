@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
 @theme inline {
@@ -19,197 +18,111 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-tertiary: var(--tertiary);
+  --color-divider: var(--divider);
+  --color-bullet: var(--bullet);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', ui-monospace, monospace;
+  --font-sans: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: #000000;
-  --foreground: #FAFAFA;
-  --card: #0A0A0A;
-  --card-foreground: #FAFAFA;
-  --popover: #0A0A0A;
-  --popover-foreground: #FAFAFA;
-  --primary: #FFD700;
-  --primary-foreground: #000000;
-  --secondary: #1A1A1A;
-  --secondary-foreground: #FAFAFA;
-  --muted: #1A1A1A;
-  --muted-foreground: #666666;
-  --accent: #FFD700;
-  --accent-foreground: #000000;
-  --destructive: #FF3333;
-  --border: #1A1A1A;
-  --input: #1A1A1A;
-  --ring: #FFD700;
+  --radius: 0rem;
+  /* Warm near-black base — like opencode.ai's #131010 */
+  --background: #131010;
+  /* Off-white primary text */
+  --foreground: #F2EDED;
+  /* Card backgrounds — same as page */
+  --card: #131010;
+  --card-foreground: #F2EDED;
+  --popover: #1A1717;
+  --popover-foreground: #F2EDED;
+  /* Primary = off-white (inverted — used for buttons/badges on dark bg) */
+  --primary: #F2EDED;
+  --primary-foreground: #131010;
+  /* Secondary surface — slightly lifted */
+  --secondary: #1A1717;
+  --secondary-foreground: #F2EDED;
+  /* Muted — warm gray for secondary text */
+  --muted: #1A1717;
+  --muted-foreground: #B8B2B2;
+  /* Tertiary — for de-emphasized metadata */
+  --tertiary: #7F7A7A;
+  /* Divider — section separator lines */
+  --divider: #3D3838;
+  /* Bullet — [*] list marker color */
+  --bullet: #716B6A;
+  /* Accent — same as primary */
+  --accent: #F2EDED;
+  --accent-foreground: #131010;
+  /* Destructive */
+  --destructive: #FF453A;
+  /* Borders */
+  --border: #3D3838;
+  --input: #1A1717;
+  --ring: #F2EDED;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+    box-sizing: border-box;
   }
 
   html {
     font-family: var(--font-sans);
+    background-color: var(--background);
+    color: var(--foreground);
   }
 
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
   }
 
   button {
     @apply cursor-pointer;
   }
 
+  /* Monospace is the only font — no switching */
   .font-mono {
     font-family: var(--font-mono);
   }
-}
 
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-@keyframes glitch {
-  0% {
-    text-shadow: 2px 0 #FFD700, -2px 0 #FF3333;
-    transform: translate(0);
-  }
-  20% {
-    text-shadow: -2px 0 #FFD700, 2px 0 #FF3333;
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    text-shadow: 2px 0 #FFD700, -2px 0 #FF3333;
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    text-shadow: -2px 0 #FFD700, 2px 0 #FF3333;
-    transform: translate(2px, 2px);
-  }
-  80% {
-    text-shadow: 2px 0 #FFD700, -2px 0 #FF3333;
-    transform: translate(2px, -2px);
-  }
-  100% {
-    text-shadow: none;
-    transform: translate(0);
+  /* Section divider — the horizontal rule from opencode.ai */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--divider);
   }
 }
 
-@keyframes glitch-subtle {
-  0%, 90%, 100% {
-    text-shadow: none;
-    transform: translate(0);
-  }
-  92% {
-    text-shadow: 1px 0 #FFD700, -1px 0 #FF3333;
-    transform: translate(-1px, 0);
-  }
-  94% {
-    text-shadow: -1px 0 #FFD700, 1px 0 #FF3333;
-    transform: translate(1px, 0);
-  }
-  96% {
-    text-shadow: 1px 0 #FFD700, -1px 0 #FF3333;
-    transform: translate(0, 1px);
-  }
-  98% {
-    text-shadow: none;
-    transform: translate(0);
-  }
-}
-
-@keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeSlideOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-.animate-blink {
-  animation: blink 1s step-end infinite;
-}
-
-.animate-glitch:hover {
-  animation: glitch 0.3s ease-in-out;
-}
-
-.animate-glitch-subtle {
-  animation: glitch-subtle 4s ease-in-out infinite;
-}
-
-.animate-fade-in {
-  animation: fadeSlideIn 0.3s ease-out forwards;
-}
-
-.animate-fade-out {
-  animation: fadeSlideOut 0.2s ease-in forwards;
-}
-
+/* Sheet animations — keep for mobile menu */
 @keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
 @keyframes slideDown {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(100%);
-  }
+  from { transform: translateY(0); }
+  to { transform: translateY(100%); }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
 
 .sheet-backdrop {
