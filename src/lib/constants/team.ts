@@ -37,6 +37,7 @@ export const teamMembers: TeamMember[] = [
       linkedin: 'https://www.linkedin.com/in/shiara-arauzo/',
       instagram: 'https://www.instagram.com/the.research.blog',
       website: 'https://shiara.dev/',
+      cal: "https://cal.com/shiara-arauzo/30-min",
       joinedYear: 2024,
     },
     {
