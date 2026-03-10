@@ -91,6 +91,10 @@ export const teamMembers: TeamMember[] = [
         'pt-br': 'Estrategista de crescimento e marketing com formação em antropologia que molda como ela pensa sobre produtos — começando pelas pessoas, não pelas soluções. Especialista em automação e fluxos de trabalho com IA, encontra maneiras elegantes de resolver desafios complexos de distribuição. Atualmente na 30x.',
       },
       skills: ['Growth', 'Marketing', 'n8n', 'Automation', 'AI Workflows', 'Kapso'],
+      github: 'https://github.com/estparcae',
+      linkedin: 'https://www.linkedin.com/in/ed-pardo/',
+      website: 'https://emmy-pardo.vercel.app',
+      cal: 'https://cal.com/emms-pardo/30min',
       joinedYear: 2025,
   },
   {
