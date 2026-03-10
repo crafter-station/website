@@ -108,6 +108,7 @@ export const teamMembers: TeamMember[] = [
       github: 'https://github.com/MrUprizing',
       x: 'https://x.com/MrUprizing',
       website: 'https://uprizing.me/',
+      cal: "https://cal.com/uprizing/30min",
       joinedYear: 2025,
     },
    {
