@@ -35,7 +35,7 @@ export const teamMembers: TeamMember[] = [
       skills: ['UI/UX Design', 'React', 'Figma', 'TypeScript', 'Astro', 'Accessibility'],
       github: 'https://github.com/shiarauzo',
       linkedin: 'https://www.linkedin.com/in/shiara-arauzo/',
-      instagram: 'https://www.instagram.com/the.research.blog',
+      instagram: 'https://www.instagram.com/shiaraarauzo/',
       website: 'https://shiara.dev/',
       cal: "https://cal.com/shiara-arauzo/30-min",
       joinedYear: 2024,
