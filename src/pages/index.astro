@@ -80,6 +80,9 @@ const previewEvents = [
                     <a
                         href={tp("/events")}
                         class="text-sm text-muted-foreground hover:text-foreground transition-colors ml-auto shrink-0"
+                        data-track="cta_click"
+                        data-track-label="announcement_banner"
+                        data-track-location="banner"
                     >
                         {t("announce.cta")}
                     </a>
@@ -107,12 +110,18 @@ const previewEvents = [
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-medium hover:bg-muted-foreground transition-colors"
+                    data-track="cta_click"
+                    data-track-label="join"
+                    data-track-location="hero"
                 >
                     {t("nav.join")} →
                 </a>
                 <a
                     href={tp("/events")}
                     class="inline-flex items-center gap-2 px-5 py-2.5 border border-divider text-muted-foreground text-sm hover:text-foreground hover:border-muted-foreground transition-colors"
+                    data-track="cta_click"
+                    data-track-label="see_events"
+                    data-track-location="hero"
                 >
                     {t("events.cta")}
                 </a>
@@ -324,6 +333,9 @@ const previewEvents = [
             target="_blank"
             rel="noopener noreferrer"
             class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            data-track="cta_click"
+            data-track-label="shipping_bible"
+            data-track-location="bible_section"
           >
             {t('bible.cta')}
           </a>
@@ -464,6 +476,9 @@ const previewEvents = [
                             target="_blank"
                             rel="noopener noreferrer"
                             class="group flex items-center justify-between py-4 hover:bg-secondary transition-colors px-0"
+                            data-track="project_click"
+                            data-track-project={p.name}
+                            data-track-location="home"
                         >
                             <div class="flex items-center gap-6">
                                 <span class="text-bullet text-sm select-none">
@@ -490,6 +505,9 @@ const previewEvents = [
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    data-track="cta_click"
+                    data-track-label="view_all_github"
+                    data-track-location="home_projects"
                 >
                     {t("projects.cta")}
                 </a>
@@ -583,22 +601,23 @@ const previewEvents = [
     <SiteFooter />
 </BaseLayout>
 
-<script is:inline>
+<script>
+    import { track } from '@vercel/analytics';
+
     (function () {
         var form = document.getElementById("subscribe-form");
-        var emailInput = document.getElementById("subscribe-email");
-        var btn = document.getElementById("subscribe-btn");
+        var emailInput = document.getElementById("subscribe-email") as HTMLInputElement | null;
+        var btn = document.getElementById("subscribe-btn") as HTMLButtonElement | null;
         var msg = document.getElementById("subscribe-msg");
         if (!form) return;
 
         form.addEventListener("submit", function (e) {
             e.preventDefault();
-            var email = emailInput.value.trim();
+            var email = emailInput?.value.trim() ?? '';
             if (!email) return;
 
-            btn.disabled = true;
-            btn.textContent = "...";
-            msg.style.display = "none";
+            if (btn) { btn.disabled = true; btn.textContent = "..."; }
+            if (msg) msg.style.display = "none";
 
             fetch("/api/subscribe", {
                 method: "POST",
@@ -610,28 +629,31 @@ const previewEvents = [
                 })
                 .then(function (data) {
                     if (data.ok) {
-                        form.style.display = "none";
-                        msg.style.display = "block";
-                        msg.style.color = "#B8B2B2";
-                        msg.textContent =
-                            "[*] Subscribed. Welcome to the community.";
+                        track('newsletter_subscribe');
+                        if (form) (form as HTMLElement).style.display = "none";
+                        if (msg) {
+                            msg.style.display = "block";
+                            msg.style.color = "#B8B2B2";
+                            msg.textContent = "[*] Subscribed. Welcome to the community.";
+                        }
                     } else {
-                        msg.style.display = "block";
-                        msg.style.color = "#B8B2B2";
-                        msg.textContent =
-                            "[!] " +
-                            (data.error ||
-                                "Something went wrong. Please try again.");
-                        btn.disabled = false;
-                        btn.textContent = "Subscribe";
+                        if (msg) {
+                            msg.style.display = "block";
+                            msg.style.color = "#B8B2B2";
+                            msg.textContent =
+                                "[!] " +
+                                (data.error || "Something went wrong. Please try again.");
+                        }
+                        if (btn) { btn.disabled = false; btn.textContent = "Subscribe"; }
                     }
                 })
                 .catch(function () {
-                    msg.style.display = "block";
-                    msg.style.color = "#B8B2B2";
-                    msg.textContent = "[!] Network error. Please try again.";
-                    btn.disabled = false;
-                    btn.textContent = "Subscribe";
+                    if (msg) {
+                        msg.style.display = "block";
+                        msg.style.color = "#B8B2B2";
+                        msg.textContent = "[!] Network error. Please try again.";
+                    }
+                    if (btn) { btn.disabled = false; btn.textContent = "Subscribe"; }
                 });
         });
     })();

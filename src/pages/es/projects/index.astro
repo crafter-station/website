@@ -103,6 +103,9 @@ const projects: Project[] = [
                     target="_blank"
                     rel="noopener noreferrer"
                     class="text-xs text-muted-foreground hover:text-foreground transition-colors mt-2 inline-block"
+                    data-track="project_click"
+                    data-track-project={project.name}
+                    data-track-location="projects_page_github"
                   >
                     {lang === 'en' ? 'View source →' : lang === 'es' ? 'Ver código →' : 'Ver código →'}
                   </a>
@@ -114,6 +117,9 @@ const projects: Project[] = [
               target="_blank"
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-4 py-2 border border-divider text-xs text-muted-foreground hover:text-foreground hover:border-muted-foreground transition-colors shrink-0"
+              data-track="project_click"
+              data-track-project={project.name}
+              data-track-location="projects_page"
             >
               {lang === 'en' ? 'Visit' : lang === 'es' ? 'Visitar' : 'Visitar'} →
             </a>
@@ -127,6 +133,9 @@ const projects: Project[] = [
           target="_blank"
           rel="noopener noreferrer"
           class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          data-track="cta_click"
+          data-track-label="view_all_github"
+          data-track-location="projects_page"
         >
           {t('projects.cta')}
         </a>

@@ -108,6 +108,9 @@ const calSlug = member.cal ? member.cal.replace('https://cal.com/', '') : null;
               target="_blank"
               rel="noopener noreferrer"
               class="group flex items-center justify-between py-3 hover:bg-secondary transition-colors -mx-6 px-6"
+              data-track="social_click"
+              data-track-platform={link.icon}
+              data-track-location={`team_member_${member.username}`}
             >
               <span class="flex items-center gap-3 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                 {link.icon === 'github' && (
@@ -165,7 +168,10 @@ const calSlug = member.cal ? member.cal.replace('https://cal.com/', '') : null;
 </BaseLayout>
 
 {member.cal && calSlug && (
-  <script is:inline define:vars={{ calSlug, memberId: member.username }}>
+  <script define:vars={{ calSlug, memberId: member.username }}>
+    import { track } from '@vercel/analytics';
+    track('cal_booking_init', { member: memberId });
+
     (function(C, A, L) {
       var p = function(a, ar) { a.q.push(ar); };
       var d = C.document;

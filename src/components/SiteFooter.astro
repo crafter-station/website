@@ -14,33 +14,39 @@ const socialLinks = [
         label: t("footer.github"),
         href: "https://github.com/crafter-station",
         external: true,
+        platform: "github",
     },
     {
         label: t("footer.discord"),
         href: "https://discord.gg/QvsS4jNpKa",
         external: true,
+        platform: "discord",
     },
     {
         label: t("footer.linkedin"),
         href: "https://linkedin.com/company/crafter-station",
         external: true,
+        platform: "linkedin",
     },
     {
         label: t("footer.x"),
         href: "https://x.com/CrafterStation",
         external: true,
+        platform: "x",
     },
     {
         label: t("footer.instagram"),
         href: "https://www.instagram.com/crafter.station/",
         external: true,
+        platform: "instagram",
     },
     {
         label: t("footer.whatsapp"),
         href: "https://crafters.chat",
         external: true,
+        platform: "whatsapp",
     },
-    { label: t("footer.luma"), href: "https://luma.com/hack0", external: true },
+    { label: t("footer.luma"), href: "https://luma.com/hack0", external: true, platform: "luma" },
 ];
 ---
 
@@ -61,6 +67,9 @@ const socialLinks = [
                             ? "border-r border-divider"
                             : "",
                     ]}
+                    data-track="social_click"
+                    data-track-platform={link.platform}
+                    data-track-location="footer"
                 >
                     {link.label}
                 </a>

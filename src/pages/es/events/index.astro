@@ -53,6 +53,8 @@ const hack0LinkText = lang === 'es'
           <button
             class="tag-filter-btn active text-xs px-3 py-1 border border-foreground bg-foreground text-background font-medium transition-colors"
             data-tag="all"
+            data-track="event_filter"
+            data-track-tag="all"
           >
             All
           </button>
@@ -60,6 +62,8 @@ const hack0LinkText = lang === 'es'
             <button
               class="tag-filter-btn text-xs px-3 py-1 border border-divider text-muted-foreground font-medium transition-colors hover:border-foreground hover:text-foreground"
               data-tag={tag}
+              data-track="event_filter"
+              data-track-tag={tag}
             >
               {tag}
             </button>
@@ -124,6 +128,8 @@ const hack0LinkText = lang === 'es'
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background text-xs font-medium hover:bg-muted-foreground transition-colors shrink-0 self-start"
+                  data-track="event_register_click"
+                  data-track-event={event.title}
                 >
                   {t('events.register')}
                 </a>
@@ -197,6 +203,9 @@ const hack0LinkText = lang === 'es'
         target="_blank"
         rel="noopener noreferrer"
         class="text-sm font-bold text-foreground hover:underline"
+        data-track="cta_click"
+        data-track-label="view_all_luma"
+        data-track-location="events_page"
       >
         {lumaLinkText} →
       </a>
@@ -208,6 +217,9 @@ const hack0LinkText = lang === 'es'
           target="_blank"
           rel="noopener noreferrer"
           class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          data-track="cta_click"
+          data-track-label="hack0_dev"
+          data-track-location="events_page"
         >
           {hack0LinkText} →
         </a>

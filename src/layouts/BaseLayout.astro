@@ -69,5 +69,24 @@ const routePath = (() => {
   <body class="min-h-screen bg-background text-foreground antialiased">
     <slot />
     <Analytics />
+    <script>
+      import { track } from '@vercel/analytics';
+
+      document.addEventListener('click', (e) => {
+        const el = (e.target as Element)?.closest('[data-track]') as HTMLElement | null;
+        if (!el) return;
+        const eventName = el.dataset.track;
+        if (!eventName) return;
+        const props: Record<string, string> = {};
+        for (const key of Object.keys(el.dataset)) {
+          if (key !== 'track') {
+            // Convert camelCase data-track-foo -> foo
+            const propKey = key.replace(/^track([A-Z])/, (_, c) => c.toLowerCase());
+            props[propKey] = el.dataset[key] as string;
+          }
+        }
+        track(eventName, props);
+      });
+    </script>
   </body>
 </html>

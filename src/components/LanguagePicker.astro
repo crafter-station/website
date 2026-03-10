@@ -37,6 +37,8 @@ const route = getRouteFromUrl(Astro.url);
             : "text-muted-foreground hover:text-foreground"
         ]}
         hreflang={code}
+        data-track="language_change"
+        data-track-locale={code}
       >
         {label}
       </a>

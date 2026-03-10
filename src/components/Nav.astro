@@ -57,6 +57,9 @@ const navItems: NavItem[] = [
         target="_blank"
         rel="noopener noreferrer"
         class="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background text-sm font-medium hover:bg-muted-foreground transition-colors"
+        data-track="cta_click"
+        data-track-label="join"
+        data-track-location="nav"
       >
         {t('nav.join')}
       </a>
@@ -97,6 +100,9 @@ const navItems: NavItem[] = [
         target="_blank"
         rel="noopener noreferrer"
         class="mt-4 text-sm text-foreground font-medium py-3"
+        data-track="cta_click"
+        data-track-label="join"
+        data-track-location="nav_mobile"
       >
         {t('nav.join')} →
       </a>
