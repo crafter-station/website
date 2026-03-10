@@ -153,7 +153,7 @@ export const teamMembers: TeamMember[] = [
     username: 'cuevaio',
     name: 'Anthony Cueva',
     position: 'Product Engineer',
-    location: 'Lima, Peru',
+    location: 'Somewhere in the world',
     photoUrl: '/team/cueva.webp',
     bio: {
       en: 'Product engineer obsessed with shipping and building in public. Self-taught software engineer currently working at a crypto startup. Organizes IRL events to spread the shipping culture across LATAM and is on a mission to grow the Crafter Station community. Can help with career advice and shipping products. Also learning to create content — and doing push-ups every single day.',
