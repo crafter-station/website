@@ -102,7 +102,7 @@ export const teamMembers: TeamMember[] = [
      username: 'nicolas',
      name: 'Nicolas Vargas',
      position: 'Backend Developer',
-     location: 'Boyacá, Colombia',
+     location: 'Bogotá, Colombia',
      photoUrl: '/team/nicolas.svg',
      bio: {
        en: 'Backend developer from Colombia building scalable systems and exploring the intersection of distributed computing and developer tooling.',
@@ -119,7 +119,7 @@ export const teamMembers: TeamMember[] = [
      username: 'nacho',
      name: 'Ignacio Velásquez',
      position: 'Growth & Automation',
-     location: 'Lima, Peru',
+     location: 'Arequipa, Peru',
      photoUrl: '/team/nacho.webp',
      bio: {
        en: 'Growth and automation specialist focused on helping products reach the right people. Builds systems that scale distribution and community engagement across LATAM.',
@@ -181,6 +181,20 @@ export const teamMembers: TeamMember[] = [
     linkedin: 'https://www.linkedin.com/in/edwardramosvillarreal/',
     projects: ['elements'],
     joinedYear: 2024,
+  },
+  {
+    username: 'emmy',
+    name: 'Emmy Arias',
+    position: 'Growth & Marketing',
+    location: 'Bogotá, Colombia',
+    photoUrl: '/team/emmy.webp',
+    bio: {
+      en: 'Growth and marketing strategist with an anthropology background that shapes how she thinks about products — starting with people, not solutions. Expert in automation and AI workflows, she finds elegant ways to solve complex distribution challenges. Currently at 30x.',
+      es: 'Estratega de growth y marketing con formación en antropología que define cómo piensa sobre los productos: empezando por las personas, no por las soluciones. Experta en automatización y flujos de trabajo con IA, encuentra formas elegantes de resolver desafíos complejos de distribución. Actualmente en 30x.',
+      'pt-br': 'Estrategista de crescimento e marketing com formação em antropologia que molda como ela pensa sobre produtos — começando pelas pessoas, não pelas soluções. Especialista em automação e fluxos de trabalho com IA, encontra maneiras elegantes de resolver desafios complexos de distribuição. Atualmente na 30x.',
+    },
+    skills: ['Growth', 'Marketing', 'n8n', 'Automation', 'AI Workflows', 'Kapso'],
+    joinedYear: 2025,
   },
   {
     username: 'liz',
