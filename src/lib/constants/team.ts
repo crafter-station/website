@@ -36,7 +36,7 @@ export const teamMembers: TeamMember[] = [
       github: 'https://github.com/shiarauzo',
       linkedin: 'https://www.linkedin.com/in/shiara-arauzo/',
       instagram: 'https://www.instagram.com/shiaraarauzo/',
-      website: 'https://shiara.dev/',
+      website: 'https://shiara.design',
       cal: "https://cal.com/shiara-arauzo/30-min",
       joinedYear: 2024,
     },
