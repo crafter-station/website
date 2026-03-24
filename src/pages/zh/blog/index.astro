@@ -1,0 +1,70 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Nav from '@/components/Nav.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+
+const posts = await getCollection('blog');
+const publishedPosts = posts
+  .filter(p => import.meta.env.DEV || !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  lang={lang}
+  title="Blog — Crafter Station"
+  description="Stories about shipping, building in public, and growing in tech."
+>
+  <Nav />
+
+  <main>
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h1 class="text-base font-bold text-foreground mb-2">{t('blog.heading')}</h1>
+      <p class="text-sm text-muted-foreground max-w-2xl">{t('blog.sub')}</p>
+    </section>
+
+    <section class="px-6 py-12 max-w-[1280px] mx-auto">
+      <div class="flex flex-col gap-0 divide-y divide-divider border-t border-divider">
+        {publishedPosts.map((post, i) => (
+          <a
+            href={`/blog/${post.id}/`}
+            class="group flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 py-6 hover:bg-secondary transition-colors -mx-6 px-6"
+          >
+            <div class="flex items-start gap-4">
+              <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">Fig {i + 1}.</span>
+              <div>
+                <h2 class="text-sm font-bold text-foreground leading-snug mb-1">{post.data.title}</h2>
+                <p class="text-xs text-muted-foreground leading-relaxed max-w-xl">{post.data.description}</p>
+                {post.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-2 mt-2">
+                    {post.data.tags.map(tag => (
+                      <span class="text-xs text-bullet">[{tag}]</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div class="flex items-center gap-4 pl-10 sm:pl-0 shrink-0">
+              <time class="text-xs text-bullet">
+                {post.data.pubDate.toLocaleDateString(
+                  lang === 'zh' ? 'zh-CN' : lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
+                  { year: 'numeric', month: 'short', day: 'numeric' }
+                )}
+              </time>
+              <span class="text-muted-foreground group-hover:text-foreground transition-colors text-sm">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

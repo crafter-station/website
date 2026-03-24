@@ -1,0 +1,151 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Nav from '@/components/Nav.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Project {
+  name: string;
+  description: { en: string; es: string; 'pt': string; zh: string };
+  href: string;
+  badge: string;
+  github?: string;
+  status: 'live' | 'beta' | 'archived';
+}
+
+const projects: Project[] = [
+  {
+    name: 'tinte',
+    description: {
+      en: 'Theme generator for VSCode and shadcn/ui. Generate and preview beautiful color themes.',
+      es: 'Generador de temas para VSCode y shadcn/ui. Genera y previsualiza hermosas paletas de colores.',
+      'pt': 'Gerador de temas para VSCode e shadcn/ui. Gere e visualize belas paletas de cores.',
+      zh: 'VSCode 和 shadcn/ui 的主题生成器。生成和预览精美的配色主题。',
+    },
+    href: 'https://www.tinte.dev',
+    badge: '500+ stars',
+    github: 'https://github.com/crafter-station/tinte',
+    status: 'live',
+  },
+  {
+    name: 'elements',
+    description: {
+      en: 'Fullstack shadcn/ui components with server-side logic included. Copy, paste, and ship.',
+      es: 'Componentes shadcn/ui fullstack con lógica del servidor incluida. Copia, pega y shipea.',
+      'pt': 'Componentes shadcn/ui fullstack com lógica do servidor incluída. Copie, cole e faça ship.',
+      zh: '全栈 shadcn/ui 组件，内含服务端逻辑。复制、粘贴、发布。',
+    },
+    href: 'https://www.tryelements.dev/',
+    badge: '200+ stars',
+    github: 'https://github.com/crafter-station/elements',
+    status: 'live',
+  },
+  {
+    name: 'text0',
+    description: {
+      en: 'Absurdly smart autocomplete for your editor. Understands context across your entire codebase.',
+      es: 'Autocompletado absurdamente inteligente para tu editor. Entiende el contexto de toda tu base de código.',
+      'pt': 'Autocompletar absurdamente inteligente para seu editor. Entende o contexto de toda a sua base de código.',
+      zh: '编辑器的超智能自动补全。理解整个代码库的上下文。',
+    },
+    href: 'https://www.text0.dev',
+    badge: 'Hackathon Winner',
+    github: 'https://github.com/crafter-station/text0',
+    status: 'live',
+  },
+  {
+    name: 'lupa',
+    description: {
+      en: 'Knowledge platform for AI agents. Structured context for better LLM reasoning.',
+      es: 'Plataforma de conocimiento para agentes de IA. Contexto estructurado para mejor razonamiento de LLMs.',
+      'pt': 'Plataforma de conhecimento para agentes de IA. Contexto estruturado para melhor raciocínio de LLMs.',
+      zh: 'AI 代理的知识平台。为更好的 LLM 推理提供结构化上下文。',
+    },
+    href: 'https://www.lupa.build',
+    badge: 'New',
+    github: 'https://github.com/crafter-station/lupa',
+    status: 'beta',
+  },
+];
+---
+
+<BaseLayout
+  lang={lang}
+  title="Projects — Crafter Station"
+  description="Products built by Crafter Station. We ship to learn, share, and inspire the LATAM tech ecosystem."
+>
+  <Nav />
+
+  <main>
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h1 class="text-base font-bold text-foreground mb-2">{t('projects.heading')}</h1>
+      <p class="text-sm text-muted-foreground max-w-2xl">{t('projects.sub')}</p>
+    </section>
+
+    <section class="px-6 py-12 max-w-[1280px] mx-auto">
+      <div class="flex flex-col gap-0 divide-y divide-divider border-t border-divider">
+        {projects.map((project, i) => (
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 py-8">
+            <div class="flex items-start gap-4">
+              <span class="text-bullet text-sm shrink-0 mt-0.5 select-none">Fig {i + 1}.</span>
+              <div>
+                <div class="flex items-center gap-3 mb-2">
+                  <h2 class="text-sm font-bold text-foreground">{project.name}</h2>
+                  <span class="text-xs text-bullet">{project.badge}</span>
+                </div>
+                <p class="text-sm text-muted-foreground leading-relaxed max-w-xl">
+                  {project.description[lang]}
+                </p>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs text-muted-foreground hover:text-foreground transition-colors mt-2 inline-block"
+                    data-track="project_click"
+                    data-track-project={project.name}
+                    data-track-location="projects_page_github"
+                  >
+                    {lang === 'en' ? 'View source →' : lang === 'zh' ? '查看源码 →' : lang === 'es' ? 'Ver código →' : 'Ver código →'}
+                  </a>
+                )}
+              </div>
+            </div>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-4 py-2 border border-divider text-xs text-muted-foreground hover:text-foreground hover:border-muted-foreground transition-colors shrink-0"
+              data-track="project_click"
+              data-track-project={project.name}
+              data-track-location="projects_page"
+            >
+              {lang === 'en' ? 'Visit' : lang === 'zh' ? '访问' : lang === 'es' ? 'Visitar' : 'Visitar'} →
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-divider">
+        <a
+          href="https://github.com/crafter-station"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          data-track="cta_click"
+          data-track-label="view_all_github"
+          data-track-location="projects_page"
+        >
+          {t('projects.cta')}
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

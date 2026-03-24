@@ -1,0 +1,61 @@
+---
+export const prerender = true;
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Nav from '@/components/Nav.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '@/i18n/utils';
+import { teamMembers } from '@/lib/constants/team';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tp = useTranslatedPath(lang);
+---
+
+<BaseLayout
+  lang={lang}
+  title="Team — Crafter Station"
+  description="Meet the engineers, designers, and builders behind Crafter Station."
+>
+  <Nav />
+
+  <main>
+    <section class="border-b border-divider px-6 py-16 max-w-[1280px] mx-auto">
+      <h1 class="text-base font-bold text-foreground mb-2">{t('team.heading')}</h1>
+      <p class="text-sm text-muted-foreground max-w-2xl">{t('team.sub')}</p>
+    </section>
+
+    <section class="px-6 py-16 max-w-[1280px] mx-auto">
+      <div class="flex flex-col gap-0 divide-y divide-divider border-t border-divider">
+        {teamMembers.map((member, i) => (
+          <a
+            href={tp(`/team/${member.username}`)}
+            class="group flex items-center gap-6 py-5 hover:bg-secondary transition-colors -mx-6 px-6"
+            data-track="team_member_click"
+            data-track-member={member.username}
+          >
+            <span class="text-xs text-bullet select-none shrink-0 w-8">[{i + 1}]</span>
+            <div class="w-10 h-10 overflow-hidden shrink-0">
+              <img
+                src={member.photoUrl}
+                alt={member.name}
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                loading="lazy"
+              />
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-bold text-foreground leading-snug">{member.name}</p>
+              <p class="text-xs text-muted-foreground leading-snug mt-0.5">{member.position}</p>
+            </div>
+            {member.location && (
+              <span class="hidden sm:block text-xs text-bullet shrink-0">{member.location}</span>
+            )}
+            <span class="text-muted-foreground group-hover:text-foreground transition-colors shrink-0 text-sm">→</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
