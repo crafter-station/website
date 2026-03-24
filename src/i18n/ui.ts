@@ -78,7 +78,7 @@ export const ui = {
 
     // Team
     'team.heading': 'The team',
-    'team.sub': 'A group of engineers, designers, anthropologists, statisticians, and many more — all giving their time and energy to grow a culture of shipping.',
+    'team.sub': 'A group of engineers, designers, AI experts, anthropologists, statisticians, and many more — all giving their time and energy to grow a culture of shipping.',
     'team.cta': 'Meet the team →',
 
     // Events
@@ -205,7 +205,7 @@ export const ui = {
 
     // Team
     'team.heading': 'El equipo',
-    'team.sub': 'Ingenieros, diseñadores, antropólogos, estadísticos y más — todos dando su tiempo y energía para hacer crecer la cultura de shipear.',
+    'team.sub': 'Ingenieros, diseñadores, expertos en IA, antropólogos, estadísticos y más — todos dando su tiempo y energía para hacer crecer la cultura de shipear.',
     'team.cta': 'Conoce al equipo →',
 
     // Events
@@ -332,7 +332,7 @@ export const ui = {
 
     // Team
     'team.heading': 'A equipe',
-    'team.sub': 'Engenheiros, designers, antropólogos, estatísticos e mais — todos dedicando seu tempo e energia para fazer crescer a cultura de ship.',
+    'team.sub': 'Engenheiros, designers, especialistas em IA, antropólogos, estatísticos e mais — todos dedicando seu tempo e energia para fazer crescer a cultura de ship.',
     'team.cta': 'Conheça a equipe →',
 
     // Events
