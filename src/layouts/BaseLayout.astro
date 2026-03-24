@@ -51,7 +51,7 @@ const routePath = (() => {
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site ?? 'https://www.crafterstation.com')} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
