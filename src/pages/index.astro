@@ -431,7 +431,7 @@ const previewEvents = [
                 class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-0 divide-y sm:divide-y-0"
             >
                 {
-                    teamMembers.slice(0, 10).map((member) => (
+                    teamMembers.map((member) => (
                         <a
                             href={tp(`/team/${member.username}`)}
                             class="group flex flex-col items-center p-4 border border-divider -mt-px -ml-px hover:bg-secondary transition-colors"
