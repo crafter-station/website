@@ -8,7 +8,9 @@ import vercel from '@astrojs/vercel';
 // https://astro.build/config
 export default defineConfig({
 	output: 'server',
-	adapter: vercel(),
+	adapter: vercel({
+		includeFiles: ['node_modules/@takumi-rs/wasm/pkg/takumi_wasm_bg.wasm']
+	}),
 	i18n: {
 		locales: ['en', 'es', 'pt-br'],
 		defaultLocale: 'en',
@@ -23,7 +25,7 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss(), react()],
 		ssr: {
-			noExternal: ['react-tweet'],
+			noExternal: ['react-tweet', '@takumi-rs/image-response', '@takumi-rs/wasm', '@takumi-rs/helpers'],
 			external: ['@takumi-rs/core']
 		}
 	},
