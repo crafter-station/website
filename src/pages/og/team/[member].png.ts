@@ -2,13 +2,13 @@ import type { APIRoute } from "astro";
 import { ImageResponse } from "@takumi-rs/image-response";
 import { teamMembers } from "@/lib/constants/team";
 
-async function loadFonts(siteUrl: string) {
+async function loadFonts() {
   const [regular, bold] = await Promise.all([
     fetch(
-      "https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n5iQ.woff"
+      "https://fonts.gstatic.com/s/ibmplexmono/v20/-F63fjptAgt5VM-kVkqdyU8n5ig.ttf"
     ).then((r) => r.arrayBuffer()),
     fetch(
-      "https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3oQI.woff"
+      "https://fonts.gstatic.com/s/ibmplexmono/v20/-F6qfjptAgt5VM-kVkqdyU8n3pQP8lc.ttf"
     ).then((r) => r.arrayBuffer()),
   ]);
   return { regular, bold };
@@ -24,7 +24,7 @@ export const GET: APIRoute = async ({ params, request }) => {
   const photoUrl = `${siteUrl}${member.photoUrl}`;
   const iconUrl = `${siteUrl}/brand/icon-white.svg`;
 
-  const fonts = await loadFonts(siteUrl);
+  const fonts = await loadFonts();
 
   return new ImageResponse(
     {
