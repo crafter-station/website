@@ -27,7 +27,7 @@ export const teamMembers: TeamMember[] = [
       name: 'Shiara Arauzo',
       position: 'Design Engineer',
       location: 'Lima, Peru',
-      photoUrl: '/team/shiara.webp',
+      photoUrl: '/team/shiara.png',
       bio: {
         en: "Name it and I'll learn it. Design engineer building across web, videogames and research. Building products where neuroscience meets user experience. Founder of Glitch Girls and organizer of #SheShips, empowering women across LATAM to build and ship.",
         es: 'Nómbralo y lo aprenderé. Ingeniera de diseño construyendo en web, videojuegos e investigación. Construyendo productos donde la neurociencia se encuentra con la experiencia de usuario. Fundadora de Glitch Girls y organizadora de #SheShips, empoderando a mujeres en LATAM para construir y hacer ship.',
@@ -47,7 +47,7 @@ export const teamMembers: TeamMember[] = [
       name: 'Cristian Correa',
       position: 'Data & Software Engineer',
       location: 'Bogotá, Colombia',
-      photoUrl: '/team/cris.webp',
+      photoUrl: '/team/cris.png',
       bio: {
         en: 'Data and software engineer bridging the gap between machine learning and product. Passionate about making data-driven products accessible across LATAM.',
         es: 'Ingeniero de datos y software que conecta el machine learning con el producto. Apasionado por hacer que los productos basados en datos sean accesibles en toda LATAM.',
@@ -67,7 +67,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Railly Hugo',
     position: 'Design Engineer',
     location: 'Lima, Peru',
-    photoUrl: '/team/railly.webp',
+    photoUrl: '/team/railly.png',
     bio: {
       en: 'Design engineer passionate about developer tools and open source. Creator of tinte - a theme generator for VSCode and shadcn/ui with 500+ GitHub stars.',
       es: 'Ingeniero de diseño apasionado por las herramientas para desarrolladores y el open source. Creador de tinte - un generador de temas para VSCode y shadcn/ui con más de 500 estrellas en GitHub.',
@@ -88,7 +88,7 @@ export const teamMembers: TeamMember[] = [
       name: 'Emmy Arias',
       position: 'Growth & Marketing',
       location: 'Bogotá, Colombia',
-      photoUrl: '/team/emmy.webp',
+      photoUrl: '/team/emmy.png',
       bio: {
         en: 'Growth and marketing strategist with an anthropology background that shapes how she thinks about products - starting with people, not solutions. Expert in automation and AI workflows, she finds elegant ways to solve complex distribution challenges. Currently at 30x.',
         es: 'Estratega de growth y marketing con formación en antropología que define cómo piensa sobre los productos: empezando por las personas, no por las soluciones. Experta en automatización y flujos de trabajo con IA, encuentra formas elegantes de resolver desafíos complejos de distribución. Actualmente en 30x.',
@@ -107,7 +107,7 @@ export const teamMembers: TeamMember[] = [
       name: 'Nicolas Vargas',
       position: 'Backend Developer',
       location: 'Bogotá, Colombia',
-      photoUrl: '/team/nicolas.svg',
+      photoUrl: '/team/nicolas.png',
       bio: {
         en: 'Backend developer focused on cloud and AI-driven solutions. Specializes in serverless technologies, cloud architecture, and building scalable, high-performance applications with clean abstractions.',
         es: 'Desarrollador backend enfocado en soluciones cloud e impulsadas por IA. Especializado en tecnologías serverless, arquitectura cloud y construcción de aplicaciones escalables y de alto rendimiento con abstracciones limpias.',
@@ -126,7 +126,7 @@ export const teamMembers: TeamMember[] = [
      name: 'Ignacio Velásquez',
      position: 'Growth & Automation',
      location: 'Arequipa, Peru',
-     photoUrl: '/team/nacho.webp',
+     photoUrl: '/team/nacho.png',
      bio: {
        en: 'Growth and automation specialist focused on helping products reach the right people. Builds systems that scale distribution and community engagement across LATAM.',
        es: 'Especialista en growth y automatización enfocado en ayudar a los productos a llegar a las personas correctas. Construye sistemas que escalan la distribución y el compromiso comunitario en LATAM.',
@@ -144,7 +144,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Ignacio Rueda',
     position: 'Backend Engineer',
     location: 'Lima, Peru',
-    photoUrl: '/team/ignacio.webp',
+    photoUrl: '/team/ignacio.png',
     bio: {
       en: 'Backend engineer focused on building reliable, performant APIs and systems. Loves Go and distributed systems.',
       es: 'Ingeniero backend enfocado en construir APIs y sistemas confiables y de alto rendimiento. Le apasiona Go y los sistemas distribuidos.',
@@ -162,7 +162,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Anthony Cueva',
     position: 'Product Engineer',
     location: 'Somewhere in the world',
-    photoUrl: '/team/cueva.webp',
+    photoUrl: '/team/cueva.png',
     bio: {
       en: 'Product engineer obsessed with shipping and building in public. Self-taught software engineer currently working at a crypto startup. Organizes IRL events to spread the shipping culture across LATAM and is on a mission to grow the Crafter Station community. Can help with career advice and shipping products. Also learning to create content - and doing push-ups every single day.',
       es: 'Ingeniero de producto obsesionado con shipear y construir en público. Ingeniero de software autodidacta trabajando actualmente en una startup de cripto. Organiza eventos IRL para difundir la cultura del shipeo en LATAM y tiene la misión de hacer crecer la comunidad de Crafter Station. Puede ayudar con consejos de carrera y shipeo de productos. También aprendiendo a crear contenido - y haciendo flexiones todos los días.',
@@ -184,7 +184,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Liz Riveros',
     position: 'Project Manager',
     location: 'Lima, Peru',
-    photoUrl: '/team/liz.webp',
+    photoUrl: '/team/liz.png',
     bio: {
       en: 'Project manager who keeps the team aligned, the roadmap honest, and the shipping cadence high. Brings structure to chaos without slowing things down.',
       es: 'Project manager que mantiene al equipo alineado, el roadmap honesto y el ritmo de shipeo alto. Aporta estructura al caos sin frenar las cosas.',
@@ -200,7 +200,7 @@ export const teamMembers: TeamMember[] = [
       name: 'Gabriel Antunes',
       position: 'AI Engineer & Full-Stack Developer',
       location: 'Vila Velha, Espírito Santo, Brazil',
-      photoUrl: '/team/gabriel.webp',
+      photoUrl: '/team/gabriel.png',
       bio: {
         en: 'Full-Stack Developer specializing in front-end development with solid experience in Docker and service scalability. Proficient in Go, Kotlin, JavaScript, Node.js, and PHP. Versatile in both front-end and back-end environments with special expertise in JavaScript. Experienced with relational and non-relational databases like PostgreSQL, CockroachDB, MySQL, and MongoDB. Specializes in optimizing SPA applications with React and Angular. Proactive and passionate about challenging projects that push beyond comfort zones.',
         es: 'Full-Stack Developer especializado en desarrollo front-end con experiencia sólida en Docker y escalabilidad de servicios. Competente en Go, Kotlin, JavaScript, Node.js y PHP. Versátil en entornos front-end y back-end con especial experiencia en JavaScript. Experimentado con bases de datos relacionales y no relacionales como PostgreSQL, CockroachDB, MySQL y MongoDB. Especializado en optimizar aplicaciones SPA con React y Angular. Proactivo y apasionado por proyectos desafiantes que van más allá de las zonas de confort.',
@@ -217,7 +217,7 @@ export const teamMembers: TeamMember[] = [
       name: 'Carlos Tarmeño',
       position: 'Frontend Engineer',
       location: 'Lima, Peru',
-      photoUrl: '/team/tarmeno.webp',
+      photoUrl: '/team/tarmeno.png',
       bio: {
         en: 'Frontend engineer who cares deeply about craft and user experience. Builds polished, accessible interfaces and loves the intersection of design and code.',
         es: 'Ingeniero frontend que se preocupa profundamente por el oficio y la experiencia del usuario. Construye interfaces pulidas y accesibles y ama la intersección del diseño y el código.',
@@ -235,7 +235,7 @@ export const teamMembers: TeamMember[] = [
       name: 'Edward Ramos',
       position: 'Frontend Engineer',
       location: 'Lima, Peru',
-      photoUrl: '/team/edward.webp',
+      photoUrl: '/team/edward.png',
       bio: {
         en: 'Frontend engineer passionate about building interactive and visually engaging web experiences. Contributor to the elements component library.',
         es: 'Ingeniero frontend apasionado por construir experiencias web interactivas y visualmente atractivas. Contribuidor de la librería de componentes elements.',
