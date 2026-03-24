@@ -11,13 +11,14 @@ export default defineConfig({
 	output: 'server',
 	adapter: vercel(),
 	i18n: {
-		locales: ['en', 'es', 'pt-br'],
+		locales: ['en', 'es', 'pt', 'zh'],
 		defaultLocale: 'en',
 		routing: {
 			prefixDefaultLocale: false,
 		},
 		fallback: {
-			'pt-br': 'es',
+			pt: 'es',
+			zh: 'en',
 			es: 'en',
 		},
 	},

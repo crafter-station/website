@@ -1,7 +1,8 @@
 export const languages = {
   en: 'English',
   es: 'Español',
-  'pt-br': 'Português',
+  pt: 'Português',
+  zh: '中文',
 } as const;
 
 export const defaultLang = 'en';
@@ -18,17 +19,17 @@ export const ui = {
     'nav.deck': 'Deck',
 
     // Announcement
-    'announce.text': 'Code Brew events — meet shippers in LATAM.',
+    'announce.text': 'Code Brew events - meet shippers in LATAM.',
     'announce.cta': 'See events →',
 
     // Hero
     'hero.headline': 'The new generation of shippers in LATAM',
     'hero.sub': 'A community of engineers, designers, and builders who ship products and share what they learn.',
-    'hero.mentoring': 'Free mentoring available — book a call with our team',
+    'hero.mentoring': 'Free mentoring available - book a call with our team',
 
     // What is section
     'what.heading': 'What is Crafter Station?',
-    'what.desc': 'Crafter Station is a community born from a group of friends who wanted to build things in public — and let the world know.',
+    'what.desc': 'Crafter Station is a community born from a group of friends who wanted to build things in public - and let the world know.',
     'what.b1.title': 'Product development',
     'what.b1.desc': 'We ship products to learn, accelerate, and inspire LATAM.',
     'what.b2.title': 'Events',
@@ -36,7 +37,7 @@ export const ui = {
     'what.b3.title': 'Community',
     'what.b3.desc': 'Teaching and promoting the art of shipping.',
     'what.b4.title': 'Diverse team',
-    'what.b4.desc': 'Engineers, designers, anthropologists, statisticians — all finding their way into tech.',
+    'what.b4.desc': 'Engineers, designers, anthropologists, statisticians - all finding their way into tech.',
     'what.b5.title': 'Open calendars',
     'what.b5.desc': 'Book time for mentoring, career advice, or just a chat.',
     'what.b6.title': 'LATAM focused',
@@ -44,7 +45,7 @@ export const ui = {
     'what.b7.title': 'GitHub Copilot',
     'what.b7.desc': 'Log in with GitHub to use your Copilot account.',
     'what.b8.title': 'Any model',
-    'what.b8.desc': '75+ LLM providers — including local models.',
+    'what.b8.desc': '75+ LLM providers - including local models.',
     'what.cta': 'Read docs →',
 
     // Stats
@@ -55,9 +56,9 @@ export const ui = {
 
     // Story
     'story.heading': 'Our story',
-    'story.p1': 'We were born in late 2023 — a group of friends who met through hackathons and wanted to build something. Not just build it: ship it, share it, receive feedback, iterate, and create real value for someone in the world.',
-    'story.p2': 'In 2025, we decided to share what we learned with the LATAM community. We started our first Code Brew — an event to find people like us. Fifteen people showed up. Designers, engineers, self-taught developers, YouTubers, people teaching on Platzi. Cool people.',
-    'story.p3': 'Since then, we have hosted hackathons, more Code Brews, product launches. We knew there was something here — a culture worth growing.',
+    'story.p1': 'We were born in late 2023 - a group of friends who met through hackathons and wanted to build something. Not just build it: ship it, share it, receive feedback, iterate, and create real value for someone in the world.',
+    'story.p2': 'In 2025, we decided to share what we learned with the LATAM community. We started our first Code Brew - an event to find people like us. Fifteen people showed up. Designers, engineers, self-taught developers, YouTubers, people teaching on Platzi. Cool people.',
+    'story.p3': 'Since then, we have hosted hackathons, more Code Brews, product launches. We knew there was something here - a culture worth growing.',
 
     // Pillars
     'pillars.heading': 'Three pillars',
@@ -72,13 +73,13 @@ export const ui = {
     'bible.heading': 'The Shipping Bible',
     'bible.sub': 'Our philosophy, distilled. A living playbook on how to ship consistently, build in public, and grow as a builder in LATAM.',
     'bible.p1': 'We ship. We build in public. We learn by doing. A shipped project teaches more than a hundred planned ones.',
-    'bible.p2': 'The Shipping Bible covers the full cycle — from the first spark of an idea to the follow-up after launch. Six phases, one rhythm.',
+    'bible.p2': 'The Shipping Bible covers the full cycle - from the first spark of an idea to the follow-up after launch. Six phases, one rhythm.',
     'bible.p3': 'Ship > Perfect. Build in public. Time-box everything. Story > Features. Community first. LatAm represents.',
     'bible.cta': 'Read the Shipping Bible →',
 
     // Team
     'team.heading': 'The team',
-    'team.sub': 'A group of engineers, designers, AI experts, anthropologists, statisticians, and many more — all giving their time and energy to grow a culture of shipping.',
+    'team.sub': 'A group of engineers, designers, AI experts, anthropologists, statisticians, and many more - all giving their time and energy to grow a culture of shipping.',
     'team.cta': 'Meet the team →',
 
     // Events
@@ -145,17 +146,17 @@ export const ui = {
     'nav.deck': 'Deck',
 
     // Announcement
-    'announce.text': 'Code Brew — conoce a shippers en LATAM.',
+    'announce.text': 'Code Brew - conoce a shippers en LATAM.',
     'announce.cta': 'Ver eventos →',
 
     // Hero
     'hero.headline': 'La nueva generación de shippers en LATAM',
     'hero.sub': 'Una comunidad de ingenieros, diseñadores y builders que shippen productos y comparten lo que aprenden.',
-    'hero.mentoring': 'Mentoría gratuita disponible — agenda una llamada con nuestro equipo',
+    'hero.mentoring': 'Mentoría gratuita disponible - agenda una llamada con nuestro equipo',
 
     // What is section
     'what.heading': '¿Qué es Crafter Station?',
-    'what.desc': 'Crafter Station es una comunidad nacida de un grupo de amigos que quería construir cosas en público — y contarle al mundo.',
+    'what.desc': 'Crafter Station es una comunidad nacida de un grupo de amigos que quería construir cosas en público - y contarle al mundo.',
     'what.b1.title': 'Desarrollo de producto',
     'what.b1.desc': 'Shipeamos productos para aprender, acelerar e inspirar a LATAM.',
     'what.b2.title': 'Eventos',
@@ -163,7 +164,7 @@ export const ui = {
     'what.b3.title': 'Comunidad',
     'what.b3.desc': 'Enseñando y promoviendo el arte de shipear.',
     'what.b4.title': 'Equipo diverso',
-    'what.b4.desc': 'Ingenieros, diseñadores, antropólogos, estadísticos — todos encontrando su camino en tech.',
+    'what.b4.desc': 'Ingenieros, diseñadores, antropólogos, estadísticos - todos encontrando su camino en tech.',
     'what.b5.title': 'Calendarios abiertos',
     'what.b5.desc': 'Agenda tiempo para mentoría, consejos de carrera, o simplemente charlar.',
     'what.b6.title': 'Enfocados en LATAM',
@@ -171,7 +172,7 @@ export const ui = {
     'what.b7.title': 'GitHub Copilot',
     'what.b7.desc': 'Inicia sesión con GitHub para usar tu cuenta de Copilot.',
     'what.b8.title': 'Cualquier modelo',
-    'what.b8.desc': 'Más de 75 proveedores de LLM — incluyendo modelos locales.',
+    'what.b8.desc': 'Más de 75 proveedores de LLM - incluyendo modelos locales.',
     'what.cta': 'Leer docs →',
 
     // Stats
@@ -182,9 +183,9 @@ export const ui = {
 
     // Story
     'story.heading': 'Nuestra historia',
-    'story.p1': 'Nacimos a finales de 2023 — un grupo de amigos que se conoció en hackathons y quería construir algo. No solo construirlo: shipearlo, compartirlo, recibir feedback, iterar y crear valor real para alguien en el mundo.',
-    'story.p2': 'En 2025 decidimos compartir lo aprendido con la comunidad LATAM. Organizamos el primer Code Brew — un evento para encontrar gente como nosotros. Llegaron 15 personas. Diseñadores, ingenieros, autodidactas, YouTubers, profes de Platzi. Gente genial.',
-    'story.p3': 'Desde entonces hemos organizado hackathons, más Code Brews, lanzamientos de productos. Supimos que había algo aquí — una cultura que valía la pena hacer crecer.',
+    'story.p1': 'Nacimos a finales de 2023 - un grupo de amigos que se conoció en hackathons y quería construir algo. No solo construirlo: shipearlo, compartirlo, recibir feedback, iterar y crear valor real para alguien en el mundo.',
+    'story.p2': 'En 2025 decidimos compartir lo aprendido con la comunidad LATAM. Organizamos el primer Code Brew - un evento para encontrar gente como nosotros. Llegaron 15 personas. Diseñadores, ingenieros, autodidactas, YouTubers, profes de Platzi. Gente genial.',
+    'story.p3': 'Desde entonces hemos organizado hackathons, más Code Brews, lanzamientos de productos. Supimos que había algo aquí - una cultura que valía la pena hacer crecer.',
 
     // Pillars
     'pillars.heading': 'Tres pilares',
@@ -199,13 +200,13 @@ export const ui = {
     'bible.heading': 'The Shipping Bible',
     'bible.sub': 'Nuestra filosofia, destilada. Un playbook vivo sobre como shipear de forma consistente, construir en publico y crecer como builder en LATAM.',
     'bible.p1': 'Shipeamos. Construimos en publico. Aprendemos haciendo. Un proyecto shipeado ensena mas que cien planificados.',
-    'bible.p2': 'The Shipping Bible cubre el ciclo completo — desde la primera chispa de una idea hasta el seguimiento despues del lanzamiento. Seis fases, un ritmo.',
+    'bible.p2': 'The Shipping Bible cubre el ciclo completo - desde la primera chispa de una idea hasta el seguimiento despues del lanzamiento. Seis fases, un ritmo.',
     'bible.p3': 'Ship > Perfecto. Construye en publico. Ponle tiempo limite a todo. Historia > Funciones. Comunidad primero. LATAM representa.',
     'bible.cta': 'Leer The Shipping Bible →',
 
     // Team
     'team.heading': 'El equipo',
-    'team.sub': 'Ingenieros, diseñadores, expertos en IA, antropólogos, estadísticos y más — todos dando su tiempo y energía para hacer crecer la cultura de shipear.',
+    'team.sub': 'Ingenieros, diseñadores, expertos en IA, antropólogos, estadísticos y más - todos dando su tiempo y energía para hacer crecer la cultura de shipear.',
     'team.cta': 'Conoce al equipo →',
 
     // Events
@@ -261,7 +262,7 @@ export const ui = {
     '404.sub': 'Esta página no existe.',
     '404.cta': '← Ir al inicio',
   },
-  'pt-br': {
+  pt: {
     // Nav
     'nav.events': 'Eventos',
     'nav.projects': 'Projetos',
@@ -272,17 +273,17 @@ export const ui = {
     'nav.deck': 'Deck',
 
     // Announcement
-    'announce.text': 'Code Brew — encontre shippers no LATAM.',
+    'announce.text': 'Code Brew - encontre shippers no LATAM.',
     'announce.cta': 'Ver eventos →',
 
     // Hero
     'hero.headline': 'A nova geração de shippers no LATAM',
     'hero.sub': 'Uma comunidade de engenheiros, designers e builders que fazem ship de produtos e compartilham o que aprendem.',
-    'hero.mentoring': 'Mentoria gratuita disponível — agende uma conversa com nosso time',
+    'hero.mentoring': 'Mentoria gratuita disponível - agende uma conversa com nosso time',
 
     // What is section
     'what.heading': 'O que é Crafter Station?',
-    'what.desc': 'Crafter Station é uma comunidade nascida de um grupo de amigos que queria construir coisas em público — e contar ao mundo.',
+    'what.desc': 'Crafter Station é uma comunidade nascida de um grupo de amigos que queria construir coisas em público - e contar ao mundo.',
     'what.b1.title': 'Desenvolvimento de produto',
     'what.b1.desc': 'Fazemos ship de produtos para aprender, acelerar e inspirar o LATAM.',
     'what.b2.title': 'Eventos',
@@ -290,7 +291,7 @@ export const ui = {
     'what.b3.title': 'Comunidade',
     'what.b3.desc': 'Ensinando e promovendo a arte de fazer ship.',
     'what.b4.title': 'Equipe diversa',
-    'what.b4.desc': 'Engenheiros, designers, antropólogos, estatísticos — todos encontrando seu caminho em tech.',
+    'what.b4.desc': 'Engenheiros, designers, antropólogos, estatísticos - todos encontrando seu caminho em tech.',
     'what.b5.title': 'Calendários abertos',
     'what.b5.desc': 'Agende tempo para mentoria, conselhos de carreira, ou apenas conversar.',
     'what.b6.title': 'Foco no LATAM',
@@ -298,7 +299,7 @@ export const ui = {
     'what.b7.title': 'GitHub Copilot',
     'what.b7.desc': 'Entre com GitHub para usar sua conta do Copilot.',
     'what.b8.title': 'Qualquer modelo',
-    'what.b8.desc': '75+ provedores de LLM — incluindo modelos locais.',
+    'what.b8.desc': '75+ provedores de LLM - incluindo modelos locais.',
     'what.cta': 'Ler docs →',
 
     // Stats
@@ -309,9 +310,9 @@ export const ui = {
 
     // Story
     'story.heading': 'Nossa história',
-    'story.p1': 'Nascemos no final de 2023 — um grupo de amigos que se conheceu em hackathons e queria construir algo. Não apenas construir: fazer ship, compartilhar, receber feedback, iterar e criar valor real para alguém no mundo.',
-    'story.p2': 'Em 2025 decidimos compartilhar o que aprendemos com a comunidade LATAM. Organizamos o primeiro Code Brew — um evento para encontrar pessoas como nós. Quinze pessoas apareceram. Designers, engenheiros, autodidatas, YouTubers, professores da Platzi. Pessoas incríveis.',
-    'story.p3': 'Desde então organizamos hackathons, mais Code Brews, lançamentos de produtos. Sabíamos que havia algo aqui — uma cultura que valia a pena fazer crescer.',
+    'story.p1': 'Nascemos no final de 2023 - um grupo de amigos que se conheceu em hackathons e queria construir algo. Não apenas construir: fazer ship, compartilhar, receber feedback, iterar e criar valor real para alguém no mundo.',
+    'story.p2': 'Em 2025 decidimos compartilhar o que aprendemos com a comunidade LATAM. Organizamos o primeiro Code Brew - um evento para encontrar pessoas como nós. Quinze pessoas apareceram. Designers, engenheiros, autodidatas, YouTubers, professores da Platzi. Pessoas incríveis.',
+    'story.p3': 'Desde então organizamos hackathons, mais Code Brews, lançamentos de produtos. Sabíamos que havia algo aqui - uma cultura que valia a pena fazer crescer.',
 
     // Pillars
     'pillars.heading': 'Três pilares',
@@ -326,13 +327,13 @@ export const ui = {
     'bible.heading': 'The Shipping Bible',
     'bible.sub': 'Nossa filosofia, destilada. Um playbook vivo sobre como fazer ship de forma consistente, construir em publico e crescer como builder na LATAM.',
     'bible.p1': 'Fazemos ship. Construimos em publico. Aprendemos fazendo. Um projeto entregue ensina mais do que cem planejados.',
-    'bible.p2': 'The Shipping Bible cobre o ciclo completo — da primeira centelha de uma ideia ao acompanhamento apos o lancamento. Seis fases, um ritmo.',
+    'bible.p2': 'The Shipping Bible cobre o ciclo completo - da primeira centelha de uma ideia ao acompanhamento apos o lancamento. Seis fases, um ritmo.',
     'bible.p3': 'Ship > Perfeito. Construa em publico. Coloque limite de tempo em tudo. Historia > Funcionalidades. Comunidade primeiro. LATAM representa.',
     'bible.cta': 'Ler The Shipping Bible →',
 
     // Team
     'team.heading': 'A equipe',
-    'team.sub': 'Engenheiros, designers, especialistas em IA, antropólogos, estatísticos e mais — todos dedicando seu tempo e energia para fazer crescer a cultura de ship.',
+    'team.sub': 'Engenheiros, designers, especialistas em IA, antropólogos, estatísticos e mais - todos dedicando seu tempo e energia para fazer crescer a cultura de ship.',
     'team.cta': 'Conheça a equipe →',
 
     // Events
@@ -387,6 +388,133 @@ export const ui = {
     '404.heading': 'Página não encontrada',
     '404.sub': 'Esta página não existe.',
     '404.cta': '← Ir para o início',
+  },
+  zh: {
+    // Nav
+    'nav.events': '活动',
+    'nav.projects': '项目',
+    'nav.team': '团队',
+    'nav.blog': '博客',
+    'nav.brand': 'Brand',
+    'nav.join': '加入',
+    'nav.deck': 'Deck',
+
+    // Announcement
+    'announce.text': 'Code Brew 活动 - 结识拉美地区的 shippers。',
+    'announce.cta': '查看活动 →',
+
+    // Hero
+    'hero.headline': '拉美新一代 shippers',
+    'hero.sub': '一个由工程师、设计师和构建者组成的社区，发布产品并分享所学。',
+    'hero.mentoring': '提供免费指导 - 预约与我们团队的通话',
+
+    // What is section
+    'what.heading': '什么是 Crafter Station？',
+    'what.desc': 'Crafter Station 是一个由一群希望公开构建产品并让世界知道的朋友创立的社区。',
+    'what.b1.title': '产品开发',
+    'what.b1.desc': '我们发布产品，以学习、加速并激励拉美。',
+    'what.b2.title': '活动',
+    'what.b2.desc': 'Code Brew、黑客松和聚会，连接 shippers。',
+    'what.b3.title': '社区',
+    'what.b3.desc': '教授和推广发布产品的艺术。',
+    'what.b4.title': '多元化团队',
+    'what.b4.desc': '工程师、设计师、人类学家、统计学家 - 所有人都在科技领域找到自己的道路。',
+    'what.b5.title': '开放日历',
+    'what.b5.desc': '预约时间进行指导、职业建议或闲聊。',
+    'what.b6.title': '聚焦拉美',
+    'what.b6.desc': '诞生于秘鲁，成长于整个拉丁美洲。',
+    'what.b7.title': 'GitHub Copilot',
+    'what.b7.desc': '使用 GitHub 登录以使用你的 Copilot 账户。',
+    'what.b8.title': '任意模型',
+    'what.b8.desc': '75+ LLM 提供商 - 包括本地模型。',
+    'what.cta': '阅读文档 →',
+
+    // Stats
+    'stats.heading': 'shippers 社区',
+    'stats.fig1.label': '社区成员',
+    'stats.fig2.label': '已举办活动',
+    'stats.fig3.label': '已发布产品',
+
+    // Story
+    'story.heading': '我们的故事',
+    'story.p1': '我们诞生于 2023 年底 - 一群在黑客松中相识、想要构建产品的朋友。不只是构建：发布、分享、接收反馈、迭代，并为世界上的某个人创造真正的价值。',
+    'story.p2': '2025 年，我们决定与拉美社区分享所学。我们举办了第一场 Code Brew - 一场寻找志同道合者的活动。十五个人来了。设计师、工程师、自学开发者、YouTuber、Platzi 讲师。都是很棒的人。',
+    'story.p3': '从那时起，我们举办了黑客松、更多 Code Brew、产品发布。我们知道这里有一种值得培育的文化。',
+
+    // Pillars
+    'pillars.heading': '三大支柱',
+    'pillars.build.title': '构建',
+    'pillars.build.desc': '发布新产品，以学习并加速拉美科技生态。',
+    'pillars.meet.title': '连接',
+    'pillars.meet.desc': '举办活动，汇聚 shippers，推广发布文化。',
+    'pillars.grow.title': '成长',
+    'pillars.grow.desc': '在一个庆祝发布的社区中传授发布的艺术。',
+
+    // Shipping Bible
+    'bible.heading': 'The Shipping Bible',
+    'bible.sub': '我们的理念精华。一本关于如何持续发布、公开构建并在拉美成长为构建者的实践手册。',
+    'bible.p1': '我们发布。我们公开构建。我们在实践中学习。一个已发布的项目比一百个计划中的项目更有教育意义。',
+    'bible.p2': 'The Shipping Bible 涵盖完整周期 - 从创意的第一个火花到发布后的跟进。六个阶段，一个节奏。',
+    'bible.p3': '发布 > 完美。公开构建。为一切设定时限。故事 > 功能。社区优先。拉美代表。',
+    'bible.cta': '阅读 The Shipping Bible →',
+
+    // Team
+    'team.heading': '团队',
+    'team.sub': '一群工程师、设计师、AI 专家、人类学家、统计学家等等 - 他们将时间和精力投入到培育发布文化中。',
+    'team.cta': '认识团队 →',
+
+    // Events
+    'events.heading': '活动',
+    'events.sub': '拉美各地的 Code Brew、黑客松和产品发布。',
+    'events.upcoming': '即将举办',
+    'events.past': '往期活动',
+    'events.cta': '查看所有活动 →',
+    'events.register': '报名 →',
+    'events.attendees': '参与者',
+
+    // Projects
+    'projects.heading': '已发布产品',
+    'projects.sub': '我们为了学习、发布和分享而构建的产品。',
+    'projects.cta': '在 GitHub 上查看全部 →',
+
+    // Blog
+    'blog.heading': '博客文章',
+    'blog.sub': '关于发布、公开构建和在科技领域成长的故事。',
+    'blog.cta': '阅读所有文章 →',
+    'blog.read': '阅读文章 →',
+
+    // Newsletter
+    'newsletter.heading': '第一时间了解我们的下一场活动',
+    'newsletter.sub': '加入社区。没有垃圾邮件，只有发布。',
+    'newsletter.placeholder': '电子邮箱',
+    'newsletter.cta': '订阅',
+
+    // Footer
+    'footer.copy': '© 2026 Crafter Station',
+    'footer.github': 'GitHub',
+    'footer.discord': 'Discord',
+    'footer.linkedin': 'LinkedIn',
+    'footer.x': 'X',
+    'footer.instagram': 'Instagram',
+    'footer.whatsapp': 'WhatsApp',
+    'footer.luma': 'Luma',
+    'footer.brand': 'Brand',
+    'footer.privacy': '隐私政策',
+    'footer.terms': '使用条款',
+
+    // Team member page
+    'member.projects': '项目',
+    'member.connect': '联系方式',
+    'member.skills': '技能',
+    'member.back': '← 返回团队',
+    'member.cal.heading': '预约会议',
+    'member.cal.sub': '预约指导会议、职业建议或轻松聊天。',
+    'member.cal.cta': '打开日历 →',
+
+    // 404
+    '404.heading': '页面未找到',
+    '404.sub': '该页面不存在。',
+    '404.cta': '← 返回首页',
   },
 } as const;
 

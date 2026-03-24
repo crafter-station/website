@@ -7,7 +7,8 @@ export interface TeamMember {
   bio: {
     en: string;
     es: string;
-    'pt-br': string;
+    pt: string;
+    zh: string;
   };
   skills: string[];
   github?: string;
@@ -30,7 +31,8 @@ export const teamMembers: TeamMember[] = [
       bio: {
         en: "Name it and I'll learn it. Design engineer building across web, videogames and research. Building products where neuroscience meets user experience. Founder of Glitch Girls and organizer of #SheShips, empowering women across LATAM to build and ship.",
         es: 'Nómbralo y lo aprenderé. Ingeniera de diseño construyendo en web, videojuegos e investigación. Construyendo productos donde la neurociencia se encuentra con la experiencia de usuario. Fundadora de Glitch Girls y organizadora de #SheShips, empoderando a mujeres en LATAM para construir y hacer ship.',
-        'pt-br': 'Diga o nome e eu aprenderei. Engenheira de design construindo na web, videogames e pesquisa. Construindo produtos onde a neurociência encontra a experiência do usuário. Fundadora do Glitch Girls e organizadora do #SheShips, empoderando mulheres no LATAM para construir e fazer ship.',
+        pt: 'Diga o nome e eu aprenderei. Engenheira de design construindo na web, videogames e pesquisa. Construindo produtos onde a neurociência encontra a experiência do usuário. Fundadora do Glitch Girls e organizadora do #SheShips, empoderando mulheres no LATAM para construir e fazer ship.',
+        zh: '说出来我就能学会。设计工程师，在 Web、游戏和研究领域构建产品。在神经科学与用户体验交汇处打造产品。Glitch Girls 创始人和 #SheShips 组织者，赋能拉美女性构建和发布产品。',
       },
       skills: ['UI/UX Design', 'React', 'Figma', 'TypeScript', 'Astro', 'Accessibility'],
       github: 'https://github.com/shiarauzo',
@@ -49,7 +51,8 @@ export const teamMembers: TeamMember[] = [
       bio: {
         en: 'Data and software engineer bridging the gap between machine learning and product. Passionate about making data-driven products accessible across LATAM.',
         es: 'Ingeniero de datos y software que conecta el machine learning con el producto. Apasionado por hacer que los productos basados en datos sean accesibles en toda LATAM.',
-        'pt-br': 'Engenheiro de dados e software que une machine learning com produto. Apaixonado por tornar produtos orientados a dados acessíveis em todo o LATAM.',
+        pt: 'Engenheiro de dados e software que une machine learning com produto. Apaixonado por tornar produtos orientados a dados acessíveis em todo o LATAM.',
+        zh: '数据和软件工程师，连接机器学习与产品的桥梁。热衷于让数据驱动的产品在整个拉美变得触手可及。',
       },
       skills: ['Python', 'Data Engineering', 'Machine Learning', 'TypeScript', 'dbt', 'SQL'],
       github: 'https://github.com/camilocbarrera',
@@ -66,9 +69,10 @@ export const teamMembers: TeamMember[] = [
     location: 'Lima, Peru',
     photoUrl: '/team/railly.webp',
     bio: {
-      en: 'Design engineer passionate about developer tools and open source. Creator of tinte — a theme generator for VSCode and shadcn/ui with 500+ GitHub stars.',
-      es: 'Ingeniero de diseño apasionado por las herramientas para desarrolladores y el open source. Creador de tinte — un generador de temas para VSCode y shadcn/ui con más de 500 estrellas en GitHub.',
-      'pt-br': 'Engenheiro de design apaixonado por ferramentas para desenvolvedores e open source. Criador do tinte — um gerador de temas para VSCode e shadcn/ui com mais de 500 estrelas no GitHub.',
+      en: 'Design engineer passionate about developer tools and open source. Creator of tinte - a theme generator for VSCode and shadcn/ui with 500+ GitHub stars.',
+      es: 'Ingeniero de diseño apasionado por las herramientas para desarrolladores y el open source. Creador de tinte - un generador de temas para VSCode y shadcn/ui con más de 500 estrellas en GitHub.',
+      pt: 'Engenheiro de design apaixonado por ferramentas para desenvolvedores e open source. Criador do tinte - um gerador de temas para VSCode e shadcn/ui com mais de 500 estrelas no GitHub.',
+      zh: '设计工程师，对开发者工具和开源充满热情。tinte 的创建者 - 一个用于 VSCode 和 shadcn/ui 的主题生成器，GitHub 500+ 星。',
     },
     skills: ['React', 'TypeScript', 'Tailwind CSS', 'Figma', 'Next.js', 'Design Systems'],
     github: 'https://github.com/Railly',
@@ -86,9 +90,10 @@ export const teamMembers: TeamMember[] = [
       location: 'Bogotá, Colombia',
       photoUrl: '/team/emmy.webp',
       bio: {
-        en: 'Growth and marketing strategist with an anthropology background that shapes how she thinks about products — starting with people, not solutions. Expert in automation and AI workflows, she finds elegant ways to solve complex distribution challenges. Currently at 30x.',
+        en: 'Growth and marketing strategist with an anthropology background that shapes how she thinks about products - starting with people, not solutions. Expert in automation and AI workflows, she finds elegant ways to solve complex distribution challenges. Currently at 30x.',
         es: 'Estratega de growth y marketing con formación en antropología que define cómo piensa sobre los productos: empezando por las personas, no por las soluciones. Experta en automatización y flujos de trabajo con IA, encuentra formas elegantes de resolver desafíos complejos de distribución. Actualmente en 30x.',
-        'pt-br': 'Estrategista de crescimento e marketing com formação em antropologia que molda como ela pensa sobre produtos — começando pelas pessoas, não pelas soluções. Especialista em automação e fluxos de trabalho com IA, encontra maneiras elegantes de resolver desafios complexos de distribuição. Atualmente na 30x.',
+        pt: 'Estrategista de crescimento e marketing com formação em antropologia que molda como ela pensa sobre produtos - começando pelas pessoas, não pelas soluções. Especialista em automação e fluxos de trabalho com IA, encontra maneiras elegantes de resolver desafios complexos de distribuição. Atualmente na 30x.',
+        zh: '增长和营销策略师，拥有人类学背景，这决定了她思考产品的方式 - 从人出发，而非从解决方案出发。精通自动化和 AI 工作流，擅长以优雅的方式解决复杂的分发挑战。目前在 30x 工作。',
       },
       skills: ['Growth', 'Marketing', 'n8n', 'Automation', 'AI Workflows', 'Kapso'],
       github: 'https://github.com/estparcae',
@@ -106,7 +111,8 @@ export const teamMembers: TeamMember[] = [
       bio: {
         en: 'Backend developer focused on cloud and AI-driven solutions. Specializes in serverless technologies, cloud architecture, and building scalable, high-performance applications with clean abstractions.',
         es: 'Desarrollador backend enfocado en soluciones cloud e impulsadas por IA. Especializado en tecnologías serverless, arquitectura cloud y construcción de aplicaciones escalables y de alto rendimiento con abstracciones limpias.',
-        'pt-br': 'Desenvolvedor backend focado em soluções cloud e orientadas por IA. Especializado em tecnologias serverless, arquitetura cloud e construção de aplicações escaláveis e de alto desempenho com abstrações limpas.',
+        pt: 'Desenvolvedor backend focado em soluções cloud e orientadas por IA. Especializado em tecnologias serverless, arquitetura cloud e construção de aplicações escaláveis e de alto desempenho com abstrações limpas.',
+        zh: '后端开发者，专注于云计算和 AI 驱动的解决方案。擅长无服务器技术、云架构，以及构建具有简洁抽象的可扩展高性能应用。',
       },
       skills: ['Go', 'TypeScript', 'AWS', 'SST', 'Docker', 'Kubernetes'],
       github: 'https://github.com/MrUprizing',
@@ -124,7 +130,8 @@ export const teamMembers: TeamMember[] = [
      bio: {
        en: 'Growth and automation specialist focused on helping products reach the right people. Builds systems that scale distribution and community engagement across LATAM.',
        es: 'Especialista en growth y automatización enfocado en ayudar a los productos a llegar a las personas correctas. Construye sistemas que escalan la distribución y el compromiso comunitario en LATAM.',
-       'pt-br': 'Especialista em crescimento e automação focado em ajudar produtos a chegar às pessoas certas. Constrói sistemas que escalam distribuição e engajamento comunitário no LATAM.',
+       pt: 'Especialista em crescimento e automação focado em ajudar produtos a chegar às pessoas certas. Constrói sistemas que escalam distribuição e engajamento comunitário no LATAM.',
+       zh: '增长和自动化专家，专注于帮助产品触达合适的人群。构建能够在拉美范围内扩展分发和社区参与的系统。',
      },
      skills: ['Automation', 'AI', 'Notion', 'Product Hunt', 'Growth Hacking', 'Content Marketing'],
      linkedin: 'https://www.linkedin.com/in/ignacio-vel%C3%A1squez-franco-3a5765204/',
@@ -141,7 +148,8 @@ export const teamMembers: TeamMember[] = [
     bio: {
       en: 'Backend engineer focused on building reliable, performant APIs and systems. Loves Go and distributed systems.',
       es: 'Ingeniero backend enfocado en construir APIs y sistemas confiables y de alto rendimiento. Le apasiona Go y los sistemas distribuidos.',
-      'pt-br': 'Engenheiro backend focado em construir APIs e sistemas confiáveis e de alto desempenho. Apaixonado por Go e sistemas distribuídos.',
+      pt: 'Engenheiro backend focado em construir APIs e sistemas confiáveis e de alto desempenho. Apaixonado por Go e sistemas distribuídos.',
+      zh: '后端工程师，专注于构建可靠、高性能的 API 和系统。热爱 Go 和分布式系统。',
     },
     skills: ['Go', 'Python', 'PostgreSQL', 'Docker', 'REST APIs', 'Distributed Systems'],
     github: 'https://github.com/Jibaru',
@@ -156,9 +164,10 @@ export const teamMembers: TeamMember[] = [
     location: 'Somewhere in the world',
     photoUrl: '/team/cueva.webp',
     bio: {
-      en: 'Product engineer obsessed with shipping and building in public. Self-taught software engineer currently working at a crypto startup. Organizes IRL events to spread the shipping culture across LATAM and is on a mission to grow the Crafter Station community. Can help with career advice and shipping products. Also learning to create content — and doing push-ups every single day.',
-      es: 'Ingeniero de producto obsesionado con shipear y construir en público. Ingeniero de software autodidacta trabajando actualmente en una startup de cripto. Organiza eventos IRL para difundir la cultura del shipeo en LATAM y tiene la misión de hacer crecer la comunidad de Crafter Station. Puede ayudar con consejos de carrera y shipeo de productos. También aprendiendo a crear contenido — y haciendo flexiones todos los días.',
-      'pt-br': 'Engenheiro de produto obcecado em fazer ship e construir em público. Engenheiro de software autodidata trabalhando atualmente em uma startup de cripto. Organiza eventos presenciais para espalhar a cultura do ship pelo LATAM e tem a missão de fazer crescer a comunidade da Crafter Station. Pode ajudar com conselhos de carreira e ship de produtos. Também aprendendo a criar conteúdo — e fazendo flexões todos os dias.',
+      en: 'Product engineer obsessed with shipping and building in public. Self-taught software engineer currently working at a crypto startup. Organizes IRL events to spread the shipping culture across LATAM and is on a mission to grow the Crafter Station community. Can help with career advice and shipping products. Also learning to create content - and doing push-ups every single day.',
+      es: 'Ingeniero de producto obsesionado con shipear y construir en público. Ingeniero de software autodidacta trabajando actualmente en una startup de cripto. Organiza eventos IRL para difundir la cultura del shipeo en LATAM y tiene la misión de hacer crecer la comunidad de Crafter Station. Puede ayudar con consejos de carrera y shipeo de productos. También aprendiendo a crear contenido - y haciendo flexiones todos los días.',
+      pt: 'Engenheiro de produto obcecado em fazer ship e construir em público. Engenheiro de software autodidata trabalhando atualmente em uma startup de cripto. Organiza eventos presenciais para espalhar a cultura do ship pelo LATAM e tem a missão de fazer crescer a comunidade da Crafter Station. Pode ajudar com conselhos de carreira e ship de produtos. Também aprendendo a criar conteúdo - e fazendo flexões todos os dias.',
+      zh: '产品工程师，痴迷于发布和公开构建。自学成才的软件工程师，目前在一家加密创业公司工作。组织线下活动以在拉美传播发布文化，致力于壮大 Crafter Station 社区。可以提供职业建议和产品发布方面的帮助。同时也在学习内容创作 - 并且每天都在做俯卧撑。',
     },
     skills: ['Next.js', 'TypeScript', 'PostgreSQL', 'Vercel', 'React', 'Astro', 'Content Creation', 'Career Advice'],
     github: 'https://github.com/cuevaio',
@@ -179,7 +188,8 @@ export const teamMembers: TeamMember[] = [
     bio: {
       en: 'Project manager who keeps the team aligned, the roadmap honest, and the shipping cadence high. Brings structure to chaos without slowing things down.',
       es: 'Project manager que mantiene al equipo alineado, el roadmap honesto y el ritmo de shipeo alto. Aporta estructura al caos sin frenar las cosas.',
-      'pt-br': 'Gerente de projetos que mantém a equipe alinhada, o roadmap honesto e o ritmo de ship alto. Traz estrutura ao caos sem desacelerar as coisas.',
+      pt: 'Gerente de projetos que mantém a equipe alinhada, o roadmap honesto e o ritmo de ship alto. Traz estrutura ao caos sem desacelerar as coisas.',
+      zh: '项目经理，让团队保持一致，让路线图真实可靠，让发布节奏保持高效。在不拖慢进度的前提下为混乱带来秩序。',
     },
     skills: ['Project Management', 'Agile', 'Scrum', 'Leadership', 'Communication', 'Notion'],
     linkedin: 'https://www.linkedin.com/in/lizethriveros/',
@@ -194,7 +204,8 @@ export const teamMembers: TeamMember[] = [
       bio: {
         en: 'Full-Stack Developer specializing in front-end development with solid experience in Docker and service scalability. Proficient in Go, Kotlin, JavaScript, Node.js, and PHP. Versatile in both front-end and back-end environments with special expertise in JavaScript. Experienced with relational and non-relational databases like PostgreSQL, CockroachDB, MySQL, and MongoDB. Specializes in optimizing SPA applications with React and Angular. Proactive and passionate about challenging projects that push beyond comfort zones.',
         es: 'Full-Stack Developer especializado en desarrollo front-end con experiencia sólida en Docker y escalabilidad de servicios. Competente en Go, Kotlin, JavaScript, Node.js y PHP. Versátil en entornos front-end y back-end con especial experiencia en JavaScript. Experimentado con bases de datos relacionales y no relacionales como PostgreSQL, CockroachDB, MySQL y MongoDB. Especializado en optimizar aplicaciones SPA con React y Angular. Proactivo y apasionado por proyectos desafiantes que van más allá de las zonas de confort.',
-        'pt-br': 'Full-Stack Developer especializado em desenvolvimento front-end com experiência sólida em Docker e escalabilidade de serviços. Competente em Go, Kotlin, JavaScript, Node.js e PHP. Versátil em ambientes front-end e back-end com especial expertise em JavaScript. Experimentado com bancos de dados relacionais e não relacionais como PostgreSQL, CockroachDB, MySQL e MongoDB. Especializado em otimizar aplicações SPA com React e Angular. Proativo e apaixonado por projetos desafiantes que vão além das zonas de conforto.',
+        pt: 'Full-Stack Developer especializado em desenvolvimento front-end com experiência sólida em Docker e escalabilidade de serviços. Competente em Go, Kotlin, JavaScript, Node.js e PHP. Versátil em ambientes front-end e back-end com especial expertise em JavaScript. Experimentado com bancos de dados relacionais e não relacionais como PostgreSQL, CockroachDB, MySQL e MongoDB. Especializado em otimizar aplicações SPA com React e Angular. Proativo e apaixonado por projetos desafiantes que vão além das zonas de conforto.',
+        zh: '全栈开发者，专精前端开发，在 Docker 和服务可扩展性方面有丰富经验。精通 Go、Kotlin、JavaScript、Node.js 和 PHP。在前后端环境中都很灵活，尤其擅长 JavaScript。熟悉 PostgreSQL、CockroachDB、MySQL 和 MongoDB 等关系型和非关系型数据库。擅长使用 React 和 Angular 优化 SPA 应用。积极主动，热衷于超越舒适区的挑战性项目。',
       },
       skills: ['Python', 'Go', 'TypeScript', 'JavaScript', 'React', 'Angular', 'Node.js', 'Docker', 'LangChain', 'LangGraph', 'PostgreSQL', 'MongoDB'],
       github: 'https://github.com/antunesgabriel',
@@ -210,7 +221,8 @@ export const teamMembers: TeamMember[] = [
       bio: {
         en: 'Frontend engineer who cares deeply about craft and user experience. Builds polished, accessible interfaces and loves the intersection of design and code.',
         es: 'Ingeniero frontend que se preocupa profundamente por el oficio y la experiencia del usuario. Construye interfaces pulidas y accesibles y ama la intersección del diseño y el código.',
-        'pt-br': 'Engenheiro frontend que se preocupa profundamente com o ofício e a experiência do usuário. Constrói interfaces polidas e acessíveis e ama a interseção entre design e código.',
+        pt: 'Engenheiro frontend que se preocupa profundamente com o ofício e a experiência do usuário. Constrói interfaces polidas e acessíveis e ama a interseção entre design e código.',
+        zh: '前端工程师，深度关注工艺和用户体验。构建精致、无障碍的界面，热爱设计与代码的交汇。',
       },
       skills: ['React', 'TypeScript', 'Next.js', 'CSS', 'JavaScript', 'Accessibility'],
       github: 'https://github.com/carlosdtn',
@@ -227,7 +239,8 @@ export const teamMembers: TeamMember[] = [
       bio: {
         en: 'Frontend engineer passionate about building interactive and visually engaging web experiences. Contributor to the elements component library.',
         es: 'Ingeniero frontend apasionado por construir experiencias web interactivas y visualmente atractivas. Contribuidor de la librería de componentes elements.',
-        'pt-br': 'Engenheiro frontend apaixonado por construir experiências web interativas e visualmente envolventes. Contribuidor da biblioteca de componentes elements.',
+        pt: 'Engenheiro frontend apaixonado por construir experiências web interativas e visualmente envolventes. Contribuidor da biblioteca de componentes elements.',
+        zh: '前端工程师，热衷于构建交互式且视觉吸引力强的 Web 体验。elements 组件库的贡献者。',
       },
       skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Animation', 'Web APIs'],
       github: 'https://github.com/EdwardR0507',
