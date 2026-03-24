@@ -23,7 +23,8 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss(), react()],
 		ssr: {
-			noExternal: ['react-tweet']
+			noExternal: ['react-tweet'],
+			external: ['@takumi-rs/core']
 		}
 	},
 	integrations: [react(), mdx()]
