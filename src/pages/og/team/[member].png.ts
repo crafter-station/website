@@ -1,20 +1,18 @@
 import type { APIRoute } from "astro";
 import { ImageResponse } from "@takumi-rs/image-response";
 import { teamMembers } from "@/lib/constants/team";
-import fs from "node:fs";
-import path from "node:path";
 
-const fontRegular = fs.readFileSync(
-  path.resolve(
-    "node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff"
-  )
-);
-
-const fontBold = fs.readFileSync(
-  path.resolve(
-    "node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-700-normal.woff"
-  )
-);
+async function loadFonts(siteUrl: string) {
+  const [regular, bold] = await Promise.all([
+    fetch(
+      "https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n5iQ.woff"
+    ).then((r) => r.arrayBuffer()),
+    fetch(
+      "https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3oQI.woff"
+    ).then((r) => r.arrayBuffer()),
+  ]);
+  return { regular, bold };
+}
 
 export const GET: APIRoute = async ({ params, request }) => {
   const member = teamMembers.find((m) => m.username === params.member);
@@ -25,6 +23,8 @@ export const GET: APIRoute = async ({ params, request }) => {
   const siteUrl = new URL(request.url).origin;
   const photoUrl = `${siteUrl}${member.photoUrl}`;
   const iconUrl = `${siteUrl}/brand/icon-white.svg`;
+
+  const fonts = await loadFonts(siteUrl);
 
   return new ImageResponse(
     {
@@ -195,8 +195,16 @@ export const GET: APIRoute = async ({ params, request }) => {
       height: 675,
       format: "png",
       fonts: [
-        { name: "IBM Plex Mono", data: fontRegular, weight: 400 },
-        { name: "IBM Plex Mono", data: fontBold, weight: 700 },
+        {
+          name: "IBM Plex Mono",
+          data: fonts.regular,
+          weight: 400 as const,
+        },
+        {
+          name: "IBM Plex Mono",
+          data: fonts.bold,
+          weight: 700 as const,
+        },
       ],
     }
   );
