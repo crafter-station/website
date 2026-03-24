@@ -33,14 +33,14 @@ const tp = useTranslatedPath(lang);
       <div class="flex flex-wrap items-center gap-4 mt-6 mb-6">
         <time class="text-xs text-bullet">
           {pubDate.toLocaleDateString(
-            lang === 'pt-br' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
+            lang === 'zh' ? 'zh-CN' : lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
             { year: 'numeric', month: 'long', day: 'numeric' }
           )}
         </time>
         {updatedDate && (
           <span class="text-xs text-bullet">
             Updated: {updatedDate.toLocaleDateString(
-              lang === 'pt-br' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
+              lang === 'zh' ? 'zh-CN' : lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
               { year: 'numeric', month: 'long', day: 'numeric' }
             )}
           </span>

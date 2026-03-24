@@ -13,21 +13,27 @@ const tp = useTranslatedPath(lang);
 
 const { upcoming, past, filterTags } = await fetchCrafterStationEvents();
 
-const lumaLinkText = lang === 'es'
+const lumaLinkText = lang === 'zh'
+  ? '在 Luma 上查看所有活动'
+  : lang === 'es'
   ? 'Ver todos los eventos en Luma'
-  : lang === 'pt-br'
+  : lang === 'pt'
   ? 'Ver todos os eventos no Luma'
   : 'View all events on Luma';
 
-const hack0Intro = lang === 'es'
+const hack0Intro = lang === 'zh'
+  ? '在 hack0.dev 发现更多拉美科技活动 - 这是我们正在构建的平台，旨在将开发者、设计师和构建者与黑客松、会议和聚会连接起来。'
+  : lang === 'es'
   ? 'Descubre mas eventos tech en LATAM en hack0.dev — la plataforma que estamos construyendo para conectar developers, disenadores y builders con hackathones, conferencias y meetups.'
-  : lang === 'pt-br'
+  : lang === 'pt'
   ? 'Descubra mais eventos tech na LATAM em hack0.dev — a plataforma que estamos construindo para conectar developers, designers e builders com hackathons, conferencias e meetups.'
   : 'Discover more tech events in LATAM at hack0.dev — a platform we\'re building to connect developers, designers, and builders with hackathons, conferences, and meetups.';
 
-const hack0LinkText = lang === 'es'
+const hack0LinkText = lang === 'zh'
+  ? '前往 hack0.dev'
+  : lang === 'es'
   ? 'Ir a hack0.dev'
-  : lang === 'pt-br'
+  : lang === 'pt'
   ? 'Ir para hack0.dev'
   : 'Go to hack0.dev';
 ---

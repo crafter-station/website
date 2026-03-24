@@ -161,7 +161,7 @@ export async function fetchCrafterStationEvents(): Promise<CrafterStationEvents>
 /** Format a Date to a locale-appropriate string */
 export function formatEventDate(date: Date, lang: string): string {
   const locale =
-    lang === 'pt-br' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US';
+    lang === 'zh' ? 'zh-CN' : lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US';
   return date.toLocaleDateString(locale, {
     year: 'numeric',
     month: 'long',

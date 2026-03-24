@@ -54,7 +54,7 @@ const publishedPosts = posts
             <div class="flex items-center gap-4 pl-10 sm:pl-0 shrink-0">
               <time class="text-xs text-bullet">
                 {post.data.pubDate.toLocaleDateString(
-                  lang === 'pt-br' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
+                  lang === 'zh' ? 'zh-CN' : lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es-ES' : 'en-US',
                   { year: 'numeric', month: 'short', day: 'numeric' }
                 )}
               </time>
