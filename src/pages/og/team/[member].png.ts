@@ -21,7 +21,15 @@ export const GET: APIRoute = async ({ params, request }) => {
   }
 
   const siteUrl = new URL(request.url).origin;
-  const photoUrl = `${siteUrl}${member.photoUrl}`;
+
+  // Fetch photo and convert to base64 data URI (Satori doesn't support WebP)
+  const photoRes = await fetch(`${siteUrl}${member.photoUrl}`);
+  const photoBuffer = await photoRes.arrayBuffer();
+  const photoBase64 = Buffer.from(photoBuffer).toString("base64");
+  const photoMime = member.photoUrl.endsWith(".svg")
+    ? "image/svg+xml"
+    : "image/png";
+  const photoUrl = `data:${photoMime};base64,${photoBase64}`;
 
   const fonts = await loadFonts();
 
