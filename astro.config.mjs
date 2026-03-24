@@ -7,6 +7,7 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://www.crafterstation.com',
 	output: 'server',
 	adapter: vercel({
 		includeFiles: ['node_modules/@takumi-rs/wasm/pkg/takumi_wasm_bg.wasm']
