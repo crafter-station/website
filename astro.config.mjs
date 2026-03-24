@@ -17,7 +17,6 @@ export default defineConfig({
 			prefixDefaultLocale: false,
 		},
 		fallback: {
-			pt: 'es',
 			zh: 'en',
 			es: 'en',
 		},
