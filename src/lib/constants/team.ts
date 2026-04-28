@@ -231,6 +231,23 @@ export const teamMembers: TeamMember[] = [
       joinedYear: 2024,
     },
     {
+      username: 'juan',
+      name: 'Juan Ortega',
+      position: 'Software Engineer',
+      location: 'Bogotá, Colombia',
+      photoUrl: '/team/juan.png',
+      bio: {
+        en: 'Software engineer building visagente.com, a product that helps people move up their U.S. visa appointment dates. Focused on shipping useful tools that solve real-world problems for Latin Americans abroad.',
+        es: 'Ingeniero de software construyendo visagente.com, un producto que ayuda a las personas a adelantar su cita de visa americana. Enfocado en shipear herramientas útiles que resuelven problemas reales para latinoamericanos en el exterior.',
+        pt: 'Engenheiro de software construindo o visagente.com, um produto que ajuda as pessoas a antecipar a data da entrevista do visto americano. Focado em fazer ship de ferramentas úteis que resolvem problemas reais para latino-americanos no exterior.',
+        zh: '软件工程师，正在构建 visagente.com，一款帮助人们提前美国签证面谈日期的产品。专注于发布解决拉美人海外实际问题的实用工具。',
+      },
+      skills: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Product Engineering'],
+      linkedin: 'https://www.linkedin.com/in/juanortegariveros/',
+      website: 'https://visagente.com',
+      joinedYear: 2026,
+    },
+    {
       username: 'edward',
       name: 'Edward Ramos',
       position: 'Frontend Engineer',
