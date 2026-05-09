@@ -1,0 +1,13 @@
+---
+export const prerender = true;
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { HackDeck } from "@/components/HackDeck";
+---
+
+<BaseLayout
+    title="1K Stars · Crafter Station"
+    description="Acabamos de cruzar las 1,000 estrellas en nuestro primer repositorio open source. Únete a la comunidad en crafters.chat"
+>
+    <HackDeck client:load />
+</BaseLayout>
