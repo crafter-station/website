@@ -105,7 +105,7 @@ export const teamMembers: TeamMember[] = [
   {
       username: 'nicolas',
       name: 'Nicolas Vargas',
-      position: 'Backend Developer',
+      position: 'AI Engineer',
       location: 'Bogotá, Colombia',
       photoUrl: '/team/nicolas.png',
       bio: {
