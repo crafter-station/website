@@ -4,6 +4,10 @@ export const prerender = true;
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { PresentationDeck } from "@/components/PresentationDeck";
 import { teamMembers } from "@/lib/constants/team";
+import { fetchCrafterStationEvents } from "@/lib/luma";
+
+const { past } = await fetchCrafterStationEvents();
+const pastEventsCount = past.length > 0 ? past.length : 50;
 
 const projects = [
     {
@@ -48,5 +52,10 @@ const teamData = teamMembers.map((member) => ({
     title="Deck | Crafter Station"
     description="Learn about Crafter Station - an open source community building developer tools in public from Peru."
 >
-    <PresentationDeck client:load teamMembers={teamData} projects={projects} />
+    <PresentationDeck
+        client:load
+        teamMembers={teamData}
+        projects={projects}
+        pastEventsCount={pastEventsCount}
+    />
 </BaseLayout>
