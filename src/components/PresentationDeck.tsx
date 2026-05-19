@@ -20,6 +20,7 @@ interface Project {
 interface PresentationDeckProps {
   teamMembers: TeamMember[];
   projects: Project[];
+  pastEventsCount: number;
 }
 
 const slides = [
@@ -30,12 +31,14 @@ const slides = [
   { id: "where", label: "Where" },
   { id: "projects", label: "Projects" },
   { id: "team", label: "Team" },
+  { id: "numbers", label: "Numbers" },
   { id: "connect", label: "Connect" },
 ];
 
 export function PresentationDeck({
   teamMembers,
   projects,
+  pastEventsCount,
 }: PresentationDeckProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -527,8 +530,59 @@ export function PresentationDeck({
           </div>
         )}
 
-        {/* Slide 8: Connect */}
+        {/* Slide 8: By the numbers */}
         {currentSlide === 7 && (
+          <div className={slideClasses}>
+            <div className="max-w-6xl w-full">
+              <p className="text-primary text-lg font-medium mb-4 text-center">
+                By the numbers
+              </p>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4 leading-tight">
+                A community that <span className="text-primary">ships</span>
+              </h2>
+              <p className="text-lg md:text-xl text-neutral-400 mb-12 text-center">
+                Three years of building in public across LATAM
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div className="p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                  <p className="text-5xl md:text-6xl font-black text-primary mb-3">
+                    700+
+                  </p>
+                  <p className="text-sm md:text-base text-neutral-400">
+                    Community members
+                  </p>
+                </div>
+                <div className="p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                  <p className="text-5xl md:text-6xl font-black text-primary mb-3">
+                    5+
+                  </p>
+                  <p className="text-sm md:text-base text-neutral-400">
+                    Hackathons organized
+                  </p>
+                </div>
+                <div className="p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                  <p className="text-5xl md:text-6xl font-black text-primary mb-3">
+                    10+
+                  </p>
+                  <p className="text-sm md:text-base text-neutral-400">
+                    Online events
+                  </p>
+                </div>
+                <div className="p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                  <p className="text-5xl md:text-6xl font-black text-primary mb-3">
+                    {pastEventsCount}+
+                  </p>
+                  <p className="text-sm md:text-base text-neutral-400">
+                    Past events hosted
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 9: Connect */}
+        {currentSlide === 8 && (
           <div className={slideClasses}>
             <div className="max-w-4xl text-center">
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
