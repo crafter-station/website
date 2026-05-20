@@ -355,7 +355,7 @@ export function PresentationDeck({
                     { name: "Wallbit", tag: "YC W23" },
                     { name: "Clerk", tag: "Auth" },
                     { name: "v0", tag: "Vercel" },
-                    { name: "Codex", tag: "AI" },
+                    { name: "Codex", tag: "OpenAI" },
                     { name: "Globant", tag: "Colombia" },
                     { name: "PUCP", tag: "University" },
                     { name: "UTEC", tag: "University" },
@@ -364,7 +364,7 @@ export function PresentationDeck({
                     { name: "Cayetano", tag: "University" },
                     { name: "Little Caesars", tag: "Food" },
                     { name: "AI Builders", tag: "Community" },
-                    { name: "Puras Duras", tag: "Food" },
+                    { name: "Puras Duras", tag: "Women CEOs" },
                     { name: "Tropicalia", tag: "Food" },
                   ].map((partner) => (
                     <div
