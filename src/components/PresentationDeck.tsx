@@ -365,7 +365,7 @@ export function PresentationDeck({
                     { name: "Little Caesars", tag: "Food" },
                     { name: "AI Builders", tag: "Community" },
                     { name: "Puras Duras", tag: "Women CEOs" },
-                    { name: "Tropicalia", tag: "Food" },
+                    { name: "Tropicalia", tag: "Dev Tool" },
                   ].map((partner) => (
                     <div
                       key={partner.name}
