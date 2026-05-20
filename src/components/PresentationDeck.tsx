@@ -26,10 +26,11 @@ interface PresentationDeckProps {
 const slides = [
   { id: "intro", label: "Intro" },
   { id: "who", label: "Who" },
-  { id: "values", label: "Values" },
-  { id: "how", label: "How" },
-  { id: "where", label: "Where" },
-  { id: "projects", label: "Projects" },
+  { id: "hackathons", label: "Hackathons" },
+  { id: "partners", label: "Partners" },
+  { id: "products", label: "Products" },
+  { id: "community", label: "Community" },
+  { id: "events", label: "Events" },
   { id: "team", label: "Team" },
   { id: "numbers", label: "Numbers" },
   { id: "connect", label: "Connect" },
@@ -238,7 +239,7 @@ export function PresentationDeck({
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-primary/10 border border-primary/20 mb-6 sm:mb-8">
                   <span className="size-2 bg-primary rounded-full animate-pulse shrink-0" />
                   <span className="text-xs sm:text-sm text-primary font-medium">
-                    Next.js Hackathon Winners 2025
+                    13 Founding Members · LATAM
                   </span>
                 </div>
                 <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[12rem] font-black text-white leading-[0.9] tracking-tighter break-words">
@@ -247,7 +248,7 @@ export function PresentationDeck({
                   <span className="text-primary">STATION</span>
                 </h1>
                 <p className="mt-6 sm:mt-8 text-base sm:text-xl md:text-3xl text-neutral-400">
-                  Building developer tools in public
+                  Top LATAM builders developing tools in public
                 </p>
               </div>
             </div>
@@ -263,172 +264,191 @@ export function PresentationDeck({
                   Who we are
                 </p>
                 <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 sm:mb-8">
-                  A team of builders who believe in the{" "}
-                  <span className="text-primary">power of community</span>
+                  A team of <span className="text-primary">13 founding members</span> who organize hackathons
                 </h2>
                 <p className="text-base sm:text-xl md:text-2xl text-neutral-400 leading-relaxed">
-                  We're engineers, designers, and creators united by a shared
-                  passion: making development better through open source.
+                  Engineers, designers, and creators united by building in public and pushing LATAM's tech ecosystem forward.
                 </p>
               </div>
             </div>
           </div>
         )}
 
-        {/* Slide 3: Values */}
+        {/* Slide 3: Hackathons */}
         {currentSlide === 2 && (
           <div className={slideClasses}>
             <div className={slideInner}>
               <div className="max-w-5xl w-full">
                 <p className="text-primary text-base sm:text-lg font-medium mb-6 sm:mb-8 text-center">
-                  Our values
+                  Hackathons organized
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-8 sm:mb-12">
+                  +5 hackathons across <span className="text-primary">Peru, Colombia & remote</span>
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800">
-                    <div className="size-12 sm:size-16 bg-primary/10 flex items-center justify-center mb-4 sm:mb-6">
-                      <svg
-                        className="size-6 sm:size-8 text-primary"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-                        />
-                      </svg>
-                    </div>
+                    <span className="px-2 py-1 text-xs font-medium bg-pink-500/20 text-pink-400 mb-4 inline-block">
+                      8M · 200 participants
+                    </span>
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
-                      Open by Default
+                      Women's Hack
                     </h3>
                     <p className="text-sm sm:text-base text-neutral-400">
-                      All our code is open source. No exceptions.
+                      Hackathon for International Women's Day. Our largest event organized.
                     </p>
                   </div>
                   <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800">
-                    <div className="size-12 sm:size-16 bg-primary/10 flex items-center justify-center mb-4 sm:mb-6">
-                      <svg
-                        className="size-6 sm:size-8 text-primary"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
-                        />
-                      </svg>
-                    </div>
+                    <span className="px-2 py-1 text-xs font-medium bg-purple-500/20 text-purple-400 mb-4 inline-block">
+                      Sheships
+                    </span>
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
-                      Community First
+                      Sheships
                     </h3>
                     <p className="text-sm sm:text-base text-neutral-400">
-                      Built with feedback from real developers.
+                      Hackathon focused on empowering women in tech.
                     </p>
                   </div>
                   <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800">
-                    <div className="size-12 sm:size-16 bg-primary/10 flex items-center justify-center mb-4 sm:mb-6">
-                      <svg
-                        className="size-6 sm:size-8 text-primary"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
-                        />
-                      </svg>
-                    </div>
+                    <span className="px-2 py-1 text-xs font-medium bg-blue-500/20 text-blue-400 mb-4 inline-block">
+                      Co-organized
+                    </span>
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
-                      Global Impact
+                      iA Hackathon
                     </h3>
                     <p className="text-sm sm:text-base text-neutral-400">
-                      From Peru to the world. Building globally.
+                      AI Hackathon in collaboration with the community.
+                    </p>
+                  </div>
+                  <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800">
+                    <span className="px-2 py-1 text-xs font-medium bg-green-500/20 text-green-400 mb-4 inline-block">
+                      GTM · Co-helped
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
+                      GTM Hackathon
+                    </h3>
+                    <p className="text-sm sm:text-base text-neutral-400">
+                      Supported multiple editions across Peru and Colombia.
                     </p>
                   </div>
                 </div>
+                <p className="text-center text-neutral-500 mt-6 sm:mt-8 text-sm sm:text-base">
+                  Average of ~150 participants per hackathon
+                </p>
               </div>
             </div>
           </div>
         )}
 
-        {/* Slide 4: How we operate */}
+        {/* Slide 4: Partners */}
         {currentSlide === 3 && (
           <div className={slideClasses}>
             <div className={slideInner}>
-              <div className="max-w-4xl w-full">
-                <p className="text-primary text-base sm:text-lg font-medium mb-3 sm:mb-4">
-                  How we operate
+              <div className="max-w-5xl w-full">
+                <p className="text-primary text-base sm:text-lg font-medium mb-3 sm:mb-4 text-center">
+                  Past sponsors
                 </p>
-                <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8 sm:mb-12">
-                  Building in <span className="text-primary">public</span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-8 sm:mb-12 text-center">
+                  Companies that <span className="text-primary">sponsored</span> us
                 </h2>
-                <div className="space-y-6 sm:space-y-8">
-                  <div className="flex items-start gap-4 sm:gap-6">
-                    <div className="size-10 sm:size-12 bg-primary/10 flex items-center justify-center shrink-0">
-                      <span className="text-primary font-bold text-lg sm:text-xl">01</span>
-                    </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
-                        Every line of code is public
-                      </h3>
-                      <p className="text-sm sm:text-base text-neutral-400">
-                        Transparency drives accountability and quality.
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 sm:gap-3">
+                  {[
+                    { name: "Wallbit", tag: "YC W23" },
+                    { name: "Clerk", tag: "Auth" },
+                    { name: "v0", tag: "Vercel" },
+                    { name: "Codex", tag: "OpenAI" },
+                    { name: "Globant", tag: "Colombia" },
+                    { name: "PUCP", tag: "University" },
+                    { name: "UTEC", tag: "University" },
+                    { name: "Domu", tag: "Startup" },
+                    { name: "Sezzle", tag: "Fintech" },
+                    { name: "Cayetano", tag: "University" },
+                    { name: "Little Caesars", tag: "Food" },
+                    { name: "AI Builders", tag: "Community" },
+                    { name: "Puras Duras", tag: "Women CEOs" },
+                    { name: "Tropicalia", tag: "Dev Tool" },
+                  ].map((partner) => (
+                    <div
+                      key={partner.name}
+                      className="p-3 sm:p-4 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors text-center"
+                    >
+                      <p className="text-sm sm:text-base font-semibold text-white truncate">
+                        {partner.name}
                       </p>
+                      <span className="text-[10px] sm:text-xs text-neutral-500">{partner.tag}</span>
                     </div>
-                  </div>
-                  <div className="flex items-start gap-4 sm:gap-6">
-                    <div className="size-10 sm:size-12 bg-primary/10 flex items-center justify-center shrink-0">
-                      <span className="text-primary font-bold text-lg sm:text-xl">02</span>
-                    </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
-                        Ship fast, iterate faster
-                      </h3>
-                      <p className="text-sm sm:text-base text-neutral-400">
-                        We believe in rapid iteration with community feedback.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4 sm:gap-6">
-                    <div className="size-10 sm:size-12 bg-primary/10 flex items-center justify-center shrink-0">
-                      <span className="text-primary font-bold text-lg sm:text-xl">03</span>
-                    </div>
-                    <div>
-                      <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
-                        Community-driven development
-                      </h3>
-                      <p className="text-sm sm:text-base text-neutral-400">
-                        PRs welcome. Issues welcome. Ideas welcome.
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* Slide 5: Where we are */}
+        {/* Slide 5: Products */}
         {currentSlide === 4 && (
+          <div className={slideClasses}>
+            <div className={slideInner}>
+              <div className="max-w-5xl w-full">
+                <p className="text-primary text-base sm:text-lg font-medium mb-3 sm:mb-4 text-center">
+                  Our products
+                </p>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-8 sm:mb-12">
+                  Projects we've <span className="text-primary">built & collaborated</span> on
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                  <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                      MACA
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-400">
+                      Audio transcription tool like Whisperflow
+                    </p>
+                  </div>
+                  <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                      Chat C3
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-400">
+                      Multiple AI models in one place
+                    </p>
+                  </div>
+                  <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                      Hack0
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-400">
+                      Tech events directory for Peru
+                    </p>
+                  </div>
+                  <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                      Letsacc
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-400">
+                      Hackathon submission platform
+                    </p>
+                  </div>
+                </div>
+                <p className="text-center text-neutral-500 mt-6 sm:mt-8 text-sm sm:text-base">
+                  All our projects are open source
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Slide 6: Community */}
+        {currentSlide === 5 && (
           <div className={slideClasses}>
             <div className={slideInner}>
               <div className="max-w-6xl w-full">
                 <p className="text-primary text-base sm:text-lg font-medium mb-3 sm:mb-4 text-center">
-                  Where we are
+                  Our community
                 </p>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3 sm:mb-4 text-center">
-                  Born in <span className="text-primary">Peru</span>, now global
+                  <span className="text-primary">700+</span> members across LATAM
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl text-neutral-400 mb-6 sm:mb-8 text-center">
-                  A distributed community across LATAM & Europe
+                  A distributed community building the future of tech
                 </p>
 
                 {/* Real Map visualization */}
@@ -439,6 +459,8 @@ export function PresentationDeck({
                       { city: "Arequipa", country: "Peru", countryCode: "604", lat: -16.409, lng: -71.537 },
                       { city: "Bogotá", country: "Colombia", countryCode: "170", lat: 4.711, lng: -74.0721 },
                       { city: "Medellín", country: "Colombia", countryCode: "170", lat: 6.2442, lng: -75.5812 },
+                      { city: "Mexico City", country: "Mexico", countryCode: "484", lat: 19.4326, lng: -99.1332 },
+                      { city: "Guatemala City", country: "Guatemala", countryCode: "320", lat: 14.6349, lng: -90.5069 },
                       { city: "São Paulo", country: "Brazil", countryCode: "076", lat: -23.5505, lng: -46.6333 },
                       { city: "Madrid", country: "Spain", countryCode: "724", lat: 40.4168, lng: -3.7038 },
                     ]}
@@ -447,20 +469,20 @@ export function PresentationDeck({
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
                 </div>
 
-                {/* City list */}
+                {/* Country list */}
                 <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 sm:gap-4 md:gap-8 mt-6 sm:mt-8">
                   {[
-                    { city: "Lima", country: "Peru", flag: "🇵🇪", isHQ: true },
-                    { city: "Arequipa", country: "Peru", flag: "🇵🇪" },
-                    { city: "Bogotá", country: "Colombia", flag: "🇨🇴" },
-                    { city: "Medellín", country: "Colombia", flag: "🇨🇴" },
-                    { city: "São Paulo", country: "Brazil", flag: "🇧🇷" },
-                    { city: "Madrid", country: "Spain", flag: "🇪🇸" },
+                    { country: "Peru", flag: "🇵🇪", isHQ: true },
+                    { country: "Colombia", flag: "🇨🇴" },
+                    { country: "Mexico", flag: "🇲🇽" },
+                    { country: "Guatemala", flag: "🇬🇹" },
+                    { country: "Brazil", flag: "🇧🇷" },
+                    { country: "Spain", flag: "🇪🇸" },
                   ].map((loc) => (
-                    <div key={loc.city} className={`flex items-center gap-1.5 sm:gap-2 ${loc.isHQ ? 'text-primary' : 'text-neutral-400'}`}>
+                    <div key={loc.country} className={`flex items-center gap-1.5 sm:gap-2 ${loc.isHQ ? 'text-primary' : 'text-neutral-400'}`}>
                       <span className="text-base sm:text-lg">{loc.flag}</span>
                       <span className={`text-xs sm:text-sm ${loc.isHQ ? 'font-semibold' : ''}`}>
-                        {loc.city}
+                        {loc.country}
                         {loc.isHQ && <span className="text-[10px] sm:text-xs ml-1 opacity-70">(HQ)</span>}
                       </span>
                     </div>
@@ -471,42 +493,46 @@ export function PresentationDeck({
           </div>
         )}
 
-        {/* Slide 6: Projects */}
-        {currentSlide === 5 && (
+        {/* Slide 7: Events */}
+        {currentSlide === 6 && (
           <div className={slideClasses}>
             <div className={slideInner}>
               <div className="max-w-5xl w-full">
                 <p className="text-primary text-base sm:text-lg font-medium mb-3 sm:mb-4 text-center">
-                  What we've built
+                  Hackathon events
                 </p>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-8 sm:mb-12">
-                  Our Projects
+                  Beyond the <span className="text-primary">hackathons</span>
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-                  {projects.slice(0, 4).map((project) => (
-                    <div
-                      key={project.name}
-                      className="p-4 sm:p-6 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors"
-                    >
-                      <span className="px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium bg-primary/20 text-primary mb-3 sm:mb-4 inline-block">
-                        {project.stars}
-                      </span>
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
-                        {project.name}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-neutral-400">
-                        {project.description}
-                      </p>
-                    </div>
-                  ))}
+                  <div className="p-5 sm:p-6 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                    <span className="text-3xl sm:text-4xl font-black text-primary block mb-2">+50</span>
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-1">Mentoring</h3>
+                    <p className="text-xs text-neutral-400">1:1 sessions with hackers</p>
+                  </div>
+                  <div className="p-5 sm:p-6 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                    <span className="text-3xl sm:text-4xl font-black text-primary block mb-2">+3</span>
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-1">Sponsored</h3>
+                    <p className="text-xs text-neutral-400">Events with sponsors</p>
+                  </div>
+                  <div className="p-5 sm:p-6 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                    <span className="text-3xl sm:text-4xl font-black text-primary block mb-2">+7</span>
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-1">Code Brews</h3>
+                    <p className="text-xs text-neutral-400">Coffee & code meetups</p>
+                  </div>
+                  <div className="p-5 sm:p-6 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
+                    <span className="text-3xl sm:text-4xl font-black text-primary block mb-2">+5</span>
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-1">Ship or Sinks</h3>
+                    <p className="text-xs text-neutral-400">Virtual shipping sessions</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         )}
 
-        {/* Slide 7: Team */}
-        {currentSlide === 6 && (
+        {/* Slide 8: Team */}
+        {currentSlide === 7 && (
           <div className={slideClasses}>
             <div className={slideInner}>
               <div className="max-w-5xl w-full">
@@ -540,8 +566,8 @@ export function PresentationDeck({
           </div>
         )}
 
-        {/* Slide 8: By the numbers */}
-        {currentSlide === 7 && (
+        {/* Slide 9: By the numbers */}
+        {currentSlide === 8 && (
           <div className={slideClasses}>
             <div className={slideInner}>
               <div className="max-w-6xl w-full">
@@ -552,20 +578,20 @@ export function PresentationDeck({
                   A community that <span className="text-primary">ships</span>
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl text-neutral-400 mb-8 sm:mb-12 text-center">
-                  Three years of building in public across LATAM
+                  Building in public across Peru, Colombia & remote
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
                   <div className="p-4 sm:p-6 md:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
                     <p className="text-4xl sm:text-5xl md:text-6xl font-black text-primary mb-2 sm:mb-3">
-                      700+
+                      13
                     </p>
                     <p className="text-xs sm:text-sm md:text-base text-neutral-400">
-                      Community members
+                      Founding members
                     </p>
                   </div>
                   <div className="p-4 sm:p-6 md:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
                     <p className="text-4xl sm:text-5xl md:text-6xl font-black text-primary mb-2 sm:mb-3">
-                      5+
+                      +5
                     </p>
                     <p className="text-xs sm:text-sm md:text-base text-neutral-400">
                       Hackathons organized
@@ -573,18 +599,18 @@ export function PresentationDeck({
                   </div>
                   <div className="p-4 sm:p-6 md:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
                     <p className="text-4xl sm:text-5xl md:text-6xl font-black text-primary mb-2 sm:mb-3">
-                      10+
+                      ~150
                     </p>
                     <p className="text-xs sm:text-sm md:text-base text-neutral-400">
-                      Online events
+                      Avg. participants
                     </p>
                   </div>
                   <div className="p-4 sm:p-6 md:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
                     <p className="text-4xl sm:text-5xl md:text-6xl font-black text-primary mb-2 sm:mb-3">
-                      {pastEventsCount}+
+                      11+
                     </p>
                     <p className="text-xs sm:text-sm md:text-base text-neutral-400">
-                      Past events hosted
+                      Active partners
                     </p>
                   </div>
                 </div>
@@ -593,8 +619,8 @@ export function PresentationDeck({
           </div>
         )}
 
-        {/* Slide 9: Connect */}
-        {currentSlide === 8 && (
+        {/* Slide 10: Connect */}
+        {currentSlide === 9 && (
           <div className={slideClasses}>
             <div className={slideInner}>
               <div className="max-w-4xl w-full text-center">
