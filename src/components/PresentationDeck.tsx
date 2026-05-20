@@ -267,7 +267,7 @@ export function PresentationDeck({
                   A team of <span className="text-primary">13 founding members</span> who organize hackathons
                 </h2>
                 <p className="text-base sm:text-xl md:text-2xl text-neutral-400 leading-relaxed">
-                  Engineers, designers, and creators united by a passion: building in public, organizing hackathons, and growing the LATAM tech community.
+                  Engineers, designers, and creators united by building in public and pushing LATAM's tech ecosystem forward.
                 </p>
               </div>
             </div>
