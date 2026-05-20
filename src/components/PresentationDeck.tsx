@@ -400,7 +400,7 @@ export function PresentationDeck({
                       MACA
                     </h3>
                     <p className="text-xs sm:text-sm text-neutral-400">
-                      Productivity tool for devs
+                      Audio transcription tool like Whisperflow
                     </p>
                   </div>
                   <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
@@ -408,7 +408,7 @@ export function PresentationDeck({
                       Chat C3
                     </h3>
                     <p className="text-xs sm:text-sm text-neutral-400">
-                      AI chat for the community
+                      Multiple AI models in one place
                     </p>
                   </div>
                   <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
@@ -416,7 +416,7 @@ export function PresentationDeck({
                       Hack0
                     </h3>
                     <p className="text-xs sm:text-sm text-neutral-400">
-                      Hackathon platform
+                      Tech events directory for Peru
                     </p>
                   </div>
                   <div className="p-6 sm:p-8 bg-neutral-950 border border-neutral-800 hover:border-primary/50 transition-colors">
@@ -424,7 +424,7 @@ export function PresentationDeck({
                       Letsacc
                     </h3>
                     <p className="text-xs sm:text-sm text-neutral-400">
-                      Project accelerator
+                      Hackathon submission platform
                     </p>
                   </div>
                 </div>
