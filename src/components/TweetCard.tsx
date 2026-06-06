@@ -30,6 +30,24 @@ interface TwitterIconProps {
   [key: string]: unknown;
 }
 
+type TweetWithMaybeObjectEntities = Tweet & {
+  entities?: unknown;
+  parent?: TweetWithMaybeObjectEntities;
+};
+
+const normalizeTweetEntities = (tweet: TweetWithMaybeObjectEntities): Tweet => {
+  const normalized = {
+    ...tweet,
+    entities: Array.isArray(tweet.entities) ? tweet.entities : [],
+  } as TweetWithMaybeObjectEntities;
+
+  if (tweet.parent) {
+    normalized.parent = normalizeTweetEntities(tweet.parent) as TweetWithMaybeObjectEntities;
+  }
+
+  return normalized as Tweet;
+};
+
 // X logo (antes Twitter)
 const XLogo = ({ className, ...props }: TwitterIconProps) => (
   <svg
@@ -350,7 +368,7 @@ export const MagicTweet = ({
   components?: TwitterComponents;
   className?: string;
 }) => {
-  const enrichedTweet = enrichTweet(tweet);
+  const enrichedTweet = enrichTweet(normalizeTweetEntities(tweet));
 
   return (
     <div
@@ -395,8 +413,6 @@ export const TweetCard = async ({
     const NotFound = components?.TweetNotFound || TweetNotFound;
     return <NotFound {...props} />;
   }
-
-  console.log({ stringified: JSON.stringify(tweet, null, 2) });
 
   return (
     <Suspense fallback={fallback}>
