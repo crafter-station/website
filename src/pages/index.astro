@@ -92,49 +92,72 @@ const previewEvents = [
 
         <!-- ── HERO ── -->
         <section
-            class="border-b border-divider px-6 py-20 md:py-28 max-w-[1280px] mx-auto"
+            class="grid gap-12 border-b border-divider px-6 py-20 md:grid-cols-[minmax(0,1fr)_280px] md:items-center md:py-28 lg:grid-cols-[minmax(0,1fr)_340px] max-w-[1280px] mx-auto"
         >
-            <h1
-                class="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-3xl"
-            >
-                {t("hero.headline")}
-            </h1>
-            <p
-                class="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed"
-            >
-                {t("hero.sub")}
-            </p>
-            <div class="mt-10 flex flex-wrap gap-4">
+            <div>
+                <h1
+                    class="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-3xl"
+                >
+                    {t("hero.headline")}
+                </h1>
+                <p
+                    class="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed"
+                >
+                    {t("hero.sub")}
+                </p>
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a
+                        href="https://crafters.chat"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-medium hover:bg-muted-foreground transition-colors"
+                        data-track="cta_click"
+                        data-track-label="join"
+                        data-track-location="hero"
+                    >
+                        {t("nav.join")} →
+                    </a>
+                    <a
+                        href={tp("/events")}
+                        class="inline-flex items-center gap-2 px-5 py-2.5 border border-divider text-muted-foreground text-sm hover:text-foreground hover:border-muted-foreground transition-colors"
+                        data-track="cta_click"
+                        data-track-label="see_events"
+                        data-track-location="hero"
+                    >
+                        {t("events.cta")}
+                    </a>
+                </div>
                 <a
-                    href="https://crafters.chat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-foreground text-background text-sm font-medium hover:bg-muted-foreground transition-colors"
+                    href={tp("/team")}
+                    class="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     data-track="cta_click"
-                    data-track-label="join"
+                    data-track-label="free_mentoring"
                     data-track-location="hero"
                 >
-                    {t("nav.join")} →
-                </a>
-                <a
-                    href={tp("/events")}
-                    class="inline-flex items-center gap-2 px-5 py-2.5 border border-divider text-muted-foreground text-sm hover:text-foreground hover:border-muted-foreground transition-colors"
-                    data-track="cta_click"
-                    data-track-label="see_events"
-                    data-track-location="hero"
-                >
-                    {t("events.cta")}
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-500 shrink-0"></span>
+                    {t("hero.mentoring")} →
                 </a>
             </div>
             <a
-                href={tp("/team")}
-                class="mt-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                href="https://crafters.chat"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group justify-self-start border border-divider bg-secondary p-4 transition-colors hover:border-muted-foreground md:justify-self-end"
+                aria-label="Join the Crafter Station WhatsApp community at crafters.chat"
                 data-track="cta_click"
-                data-track-label="free_mentoring"
+                data-track-label="qr_join"
                 data-track-location="hero"
             >
-                <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-500 shrink-0"></span>
-                {t("hero.mentoring")} →
+                <img
+                    src="/crafters-chat-qr.svg"
+                    alt="QR code to join the Crafter Station WhatsApp community"
+                    width="280"
+                    height="280"
+                    class="aspect-square w-52 bg-white md:w-60 lg:w-72"
+                />
+                <span class="mt-3 block text-center text-sm text-muted-foreground transition-colors group-hover:text-foreground">
+                    https://crafters.chat
+                </span>
             </a>
         </section>
 
