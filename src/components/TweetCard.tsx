@@ -33,16 +33,34 @@ interface TwitterIconProps {
 type TweetWithMaybeObjectEntities = Tweet & {
   entities?: unknown;
   parent?: TweetWithMaybeObjectEntities;
+  quoted_tweet?: TweetWithMaybeObjectEntities;
+};
+
+const normalizeEntities = (entities: unknown) => {
+  const source = entities && typeof entities === "object" ? entities as Record<string, unknown> : {};
+
+  return {
+    ...source,
+    hashtags: Array.isArray(source.hashtags) ? source.hashtags : [],
+    user_mentions: Array.isArray(source.user_mentions) ? source.user_mentions : [],
+    urls: Array.isArray(source.urls) ? source.urls : [],
+    symbols: Array.isArray(source.symbols) ? source.symbols : [],
+    media: Array.isArray(source.media) ? source.media : undefined,
+  };
 };
 
 const normalizeTweetEntities = (tweet: TweetWithMaybeObjectEntities): Tweet => {
   const normalized = {
     ...tweet,
-    entities: Array.isArray(tweet.entities) ? tweet.entities : [],
+    entities: normalizeEntities(tweet.entities),
   } as TweetWithMaybeObjectEntities;
 
   if (tweet.parent) {
     normalized.parent = normalizeTweetEntities(tweet.parent) as TweetWithMaybeObjectEntities;
+  }
+
+  if (tweet.quoted_tweet) {
+    normalized.quoted_tweet = normalizeTweetEntities(tweet.quoted_tweet) as TweetWithMaybeObjectEntities;
   }
 
   return normalized as Tweet;
