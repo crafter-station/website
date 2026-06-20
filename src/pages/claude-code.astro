@@ -1,0 +1,33 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Nav from "@/components/Nav.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+
+const title = "Claude Code questions — Crafter Station";
+const description = "Submit and vote on questions for Shiara's Claude Code workshop.";
+---
+
+<BaseLayout title={title} description={description}>
+  <Nav />
+  <main>
+    <section class="max-w-[1280px] mx-auto px-6 py-16 md:py-24">
+      <p class="text-xs uppercase tracking-[0.35em] text-muted-foreground">/claude-code</p>
+      <h1 class="mt-5 max-w-4xl text-4xl md:text-6xl font-bold leading-tight tracking-tight">
+        Ask Shiara about building with Claude Code.
+      </h1>
+      <p class="mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-muted-foreground">
+        Submit your question, vote on what should be answered live, and help shape the workshop queue.
+      </p>
+    </section>
+
+    <section class="max-w-[960px] mx-auto px-3 pb-16 sm:px-4 md:pb-24">
+      <iframe
+        src="https://crafter.run/en/claude-code?embed=1"
+        title="Claude Code workshop questions"
+        class="h-[900px] w-full border-0"
+        loading="eager"
+      ></iframe>
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>
