@@ -1,0 +1,114 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Nav from "@/components/Nav.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+
+const metrics = [
+	["28,875", "npm downloads"],
+	["3,218", "net new stars"],
+	["612", "founder contributions"],
+	["#86", "OSSCAR Emerging"],
+];
+
+const sources = [
+	["OSSCAR organization profile", "https://osscar.dev/org/crafter-station"],
+	["OSSCAR methodology", "https://osscar.dev/methodology"],
+	[
+		"Petdex npm range API",
+		"https://api.npmjs.org/downloads/range/2026-04-26:2026-07-04/petdex",
+	],
+	[
+		"Petdex contributors API",
+		"https://api.github.com/repos/crafter-station/petdex/contributors?per_page=100",
+	],
+	[
+		"Hermes Petdex integration",
+		"https://github.com/NousResearch/hermes-agent/blob/main/agent/pet/manifest.py",
+	],
+	[
+		"Decrypt coverage",
+		"https://decrypt.co/es/372082/tu-agente-hermes-ahora-tiene-una-mascota-que-no-hace-absolutamente-nada-y-ese-es-el-punto",
+	],
+];
+---
+
+<BaseLayout
+	title="Petdex Impact Report, Q2 2026 | Crafter Station"
+	description="Source-linked evidence for Petdex's 28,875 npm downloads, 3,218 net new stars, and contribution to Crafter Station's Q2 2026 growth."
+>
+	<Nav />
+
+	<main>
+		<section class="border-b border-divider px-6 py-20 md:py-28 max-w-[1280px] mx-auto">
+			<p class="text-xs font-bold text-bullet uppercase tracking-widest">Impact file · Petdex · Q2 2026</p>
+			<h1 class="mt-6 max-w-5xl text-4xl font-bold leading-tight tracking-tight text-foreground md:text-6xl lg:text-7xl">The package behind 96.72% of our Q2 star growth.</h1>
+			<p class="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">Built by founder Railly Hugo, Petdex generated 28,875 npm downloads and 3,218 net new stars during OSSCAR's published Q2 measurement window.</p>
+		</section>
+
+		<section class="grid grid-cols-2 border-b border-divider max-w-[1280px] mx-auto md:grid-cols-4">
+			{metrics.map(([value, label], index) => (
+				<div class:list={["px-6 py-10", index % 2 !== 0 && "border-l border-divider", index > 1 && "border-t border-divider md:border-t-0", index > 0 && "md:border-l md:border-divider"]}>
+					<p class="text-3xl font-bold text-foreground md:text-4xl">{value}</p>
+					<p class="mt-2 text-xs text-muted-foreground">{label}</p>
+				</div>
+			))}
+		</section>
+
+		<section class="grid border-b border-divider max-w-[1280px] mx-auto lg:grid-cols-2">
+			<div class="min-w-0 px-6 py-16 lg:border-r lg:border-divider">
+				<p class="text-xs font-bold text-bullet uppercase tracking-widest">GitHub attribution</p>
+				<h2 class="mt-4 text-2xl font-bold leading-tight text-foreground md:text-4xl">Petdex supplied nearly all of the organization's star growth.</h2>
+				<div class="mt-10 border-y border-divider">
+					<div class="grid grid-cols-[1.5fr_repeat(3,0.65fr)] gap-3 py-3 text-[10px] text-muted-foreground"><span>Signal</span><span class="text-right">Start</span><span class="text-right">End</span><span class="text-right">Growth</span></div>
+					<div class="grid grid-cols-[1.5fr_repeat(3,0.65fr)] gap-3 border-t border-divider py-4 text-xs"><span>Petdex stars</span><span class="text-right">70</span><span class="text-right">3,288</span><span class="text-right">3,218</span></div>
+					<div class="grid grid-cols-[1.5fr_repeat(3,0.65fr)] gap-3 border-t border-divider py-4 text-xs text-muted-foreground"><span>Crafter Station</span><span class="text-right">870</span><span class="text-right">4,197</span><span class="text-right">3,327</span></div>
+				</div>
+				<p class="mt-8 text-sm leading-relaxed text-muted-foreground">The calculation is (3,288 − 70) / (4,197 − 870) = 96.72%. GitHub's captured contributor snapshot lists Railly with 612 contributions, compared with 67 for the second contributor.</p>
+			</div>
+
+			<div class="min-w-0 border-t border-divider px-6 py-16 lg:border-t-0">
+				<p class="text-xs font-bold text-bullet uppercase tracking-widest">Package signal</p>
+				<h2 class="mt-4 text-2xl font-bold leading-tight text-foreground md:text-4xl">From 380 to 28,875 downloads in ten weekly buckets.</h2>
+				<svg class="mt-10 h-auto w-full" viewBox="0 0 640 260" role="img" aria-labelledby="npm-chart-title npm-chart-desc">
+					<title id="npm-chart-title">Petdex cumulative npm downloads</title>
+					<desc id="npm-chart-desc">Downloads increased from 380 to 28,875 by July 4, 2026.</desc>
+					<path d="M20 230H620" stroke="currentColor" opacity="0.2"></path>
+					<path d="M20 170H620" stroke="currentColor" opacity="0.1"></path>
+					<path d="M20 110H620" stroke="currentColor" opacity="0.1"></path>
+					<path d="M20 50H620" stroke="currentColor" opacity="0.1"></path>
+					<path d="M20 227 L87 180 L153 139 L220 116 L287 88 L353 73 L420 56 L487 41 L553 26 L620 13" fill="none" stroke="currentColor" stroke-width="3" vector-effect="non-scaling-stroke"></path>
+					<circle cx="20" cy="227" r="5" fill="currentColor"></circle>
+					<circle cx="620" cy="13" r="5" fill="currentColor"></circle>
+				</svg>
+				<div class="mt-3 flex justify-between text-[10px] text-muted-foreground"><span>Apr 26, 380</span><span>Jul 4, 28,875</span></div>
+				<div class="mt-10 grid grid-cols-3 divide-x divide-divider border-y border-divider">
+					<div class="py-5 pr-3"><p class="text-2xl font-bold">76×</p><p class="mt-1 text-[10px] text-muted-foreground">actual growth</p></div>
+					<div class="px-3 py-5"><p class="text-2xl font-bold">28.9×</p><p class="mt-1 text-[10px] text-muted-foreground">OSSCAR normalized</p></div>
+					<div class="py-5 pl-3"><p class="text-2xl font-bold">100%</p><p class="mt-1 text-[10px] text-muted-foreground">published npm signal</p></div>
+				</div>
+				<p class="mt-8 text-sm leading-relaxed text-muted-foreground">The public npm API matches OSSCAR's cumulative series point for point. The actual ratio is 75.99×, reported as 76×. OSSCAR displays 28.9× because its methodology pads a new project's baseline to 1,000 downloads.</p>
+			</div>
+		</section>
+
+		<section class="grid border-b border-divider max-w-[1280px] mx-auto lg:grid-cols-[0.8fr_1.2fr]">
+			<div class="px-6 py-16 lg:border-r lg:border-divider">
+				<p class="text-xs font-bold text-bullet uppercase tracking-widest">Independent adoption</p>
+				<h2 class="mt-4 text-3xl font-bold text-foreground">Used by Hermes Agent.</h2>
+				<p class="mt-6 text-sm leading-relaxed text-muted-foreground">Hermes Agent's documentation points to the public Petdex gallery, and its source code consumes the Petdex manifest and asset URLs. Decrypt independently identified Petdex as the sprite source.</p>
+				<a href="/team/railly" class="mt-8 inline-flex border border-divider px-4 py-2 text-sm text-foreground transition-colors hover:border-muted-foreground">Founder profile →</a>
+			</div>
+
+			<div class="border-t border-divider px-6 py-16 lg:border-t-0">
+				<p class="text-xs font-bold text-bullet uppercase tracking-widest">Primary sources</p>
+				<div class="mt-7 divide-y divide-divider border-y border-divider">
+					{sources.map(([label, href]) => (
+						<a href={href} target="_blank" rel="noopener noreferrer" class="flex items-center justify-between gap-4 py-4 text-sm text-muted-foreground transition-colors hover:text-foreground"><span>{label}</span><span aria-hidden="true">↗</span></a>
+					))}
+				</div>
+				<p class="mt-8 text-xs leading-relaxed text-muted-foreground">GitHub stars measure attention, not users or revenue. npm downloads count registry downloads, not unique people. The 96.72% figure applies only to net new stars. The 100% npm figure applies only to the organization's published OSSCAR series for this window.</p>
+			</div>
+		</section>
+	</main>
+
+	<SiteFooter />
+</BaseLayout>
