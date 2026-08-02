@@ -67,7 +67,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Railly Hugo',
     position: 'Founder',
     location: 'Buenos Aires, Argentina',
-    photoUrl: '/team/railly-linkedin-2026.png',
+    photoUrl: '/team/railly.png',
     bio: {
       en: 'Peruvian software engineer based in Buenos Aires, Software Engineer at Vercel Labs, founder of Crafter Station, and principal creator of Petdex.',
       es: 'Ingeniero de software peruano radicado en Buenos Aires, Software Engineer en Vercel Labs, fundador de Crafter Station y creador principal de Petdex.',

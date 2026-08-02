@@ -83,6 +83,23 @@ const calSlug = member.cal ? member.cal.replace('https://cal.com/', '') : null;
       </div>
     </section>
 
+    {member.username === 'railly' && (
+      <section class="border-b border-divider px-6 py-12 max-w-[1280px] mx-auto">
+        <p class="text-xs font-bold text-bullet uppercase tracking-widest">Impacto do Petdex, Q2 2026</p>
+        <div class="mt-6 grid grid-cols-2 md:grid-cols-4 border border-divider divide-x divide-y md:divide-y-0 divide-divider">
+          <div class="p-5"><p class="text-2xl font-bold text-foreground">28,875</p><p class="mt-1 text-xs text-muted-foreground">downloads npm</p></div>
+          <div class="p-5"><p class="text-2xl font-bold text-foreground">3,218</p><p class="mt-1 text-xs text-muted-foreground">novas estrelas líquidas</p></div>
+          <div class="p-5"><p class="text-2xl font-bold text-foreground">612</p><p class="mt-1 text-xs text-muted-foreground">contribuições ao Petdex</p></div>
+          <div class="p-5"><p class="text-2xl font-bold text-foreground">#86</p><p class="mt-1 text-xs text-muted-foreground">OSSCAR Emerging</p></div>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/impact/petdex" class="inline-flex border border-divider px-4 py-2 text-sm text-foreground transition-colors hover:border-muted-foreground">Relatório de impacto →</a>
+          <a href="https://github.com/crafter-station/petdex" target="_blank" rel="noopener noreferrer" class="inline-flex border border-divider px-4 py-2 text-sm text-foreground transition-colors hover:border-muted-foreground">Petdex no GitHub ↗</a>
+          <a href="https://railly.dev/press" target="_blank" rel="noopener noreferrer" class="inline-flex border border-divider px-4 py-2 text-sm text-foreground transition-colors hover:border-muted-foreground">Press kit ↗</a>
+        </div>
+      </section>
+    )}
+
     <!-- Skills -->
     {member.skills.length > 0 && (
       <section class="border-b border-divider px-6 py-12 max-w-[1280px] mx-auto">
